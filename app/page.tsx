@@ -1,6 +1,5 @@
-//
 'use client'
-import styled from "styled-components";
+
 import Image from 'next/image'
 import * as React from 'react';
 import * as Papa from 'papaparse';
@@ -13,7 +12,6 @@ import {parse} from 'papaparse';
 // import {readFileSync, writeFileSync} from 'fs';
 // import InputText from './inputtext' 
 
-const fs = require('fs');
 
 const modalStyle = {
   position: 'absolute' as 'absolute',
@@ -27,14 +25,6 @@ const modalStyle = {
   boxShadow: 24,
   p: 4,
 };
-const inputBox = styled.div`
-  min-height: 380px;
-  height: 16%;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
 
 export function BasicModal() {
   const [open, setOpen] = React.useState(false);
@@ -44,29 +34,52 @@ export function BasicModal() {
   const [phoneNumber, setPhoneNumber] = React.useState('');
   const [csvContents, setCsvContents] = React.useState('');
 
+  const config = {
+    delimiter: "",  // auto-detect <--------- We don't want this!
+    newline: "",    // auto-detect
+    quoteChar: '"',
+    header: false,
+    dynamicTyping: false,
+    preview: 0,
+    encoding: "",
+    worker: false,
+    comments: false,
+    step: undefined,
+    complete: undefined,
+    error: undefined,
+    download: false,
+    skipEmptyLines: false,
+    chunk: undefined,
+    fastMode: undefined,
+    beforeFirstChunk: undefined,
+    withCredentials: undefined
+}
+
   // Store phone number from input textbox.
   const handleSubmit = () => {
-    const filePath = 'phonenumbers.csv';
+    
     if (phoneNumber != '') {
       console.log("here");
       console.log(phoneNumber)
 
-      const newNumber = phoneNumber;
+      const newNumber = [phoneNumber];
+
       
       // Open csv file and write to csvContents.
-      const phoneNumberFile = fs.readFileSync(filePath, 'utf8');
-      var allNumbers = Papa.parse<string>(phoneNumberFile).data;
+      // const phoneNumberFile = fs.readFileSync(filePath, 'utf8');
+      // var allNumbers = Papa.parse<string>(phoneNumberFile).data;
       
-      // Modify allNumbers.
-      allNumbers.push(newNumber)
+      // // Modify allNumbers.
+      // allNumbers.push(newNumber)
 
       // Save allNumbers to csv file.
-      setCsvContents(Papa.unparse(allNumbers));
-      fs.writeFileSync(filePath, csvContents, 'utf8')      
+      setCsvContents(Papa.unparse(newNumber, config));
+      
     }
     // TODO: error handling for invalid phone numbers
     
 
+    
   }
   
   
