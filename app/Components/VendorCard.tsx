@@ -11,7 +11,8 @@ type Props = {
     vendorPhoto: string
     vendorName: string
     vendorDescription: string
-    title: string
+    website: string
+    categories: string[]
   }
 
 export default function VendorCard(props: Props) {
@@ -39,16 +40,21 @@ export default function VendorCard(props: Props) {
                 <Typography variant="lead" color="gray" className="mt-3 font-normal">
                     {props.vendorDescription}
                 </Typography>
+                <a href={props.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                    {props.website}
+                 </a>
             </CardBody>
 
             <CardFooter className="flex items-center justify-between">
-                <span className ="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">category1</span>
-                <span className ="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">categroy2</span>
-                <span className ="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">category3</span>
-
+                {props.categories.map((category, index) => (
+                <span
+                    key={index}
+                    className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                >
+                    {category}
+                </span>
+                ))}
             </CardFooter>
-
-
         </Card>
     )
 }

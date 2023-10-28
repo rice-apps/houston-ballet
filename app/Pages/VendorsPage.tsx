@@ -1,13 +1,29 @@
 import VendorCard from "../Components/VendorCard"
 
-export default function VendorsPage(){
-    return (
-        <div> 
-            <VendorCard 
-                vendorPhoto=""
-                vendorName="vendor1"
-                vendorDescription="vendordescription"
-                title= "string"/>
-        </div>
-    )
+interface VendorsPageProps {
+  photo_path: string;
+  name: string;
+  description: string;
+  website: string;
+  categories: string[];
+}
+
+export default function VendorsPage({
+  photo_path,
+  name,
+  description,
+  website,
+  categories,
+}: VendorsPageProps) {
+  return (
+    <div>
+      <VendorCard
+        vendorPhoto={photo_path}
+        vendorName={name}
+        vendorDescription={description}
+        website={website}
+        categories={categories}
+      />
+    </div>
+  );
 }
