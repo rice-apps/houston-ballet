@@ -8,7 +8,16 @@
     --background-end-rgb: 255, 255, 255;
 }
 
-
 body {
     color: rgb(var(--foreground-rgb));
+    font-family: Arial, sans-serif; /* Add your preferred font family */
+    background: linear-gradient(
+        to bottom,
+        rgb(var(--background-start-rgb)),
+        rgb(var(--background-end-rgb))
+    );
+    /* Add a background gradient effect */
+
+    padding: 20px;
 }
+
