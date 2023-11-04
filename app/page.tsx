@@ -62,7 +62,7 @@ export function BasicModal() {
       console.log("here");
       console.log(phoneNumber)
 
-      const newNumber = [phoneNumber];
+      const newNumber = [[phoneNumber]];
 
       
       // Open csv file and write to csvContents.
