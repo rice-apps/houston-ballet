@@ -29,7 +29,7 @@ fs.createReadStream('phonenumbers.csv')
       console.log("PHONE NUMBER: " + phoneNumbers[i]);
       client.messages
       .create({
-         body: 'hi ' + names[i] + ' yay slay :D wow amazing',
+         body: 'hi ' + names[i] + ':)',
          from: '+18336746338',
          to: countryCode[i] + phoneNumbers[i]
        })
