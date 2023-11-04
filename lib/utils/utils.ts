@@ -1,23 +1,35 @@
 // @ts-nocheck
-import axios from 'axios';
 
-export async function getCategories() {
-    const resp = await axios.get('https://hb-strapi-production.up.railway.app/api/categories?populate=*', 
+import { VendorsRepo } from "./repository";
+
+export async function getCategories(): VendorsRepo {
+    const resp = await fetch('https://hb-strapi-production.up.railway.app/api/vendors?populate=*', 
     {
 			headers: {
-				'Authorization': 'Bearer 72a88bfd96ccee9fd8c9c859394d0c0962c1b5a4e3f68346f61d93020b44383c602c8cd7cd963e0fea40499dec4df50a06bf0157d2dd22393288c08621b1383c7018f8541c0d54ac3dc5b7c5b73227cb764c391e29b6998dd561c77ce1027d857fd0ca0b16c217b2cca37cded8a69ad5e3dfc37309cf7fa021ba70f138f0f725',
+				'Authorization': 'bearer f4dc50774253e36a9fd6450aa6e3406749c6bfaeecea3a4871ea47a4845ca3dbb52e865c9339944972c87c0bfbe6ba27b548fe0cfb733a34ef3963d275edbe80909706e87bd15f4f90938dbddd76265f2b6151e703ac3db5b24623dfd4a884713d57393c9375fbdd6e820e1f0ad9899bbd6484b7040de3062fce84da787fd008',
 			}
 		});
 
     let ret = {}
-    
-    resp.data.data.forEach(category => {
-        ret[category.attributes.name] = [];
-        let vendors = category.attributes.vendors.data;
-        vendors.forEach(vendor => ret[category.attributes.name].push({"name":vendor.attributes.name}))
+    let data = await resp.json()
+    console.log(data)
+
+    data.data.forEach(vendor => {
+      let categories = vendor.attributes.categories.data;
+      categories.forEach(category => ret[category.attributes.name] = [ ]);
     })
 
-    return ret;
+    data.data.forEach(vendor => {
+      let categories = vendor.attributes.categories.data;
+      categories.forEach(category => {
+        let vendor_desc = {};
+        vendor_desc["name"] = vendor.attributes.name;
+        vendor_desc["image"] = vendor.attributes.primaryImage.data.attributes.formats.thumbnail.url;
+        ret[category.attributes.name].push(vendor_desc)
+      });
+    })
+    console.log(ret);
+    return VendorsRepo(ret);
 }
 /*
 {
