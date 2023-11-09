@@ -6,7 +6,7 @@ export async function getCategories(): VendorsRepo {
     const resp = await fetch('https://hb-strapi-production.up.railway.app/api/vendors?populate=*', 
     {
 			headers: {
-				'Authorization': 'bearer f4dc50774253e36a9fd6450aa6e3406749c6bfaeecea3a4871ea47a4845ca3dbb52e865c9339944972c87c0bfbe6ba27b548fe0cfb733a34ef3963d275edbe80909706e87bd15f4f90938dbddd76265f2b6151e703ac3db5b24623dfd4a884713d57393c9375fbdd6e820e1f0ad9899bbd6484b7040de3062fce84da787fd008',
+				'Authorization': 'bearer '+process.env.STRAPI_API_KEY,
 			}
 		});
 
