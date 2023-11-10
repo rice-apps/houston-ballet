@@ -27,6 +27,10 @@ export default function CategoryPage() {
             vendorName: "me fr",
             image: "https://i.pinimg.com/736x/5a/0d/9c/5a0d9c8ae6d3049eaefd28c8a58a656e.jpg",
         },
+        {
+            vendorName: "angry snoopy",
+            image: "https://pbs.twimg.com/media/F-lgrs-b0AAZMEv?format=jpg&name=medium",
+        },
     ];
 
     // how to get the metric font?
