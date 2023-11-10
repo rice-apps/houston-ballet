@@ -1,4 +1,4 @@
-import VendorCard from "../Components/VendorCard"
+import VendorCard from "../Components/VendorCard";
 
 interface VendorsPageProps {
   photo_path: string;

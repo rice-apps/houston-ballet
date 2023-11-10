@@ -1,10 +1,9 @@
 "use client"
 import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
+  Card,
+  CardBody,
+  CardFooter,
+  Typography
 } from "@material-tailwind/react";
 
 type Props = {
