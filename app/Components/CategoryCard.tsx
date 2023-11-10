@@ -13,12 +13,12 @@ export type CategoryCardProps = {
 
 export default function CategoryCard(props: CategoryCardProps) {
     return (
-        <Card className="m-5 w-96 border border-black rounded-lg group">
+        <Card className="border border-black rounded-lg group w-64 mr-5 my-5">
             <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="m-0 relative h-56 border-b border-black rounded-t-lg"
+                className="m-0 relative border-b border-black rounded-t-lg h-40"
             >
                 <img src={props.image} alt="snoopy" />
             </CardHeader>
