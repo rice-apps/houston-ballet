@@ -6,23 +6,28 @@ import {
     Typography,
 } from "@material-tailwind/react";
 
-export default function CategoryCard() {
+export type CategoryCardProps = {
+    vendorName: string,
+    image: string
+}
+
+export default function CategoryCard(props: CategoryCardProps) {
     return (
-        <Card className="mt-6 w-96">
+        <Card className="m-6 w-96 border border-black rounded-lg">
             <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="m-0 rounded-lg relative h-56"
+                className="m-0 relative h-56 border-b border-black rounded-t-lg"
             >
                 <img
-                    src="https://i.insider.com/617c0e6e1037b1001814f13e?width=1000&format=jpeg&auto=webp"
+                    src={props.image}
                     alt="snoopy"
                 />
             </CardHeader>
-            <CardBody>
+            <CardBody className="p-4">
                 <Typography variant="h4" color="blue-gray">
-                    Vendor Name
+                    {props.vendorName}
                 </Typography>
             </CardBody>
         </Card>
