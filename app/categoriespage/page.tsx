@@ -35,7 +35,7 @@ export default function CategoryPage() {
 
     // how to get the metric font?
     return (
-        <>
+        <div className="p-5">
             <h1 className="text-5xl font-sans font-bold tracking-widest">
                 CATEGORIES
             </h1>
@@ -48,6 +48,6 @@ export default function CategoryPage() {
                     return <CategoryCard {...card} />;
                 })}
             </div>
-        </>
+        </div>
     );
 }
