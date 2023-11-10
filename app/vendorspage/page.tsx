@@ -7,9 +7,9 @@ export default function VendorPage() {
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredVendors, setFilteredVendors] = useState([]);
     return (
-        <main className="flex min-h-screen flex-col items-center p-24 bg-gray-100">
+        <main className="flex min-h-screen flex-col items-center bg-gray-100 p-24">
             <div className="text-center">
-                <h1 className="text-3xl font-bold text-blue-800 mb-4">
+                <h1 className="mb-4 text-3xl font-bold text-blue-800">
                     Welcome to Nutcracker Market Vendors
                 </h1>
                 <p className="text-gray-600">
@@ -19,15 +19,15 @@ export default function VendorPage() {
             </div>
 
             <div className="flex flex-col items-center">
-                <div className="flex items-center mb-4">
+                <div className="mb-4 flex items-center">
                     <input
                         type="text"
                         placeholder="Search Vendors"
-                        className="border border-gray-300 px-2 py-1 rounded-l-md"
+                        className="rounded-l-md border border-gray-300 px-2 py-1"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
-                    <button className="bg-blue-500 text-white px-4 py-1 rounded-r-md hover:bg-blue-600">
+                    <button className="rounded-r-md bg-blue-500 px-4 py-1 text-white hover:bg-blue-600">
                         Search
                     </button>
                 </div>

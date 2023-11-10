@@ -13,17 +13,17 @@ export type CategoryCardProps = {
 
 export default function CategoryCard(props: CategoryCardProps) {
     return (
-        <Card className="border border-black rounded-lg group w-64 mr-5 my-5">
+        <Card className="group my-5 mr-5 w-64 rounded-lg border border-black">
             <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="m-0 relative border-b border-black rounded-t-lg h-40"
+                className="relative m-0 h-40 rounded-t-lg border-b border-black"
             >
                 <img src={props.image} alt="snoopy" />
             </CardHeader>
-            <CardBody className="p-4 rounded-b-md group-hover:bg-ballet transition-colors">
-                <Typography className="h4 group-hover:text-white transition-colors">
+            <CardBody className="rounded-b-md p-4 transition-colors group-hover:bg-ballet">
+                <Typography className="h4 transition-colors group-hover:text-white">
                     {props.vendorName}
                 </Typography>
             </CardBody>

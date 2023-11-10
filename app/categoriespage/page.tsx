@@ -36,10 +36,10 @@ export default function CategoryPage() {
     // how to get the metric font?
     return (
         <div className="p-5">
-            <h1 className="text-5xl font-sans font-bold tracking-widest">
+            <h1 className="font-sans text-5xl font-bold tracking-widest">
                 CATEGORIES
             </h1>
-            <h3 className="font-medium text-xl pt-3">
+            <h3 className="pt-3 text-xl font-medium">
                 Not sure what to find yet or just want to explore? Browse
                 through our vendors with our diverse list of categories.
             </h3>

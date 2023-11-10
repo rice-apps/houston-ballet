@@ -31,7 +31,7 @@ export function VendorCardWrapper({
 export function VendorCardDisplay() {
     return (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="w-full h-full">
+            <div className="h-full w-full">
                 <VendorCardWrapper
                     photo_path="/boutique.jpg"
                     name="A Unique Boutique by Jeanette - TX"
@@ -40,7 +40,7 @@ export function VendorCardDisplay() {
                     categories={["Fashion", "Gifts", "Accessories"]}
                 />
             </div>
-            <div className="w-full h-full">
+            <div className="h-full w-full">
                 <VendorCardWrapper
                     photo_path="/alaska_fur.png"
                     name="Alaska Fur Gallery - AK"
@@ -49,7 +49,7 @@ export function VendorCardDisplay() {
                     categories={["Fashion", "Accessories", "Animal"]}
                 />
             </div>
-            <div className="w-full h-full">
+            <div className="h-full w-full">
                 <VendorCardWrapper
                     photo_path="/bear_creek.png"
                     name="Bear Creek Smokehouse - TX"

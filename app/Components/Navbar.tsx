@@ -2,13 +2,13 @@
 
 export default function NavBar() {
     return (
-        <nav className="flex items-center flex-wrap p-2 bg-ballet">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <nav className="flex flex-wrap items-center bg-ballet p-2">
+            <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
                 <div
-                    className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+                    className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
                     id="navbar-sticky"
                 >
-                    <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 md:dark:bg-gray-900">
                         <li>
                             <a
                                 href="/vendorspage"
