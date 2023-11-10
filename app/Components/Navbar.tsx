@@ -2,7 +2,7 @@
 
 export default function NavBar() {
     return (
-        <nav className="flex items-center flex-wrap bg-slate-700 p-2 ">
+        <nav className="flex items-center flex-wrap p-2 bg-ballet">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <div
                     className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"

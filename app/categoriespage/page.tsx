@@ -39,7 +39,7 @@ export default function CategoryPage() {
             <h1 className="text-5xl font-sans font-bold tracking-widest">
                 CATEGORIES
             </h1>
-            <h3 className="font-medium text-xl">
+            <h3 className="font-medium text-xl pt-3">
                 Not sure what to find yet or just want to explore? Browse
                 through our vendors with our diverse list of categories.
             </h3>
