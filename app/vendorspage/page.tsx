@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import VendorsPage from "../Pages/VendorsPage";
+import { VendorCardDisplay } from "../Components/VendorCardDisplay";
 import "../globals.css";
 
 export default function VendorPage() {
@@ -33,7 +33,7 @@ export default function VendorPage() {
                 </div>
             </div>
 
-            <VendorsPage></VendorsPage>
+            <VendorCardDisplay />
         </main>
     );
 }
