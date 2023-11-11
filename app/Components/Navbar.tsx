@@ -2,25 +2,32 @@
 
 export default function NavBar() {
     return (
-        <nav className="flex flex-wrap items-center bg-ballet p-2">
-            <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-                <div
-                    className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
-                    id="navbar-sticky"
-                >
-                    <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 md:dark:bg-gray-900">
+        <nav className="bg-ballet p-2 flex justify-between items-center w-full">
+            {/* Logo in the top left corner */}
+            <a href="/" className="shrink-0">
+                <img
+                    src="/logo.png" 
+                    alt="Company Logo"
+                    className="h-10 w-auto"
+                />
+            </a>
+
+            {/* Centered navbar items */}
+            <div className="flex-grow">
+                <div className="hidden items-center justify-center md:flex">
+                    <ul className="flex justify-center flex-wrap items-center mt-4 md:mt-0">
                         <li>
                             <a
                                 href="/vendorspage"
-                                className="block py-2 pl-3 pr-4 text-white"
+                                className="block py-2 px-4 text-white hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:hover:text-blue-700"
                             >
-                                Vendor Page
+                                Vendors
                             </a>
                         </li>
                         <li>
                             <a
                                 href="/categoriespage"
-                                className="block py-2 pl-3 pr-4 text-white"
+                                className="block py-2 px-4 text-white hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:hover:text-blue-700"
                             >
                                 Categories
                             </a>

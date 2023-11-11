@@ -16,9 +16,9 @@ type Props = {
 
 export default function VendorCard(props: Props) {
     return (
-        <div className="max-w-[24rem] transform overflow-hidden rounded-lg bg-white shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg">
-            <div className="relative">
-                <div className="h-32 w-32 overflow-hidden">
+        <div className="max-w-[24rem] h-[400px] flex flex-col transform overflow-hidden rounded-lg bg-white shadow-md border border-gray-200 transition-transform hover:-translate-y-1 hover:shadow-lg">
+            <div className="relative flex-shrink-0 border-b border-gray-300"> {/* Border at the bottom of the image */}
+                <div className="h-48 w-full overflow-hidden"> 
                     <img
                         src={props.vendorPhoto}
                         alt="photo of vendor"
@@ -26,8 +26,8 @@ export default function VendorCard(props: Props) {
                     />
                 </div>
             </div>
-            <Card className="rounded-lg rounded-t-none">
-                <CardBody className="p-4">
+            <Card className="flex flex-col flex-grow rounded-lg rounded-t-none">
+                <CardBody className="flex-grow p-4 border-b border-gray-300"> {/* Border at the bottom of the card body */}
                     <Typography
                         variant="h4"
                         color="blue-gray"
@@ -38,7 +38,7 @@ export default function VendorCard(props: Props) {
                     <Typography
                         variant="lead"
                         color="gray"
-                        className="mt-3 text-sm font-normal"
+                        className="mt-3 text-sm font-normal overflow-ellipsis overflow-hidden"
                     >
                         {props.vendorDescription}
                     </Typography>
@@ -51,12 +51,12 @@ export default function VendorCard(props: Props) {
                         {props.website}
                     </a>
                 </CardBody>
-
+    
                 <CardFooter className="p-4">
                     {props.categories.map((category, index) => (
                         <span
                             key={index}
-                            className="mb-2 mr-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-600"
+                            className="mb-2 mr-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-600 border border-blue-300" /* Border around categories */
                         >
                             {category}
                         </span>
@@ -66,3 +66,4 @@ export default function VendorCard(props: Props) {
         </div>
     );
 }
+

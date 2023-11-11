@@ -12,6 +12,8 @@ module.exports = {
             backgroundImage: {
                 nutcrackerBackground:
                     "url('../public/nutcrackerBackground.png')",
+                vendorBackground:
+                    "url('../public/vendorBackground.png')",
             },
             colors: {
                 ballet: "#33323c",
