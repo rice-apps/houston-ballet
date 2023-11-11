@@ -5,14 +5,21 @@ type ResponseData = {
   message: string
 }
  
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) {
-  res.status(200).json({ message: "" + req.query.message })
-  console.log(req.body);
-  const filePath = 'phonenumbers.csv';
-//   fs.writeFileSync(filePath, csvContents, 'utf8')
+export const config = {
+  api: {
+    externalResolver: true,
+  }
 }
 
-// function to access phonenumbers.csv and add the phone number from the api request to the csv file
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log(req.body);
+  const message = "\n" + req.body["nameString"] + "," + req.body["phoneNumberString"] + "," + req.body["emailString"];
+
+  res.status(200).json({ text: message });
+  
+  console.log("message: " + message);
+  const filePath = './app/phonenumbers.csv';
+
+  fs.appendFileSync(filePath, message);
+  console.log("wrote to file");
+}

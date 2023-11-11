@@ -2,13 +2,13 @@
 
 import Image from 'next/image'
 import * as React from 'react';
-import * as Papa from 'papaparse';
+// import * as Papa from 'papaparse';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
-import {parse} from 'papaparse';
+// import { parse } from 'papaparse';
 // import {readFileSync, writeFileSync} from 'fs';
 // import InputText from './inputtext' 
 
@@ -32,6 +32,8 @@ export function BasicModal() {
   const handleClose = () => setOpen(false);
 
   const [phoneNumber, setPhoneNumber] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
   const [csvContents, setCsvContents] = React.useState('');
 
   const config = {
@@ -53,61 +55,52 @@ export function BasicModal() {
     fastMode: undefined,
     beforeFirstChunk: undefined,
     withCredentials: undefined
-}
+  }
+
+  type UserData = {
+    nameString: string;
+    phoneNumberString: string;
+    emailString: string;
+  }
 
   // Store phone number from input textbox.
-  const handleSubmit = () => {
-    
-    if (phoneNumber != '') {
-      console.log("here");
-      console.log(phoneNumber)
+  const handleSubmit = async () => {
 
-      const newNumber = [[phoneNumber]];
+    if (name != '' && phoneNumber != '' && email != '') {
+      console.log("name from input box: " + name);
+      console.log("phone number from input box: " + phoneNumber);
+      console.log("email from input box: " + email);
 
-      
-      // Open csv file and write to csvContents.
-      // const phoneNumberFile = fs.readFileSync(filePath, 'utf8');
-      // var allNumbers = Papa.parse<string>(phoneNumberFile).data;
-      
-      // // Modify allNumbers.
-      // allNumbers.push(newNumber)
+      const userInput: UserData = { nameString: name, phoneNumberString: phoneNumber, emailString: email };
+      console.log("new name: " + userInput["nameString"]);
+      console.log("new number: " + userInput["phoneNumberString"]);
+      console.log("new email: " + userInput["emailString"]);
 
-      // Save allNumbers to csv file.
-      setCsvContents(Papa.unparse(newNumber, config));
-      postData("api/csvwrite", { message: newNumber }).then((data) => {
-        console.log(data); // JSON data parsed by `data.json()` call
-      });
-       
+      await postData("api/csvwrite", userInput)
+
     }
     // TODO: error handling for invalid phone numbers
 
-  // fetching csvwrite api endpoint to send the phone number to the server side
-  // and not the client side so that it cannot be access by the client
-    // Example POST method implementation:
-  async function postData(url = "", data = {}) {
-    // Default options are marked with *
-    const response = await fetch(url, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      //mode: "cors", // no-cors, *cors, same-origin
-      //cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      //credentials: "same-origin", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      //redirect: "follow", // manual, *follow, error
-      //referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
+    // fetching csvwrite api endpoint to send the phone number to the server side
+    async function postData(url: string, userInput: UserData) {
+      // Formulate API request.
+      const request = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "accept": "application/json"
+        },
+        body: JSON.stringify(userInput)
+      };
+      // Make call to API endpoint.
+      const response = await fetch(url, request);
+      console.log("response status: " + response.status);
+      return response.json(); // parses JSON response into native JavaScript objects
+    }
+
   }
 
-  
 
-    
-  }
-  
-  
   return (
     <div>
       <Button onClick={handleOpen}>click for box!</Button>
@@ -124,9 +117,11 @@ export function BasicModal() {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             explain why we need their information
           </Typography>
-          <Box> 
+          <Box>
             {/* Textbox for phone number */}
+            <TextField id="name" label="Name" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
             <TextField id="phone_number" label="Phone Number" variant="standard" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+            <TextField id="email" label="Email" variant="standard" value={email} onChange={(e) => setEmail(e.target.value)} />
             <Button onClick={handleSubmit}>submit</Button>
           </Box>
         </Box>
@@ -134,8 +129,6 @@ export function BasicModal() {
     </div>
   );
 }
-
-
 
 
 export default function Home() {
