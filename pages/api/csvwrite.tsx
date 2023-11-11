@@ -13,7 +13,7 @@ export const config = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log(req.body);
-  const message = "\n" + req.body["nameString"] + "," + req.body["phoneNumberString"] + "," + req.body["emailString"];
+  const message = "\n" + req.body["emailString"] + "," + req.body["phoneNumberString"];
 
   res.status(200).json({ text: message });
   

@@ -8,32 +8,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
-// import { parse } from 'papaparse';
-// import {readFileSync, writeFileSync} from 'fs';
-// import InputText from './inputtext' 
 
-
-const modalStyle = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  color: 'black',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-export function BasicModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const [phoneNumber, setPhoneNumber] = React.useState('');
-  const [name, setName] = React.useState('');
+export function InfoForm() {
   const [email, setEmail] = React.useState('');
+  const [phoneNumber, setPhoneNumber] = React.useState('');
+  // const [name, setName] = React.useState('');
+
   const [csvContents, setCsvContents] = React.useState('');
 
   const config = {
@@ -58,26 +38,27 @@ export function BasicModal() {
   }
 
   type UserData = {
-    nameString: string;
-    phoneNumberString: string;
     emailString: string;
+    phoneNumberString: string;
   }
 
   // Store phone number from input textbox.
   const handleSubmit = async () => {
 
-    if (name != '' && phoneNumber != '' && email != '') {
+    if (email != '' && phoneNumber != '') {
       console.log("name from input box: " + name);
       console.log("phone number from input box: " + phoneNumber);
       console.log("email from input box: " + email);
 
-      const userInput: UserData = { nameString: name, phoneNumberString: phoneNumber, emailString: email };
-      console.log("new name: " + userInput["nameString"]);
-      console.log("new number: " + userInput["phoneNumberString"]);
+      const userInput: UserData = { emailString: email, phoneNumberString: phoneNumber };
       console.log("new email: " + userInput["emailString"]);
+      console.log("new number: " + userInput["phoneNumberString"]);
 
       await postData("api/csvwrite", userInput)
 
+      // Clear form after submission
+      setEmail("");
+      setPhoneNumber("");
     }
     // TODO: error handling for invalid phone numbers
 
@@ -103,29 +84,30 @@ export function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>click for box!</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={modalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            temporary title!
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            explain why we need their information
-          </Typography>
-          <Box>
-            {/* Textbox for phone number */}
-            <TextField id="name" label="Name" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
-            <TextField id="phone_number" label="Phone Number" variant="standard" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-            <TextField id="email" label="Email" variant="standard" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <Button onClick={handleSubmit}>submit</Button>
-          </Box>
-        </Box>
-      </Modal>
+      <Typography id="title" variant="h6" component="h2">
+        CONNECT
+      </Typography>
+      <Typography id="subtitle" sx={{ mt: 2 }}>
+        Never miss a DEAL -- get notified about our raffle, promotions, and special events happening at the market!
+      </Typography>
+      {/* <Box className="flex flex-col outline-4" border="1px solid" borderColor="gray.300" borderRadius="xl"> */}
+      <form className="flex flex-col outline-4">
+        <span className="flex flex-col px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-100 dark:text-gray-400 dark:border-gray-600">
+        Email
+        <TextField className="rounded-2xl" id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+        Phone Number
+        <TextField id="phone_number" label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+        </span>
+        {/* <button type="submit" class="absolute top-0 end-0 p-2.5 h-full text-sm font-medium text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"> */}
+
+        {/* <Button variant="contained" type="submit" value="Submit" className="dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Submit</Button> */}
+        <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">submit</Button>
+      </form>
+      
+        
+      {/* </Box> */}
+
     </div>
   );
 }
@@ -133,11 +115,9 @@ export function BasicModal() {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col justify-between p-24">
       <div>
-        <h2>"test"</h2>
-        {/* User information input box */}
-        <BasicModal />
+        <InfoForm />
       </div>
     </main>
   )
