@@ -35,19 +35,23 @@ export default function CategoryPage() {
 
     // how to get the metric font?
     return (
-        <div className="p-5">
-            <h1 className="font-sans text-5xl font-bold tracking-widest">
-                CATEGORIES
-            </h1>
-            <h3 className="pt-3 text-xl font-medium">
-                Not sure what to find yet or just want to explore? Browse
-                through our vendors with our diverse list of categories.
-            </h3>
-            <div className="flex flex-wrap">
-                {tempCardArray.map((card: CategoryCardProps) => {
-                    return <CategoryCard {...card} />;
-                })}
+        <>
+            <div className="bg-nutcrackerBackground h-128 flex flex-col content-center justify-center p-5">
+                <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
+                    CATEGORIES
+                </h1>
+                <h3 className="pt-3 text-center text-xl font-medium text-white">
+                    BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
+                    CATEGORIES.
+                </h3>
             </div>
-        </div>
+            <div className="p-5">
+                <div className="flex flex-wrap">
+                    {tempCardArray.map((card: CategoryCardProps) => {
+                        return <CategoryCard {...card} />;
+                    })}
+                </div>
+            </div>
+        </>
     );
 }
