@@ -20,19 +20,21 @@ export class VendorsRepo {
             })
         }
         let vendor_map = {}
-        for (let category in categoriesJson) {
-            for (let vendor in categoriesJson[category]) {
+
+        for (let category of this.categories) {
+            for (let vendor of category.vendors) {
                 if (vendor.name in vendor_map) {
-                    vendor_map[vendor.name].categories.push(category)
+                    vendor_map[vendor.name].categories.push(category.name)
                 } else {
                     vendor_map[vendor.name] = {
                         name: vendor.name,
                         image: vendor.image,
-                        categories: []
+                        categories: [category.name]
                     }
                 }
             }
         }
+        //console.log(JSON.stringify(vendor_map))
         this.vendors = []
         for (let vendor_name in vendor_map) {
             this.vendors.push(vendor_map[vendor_name])
