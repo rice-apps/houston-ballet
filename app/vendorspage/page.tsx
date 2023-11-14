@@ -3,13 +3,7 @@ import { useState } from "react";
 import { VendorCardDisplay } from "../Components/VendorCardDisplay";
 import "../globals.css";
 
-import {
-    Typography,
-} from "@material-tailwind/react";
-
 export default function VendorPage() {
-    const [searchQuery, setSearchQuery] = useState("");
-    const [filteredVendors, setFilteredVendors] = useState([]);
     return (
         <>
             <div className="bg-vendorBackground  h-128 flex flex-col content-center justify-center p-5">

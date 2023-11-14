@@ -1,3 +1,4 @@
+import { getCategories } from "@/lib/utils/utils";
 import VendorCard from "./VendorCard";
 
 interface VendorsPageProps {
@@ -28,36 +29,27 @@ export function VendorCardWrapper({
     );
 }
 
-export function VendorCardDisplay() {
+export async function VendorCardDisplay() {
+    const vendors = (await getCategories()).getVendors();
+    const elements = [];
+    for (const vendor of vendors) {
+        elements.push(
+            <>
+                <div className="h-full w-full">
+                    <VendorCardWrapper
+                        photo_path={vendor.image}
+                        name={vendor.name}
+                        description={vendor.description}
+                        website={"TODO: add website field"}
+                        categories={vendor.categories ?? []}
+                    />
+                </div>
+            </>
+        )
+    }
     return (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="h-full w-full">
-                <VendorCardWrapper
-                    photo_path="/boutique.jpg"
-                    name="A Unique Boutique by Jeanette - TX"
-                    description="Ladies' Fabulous Fashions & Unique Gifts X-Small thru Voluptuous"
-                    website="https://accessorizeinstyle.com"
-                    categories={["Fashion", "Gifts", "Accessories"]}
-                />
-            </div>
-            <div className="h-full w-full">
-                <VendorCardWrapper
-                    photo_path="/alaska_fur.png"
-                    name="Alaska Fur Gallery - AK"
-                    description="Luxury Outerwear - Fur & Leather"
-                    website="https://www.akfurgallery.com/"
-                    categories={["Fashion", "Accessories", "Animal"]}
-                />
-            </div>
-            <div className="h-full w-full">
-                <VendorCardWrapper
-                    photo_path="/bear_creek.png"
-                    name="Bear Creek Smokehouse - TX"
-                    description="Hickory smoked meats, soup mixes, gourmet delicacies & fudge"
-                    website="https://bearcreeksmokehouse.com/"
-                    categories={["Food", "Catering", "Shop"]}
-                />
-            </div>
+            {elements}
         </div>
     );
 }
