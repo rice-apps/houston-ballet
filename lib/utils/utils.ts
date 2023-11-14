@@ -3,7 +3,7 @@
 import { VendorsRepo } from "./repository";
 
 export async function getCategories(): VendorsRepo {
-    const resp = await fetch('https://hb-strapi-production.up.railway.app/api/vendors?populate=*', 
+    let resp = await fetch('https://hb-strapi-production.up.railway.app/api/vendors?populate=*', 
     {
       method: "GET",
 			headers: {
@@ -12,20 +12,30 @@ export async function getCategories(): VendorsRepo {
 		});
 
     let ret = {}
-    let data = await resp.json()
+    let vendorsResp = await resp.json()
+    resp = await fetch('https://hb-strapi-production.up.railway.app/api/categories?populate[0]=primaryImage', 
+    {
+      method: "GET",
+			headers: {
+				'Authorization': 'bearer ' + process.env.STRAPI_API_KEY,
+			}
+		});
 
-    data.data.forEach(vendor => {
-      let categories = vendor.categories;
-      categories.forEach(category => ret[category.name] = [ ]);
-    })
+    let categoriesResp = await resp.json();
 
-    data.data.forEach(vendor => {
+    categoriesResp.data.forEach(category => 
+      ret[category.name] = {vendors: [], image: category.primaryImage.url}
+    );
+
+    vendorsResp.data.forEach(vendor => {
       let categories = vendor.categories;
       categories.forEach(category => {
         let vendor_desc = {};
         vendor_desc["name"] = vendor.name;
         vendor_desc["image"] = vendor.primaryImage.url;
-        ret[category.name].push(vendor_desc)
+        vendor_desc["description"] = vendor.description ?? "";
+        vendor_desc["shortDesc"] = vendor.shortDesc ?? "";
+        ret[category.name].vendors.push(vendor_desc)
       });
     })
     
