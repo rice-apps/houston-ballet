@@ -1,5 +1,8 @@
-import { getCategories } from "@/lib/utils/utils";
+"use client";
+
 import VendorCard from "./VendorCard";
+import { Vendor } from "@/lib/utils/repository";
+import FavoriteStar from "./FavoriteStar";
 
 interface VendorsPageProps {
     photo_path: string;
@@ -17,20 +20,20 @@ export function VendorCardWrapper({
     categories,
 }: VendorsPageProps) {
     return (
-        <div>
+        <>
             <VendorCard
+                key={name}
                 vendorPhoto={photo_path}
                 vendorName={name}
                 vendorDescription={description}
                 website={website}
                 categories={categories}
             />
-        </div>
+        </>
     );
 }
 
-export async function VendorCardDisplay() {
-    const vendors = (await getCategories()).getVendors();
+export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
@@ -40,9 +43,10 @@ export async function VendorCardDisplay() {
                         photo_path={vendor.image}
                         name={vendor.name}
                         description={vendor.description}
-                        website={"TODO: add website field"}
+                        website={""}
                         categories={vendor.categories ?? []}
                     />
+                    <FavoriteStar id={vendor.name} />
                 </div>
             </>
         )

@@ -1,9 +1,10 @@
-"use client";
-import { useState } from "react";
 import { VendorCardDisplay } from "../Components/VendorCardDisplay";
 import "../globals.css";
+import { getCategories } from "@/lib/utils/utils";
 
-export default function VendorPage() {
+export default async function VendorPage() {
+    const vendors = (await getCategories()).getVendors();
+
     return (
         <>
             <div className="bg-vendorBackground  h-128 flex flex-col content-center justify-center p-5">
@@ -70,7 +71,7 @@ export default function VendorPage() {
             </div>
         </div>
 
-            <VendorCardDisplay />
+            <VendorCardDisplay vendors={vendors}/>
         </>
     );
 }

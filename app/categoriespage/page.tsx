@@ -4,7 +4,7 @@ import CategoryCard, { CategoryCardProps } from "../Components/CategoryCard";
 export default async function CategoryPage() {
     // temp card array to be replaced by database info
     const categories = await getCategories();
-    
+
     const tempCardArray: Array<CategoryCardProps> = [];
     for (let category of categories.getCategories()) {
         tempCardArray.push({
@@ -28,7 +28,7 @@ export default async function CategoryPage() {
             <div className="p-5">
                 <div className="grid gap-7 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {tempCardArray.map((card: CategoryCardProps) => {
-                        return <CategoryCard {...card} />;
+                        return <CategoryCard {...card} key={card.vendorName}/>;
                     })}
                 </div>
             </div>
