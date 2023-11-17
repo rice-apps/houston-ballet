@@ -20,10 +20,6 @@ export default function CategoryPage() {
             image: "https://wallpapers.com/images/featured/snoopy-pictures-pl0xxh5fxjm8izmy.jpg",
         },
         {
-            vendorName: "he just like me",
-            image: "https://yt3.googleusercontent.com/ytc/APkrFKbb5orhkZ5PsEhQKyTmJHuw7PFI40e3h-qYnENUVw=s900-c-k-c0x00ffffff-no-rj",
-        },
-        {
             vendorName: "me fr",
             image: "https://i.pinimg.com/736x/5a/0d/9c/5a0d9c8ae6d3049eaefd28c8a58a656e.jpg",
         },
