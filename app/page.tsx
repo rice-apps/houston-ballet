@@ -83,31 +83,24 @@ export function InfoForm() {
 
 
   return (
-    <div>
-      <Typography id="title" variant="h6" component="h2">
+    <div className="bg-nutcrackerBackground bg-cover flex flex-col items-center justify-center min-h-screen min w-screen">
+      <h1 className="mb- text-center text-7xl tracking-widest font-extrabold text-white mb-2">
         CONNECT
-      </Typography>
-      <Typography id="subtitle" sx={{ mt: 2 }}>
+      </h1>
+      <Typography id="subtitle" sx={{ mt: 2, color: 'white', fontWeight: 'bold' }}>
         Never miss a DEAL -- get notified about our raffle, promotions, and special events happening at the market!
       </Typography>
-      {/* <Box className="flex flex-col outline-4" border="1px solid" borderColor="gray.300" borderRadius="xl"> */}
-      <form className="flex flex-col outline-4">
+      <form className="bg-white flex flex-col outline-4">
         <span className="flex flex-col px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-100 dark:text-gray-400 dark:border-gray-600">
-        Email
-        <TextField className="rounded-2xl" id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
+          Email
+          <TextField className="rounded-2xl" id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-        Phone Number
-        <TextField id="phone_number" label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+          Phone Number
+          <TextField id="phone_number" label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
         </span>
-        {/* <button type="submit" class="absolute top-0 end-0 p-2.5 h-full text-sm font-medium text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"> */}
-
-        {/* <Button variant="contained" type="submit" value="Submit" className="dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Submit</Button> */}
         <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">submit</Button>
       </form>
-      
-        
-      {/* </Box> */}
-
+  */}
     </div>
   );
 }
@@ -115,7 +108,7 @@ export function InfoForm() {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col justify-between p-24">
+    <main className=" bg-white flex min-h-screen flex-col justify-between">
       <div>
         <InfoForm />
       </div>

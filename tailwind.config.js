@@ -8,11 +8,16 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        nutcrackerBackground: "url('../public/background.png')",
       },
+      colors: {
+        ballet: "#33323c",
+      },
+      height: {
+        128: "32rem",
+      }
     },
   },
   plugins: [],
 }
+
