@@ -2,7 +2,6 @@
 
 import VendorCard from "./VendorCard";
 import { Vendor } from "@/lib/utils/repository";
-import FavoriteStar from "./FavoriteStar";
 
 interface VendorsPageProps {
     photo_path: string;
@@ -46,7 +45,6 @@ export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
                         website={""}
                         categories={vendor.categories ?? []}
                     />
-                    <FavoriteStar id={vendor.name} />
                 </div>
             </>
         )

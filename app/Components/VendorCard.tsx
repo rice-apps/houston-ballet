@@ -2,9 +2,10 @@
 import {
     Card,
     CardBody,
-    CardFooter,
+    CardHeader,
     Typography,
 } from "@material-tailwind/react";
+import FavoriteStar from "./FavoriteStar";
 
 type Props = {
     vendorPhoto: string;
@@ -16,54 +17,56 @@ type Props = {
 
 export default function VendorCard(props: Props) {
     return (
-        <div className="max-w-[24rem] h-[400px] flex flex-col transform overflow-hidden rounded-lg bg-white shadow-md border border-gray-200 transition-transform hover:-translate-y-1 hover:shadow-lg">
-            <div className="relative flex-shrink-0 border-b border-gray-300"> {/* Border at the bottom of the image */}
-                <div className="h-48 w-full overflow-hidden"> 
-                    <img
-                        src={props.vendorPhoto}
-                        alt="photo of vendor"
-                        className="h-full w-full object-cover"
-                    />
-                </div>
-            </div>
-            <Card className="flex flex-col flex-grow rounded-lg rounded-t-none">
-                <CardBody className="flex-grow p-4 border-b border-gray-300"> {/* Border at the bottom of the card body */}
+        <Card className="flex flex-grow flex-col rounded-lg rounded-t-none border-black-300 h-[320px] max-w-[24rem] transform overflow-hidden border-2 bg-white shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg">
+            <CardHeader
+                floated={false}
+                shadow={false}
+                color="transparent"
+                className="relative m-0 h-[25vh] rounded-t-lg border-b border-black"
+            >
+                <img
+                    src={props.vendorPhoto}
+                    alt="photo of vendor"
+                    className="h-full w-full object-cover"
+                />
+            </CardHeader>
+            <CardBody className="flex-grow border-b border-gray-300 p-4">
+                {" "}
+                {/* Border at the bottom of the card body */}
+                <div className="mb-2 flex flex-row justify-between">
                     <Typography
                         variant="h4"
                         color="blue-gray"
-                        className="mb-2 text-xl font-semibold"
+                        className="text-xl font-semibold"
                     >
                         {props.vendorName}
                     </Typography>
-                    <Typography
-                        variant="lead"
-                        color="gray"
-                        className="mt-3 text-sm font-normal overflow-ellipsis overflow-hidden"
+                    <FavoriteStar id={props.vendorName} />
+                </div>
+                <Typography
+                    variant="lead"
+                    color="gray"
+                    className="mt-3 overflow-hidden overflow-ellipsis text-sm font-normal"
+                >
+                    {props.vendorDescription}
+                </Typography>
+                <a
+                    href={props.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 block hover:underline"
+                >
+                    {props.website}
+                </a>
+                {props.categories.map((category, index) => (
+                    <span
+                        key={index}
+                        className="border-black-300 mb-2 mr-2 inline-block rounded-md border-2 px-3 py-1 text-sm" /* Border around categories */
                     >
-                        {props.vendorDescription}
-                    </Typography>
-                    <a
-                        href={props.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 block text-blue-600 hover:underline"
-                    >
-                        {props.website}
-                    </a>
-                </CardBody>
-    
-                <CardFooter className="p-4">
-                    {props.categories.map((category, index) => (
-                        <span
-                            key={index}
-                            className="mb-2 mr-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-600 border border-blue-300" /* Border around categories */
-                        >
-                            {category}
-                        </span>
-                    ))}
-                </CardFooter>
-            </Card>
-        </div>
+                        {category}
+                    </span>
+                ))}
+            </CardBody>
+        </Card>
     );
 }
-
