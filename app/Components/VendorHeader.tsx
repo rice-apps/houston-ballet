@@ -1,27 +1,25 @@
 import React from 'react';
 
-function VendorHeader(HeaderProps:{height: number;}) {
+function VendorHeader(props:{vendorName : string, tagOne : string, tagTwo : string, tagThree : string}) {
     return (
-        <div className='bg-white h-40'>
+        <div className='flex flex-col'>
+            {/* Back button */}
+            <div className='pt-5 pl-10 pb-5'>
+                <button className="inline-flex items-center mt-7 h-10 px-5 text-white transition-colors duration-150 bg-slate-700 rounded-lg focus:shadow-outline hover:bg-slate-800">
+                    <svg className="w-4 h-4 mr-3 fill-current" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.17294 8.91666L9.30627 14.05L8.00002 15.3333L0.666687 8L8.00002 0.666664L9.30627 1.95L4.17294 7.08333H15.3334V8.91666H4.17294Z" fill="#F1F1F1"/></svg>
+                    <span>Back</span>
+                </button>
+            </div>
+            {/*Vendor Name*/}
             <div className='flex flex-row'>
-                <div className='flex flex-col'>
-                    <h1 className='ml-10 mt-6 font-bold text-gray-900 text-5xl tracking-widest '>SELECTED VENDOR</h1>
-                    <div className='ml-10 mt-8 flex flex-row'>
-                        <button className="h-10 px-5 mr-5 text-gray-400 transition-colors duration-150 border border-gray-400 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-white">Category</button>
-                        <button className="h-10 px-5 mr-5 text-gray-400 transition-colors duration-150 border border-gray-400 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-white">Category</button>
-                        <button className="h-10 px-5 mr-5 text-gray-400 transition-colors duration-150 border border-gray-400 rounded-lg focus:shadow-outline hover:bg-gray-500 hover:text-white">Category</button>
-                    </div>
-                </div>
-                <div className='ml-96 mt-6 flex flex-col'>
-                    <button className="inline-flex items-center mb-4 outline outline-1 h-10 px-5 text-gray-900 font-bold transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-3 fill-current" height="24" viewBox="0 -960 960 960" width="24"><path d="m354-247 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-80l65-281L80-550l288-25 112-265 112 265 288 25-218 189 65 281-247-149L233-80Zm247-350Z"/></svg>
-                        <span>Star Venue</span>
-                    </button>
-                    <button className="inline-flex items-center outline outline-1 h-10 px-5 text-gray-900 font-bold transition-colors duration-150 bg-gray-200 rounded-lg focus:shadow-outline hover:bg-gray-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-3 fill-current" height="24" viewBox="0 -960 960 960" width="24"><path d="m600-120-240-84-186 72q-20 8-37-4.5T120-170v-560q0-13 7.5-23t20.5-15l212-72 240 84 186-72q20-8 37 4.5t17 33.5v560q0 13-7.5 23T812-192l-212 72Zm-40-98v-468l-160-56v468l160 56Zm80 0 120-40v-474l-120 46v468Zm-440-10 120-46v-468l-120 40v474Zm440-458v468-468Zm-320-56v468-468Z"/></svg>
-                        <span>Open Map</span>
-                    </button>
-                </div>
+                <h1 className='ml-10 text-4xl mt-8 tracking-widest font-extrabold text-gray-900'>{props.vendorName}</h1>
+                <svg className='stroke-current ml-6 mt-8 text-slate-950' width="49" height="36" viewBox="0 0 49 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.5 2L31.1756 16.4695L47 18.347L35.3005 29.1647L38.406 44.7956L24.5 37.0124L10.594 44.7977L13.6995 29.1669L2 18.3449L17.8266 16.4674L24.5 2Z" stroke-width="3.22596" stroke-linejoin="round"/></svg>
+            </div>
+            {/*Buttons*/}
+            <div className='flex flex-row pt-5 pl-10'>
+                <button className="h-10 px-5 text-gray-600 transition-colors duration-150 border border-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-600 hover:text-indigo-100">{props.tagOne}</button>
+                <button className="h-10 px-5 ml-5 text-gray-600 transition-colors duration-150 border border-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-600 hover:text-indigo-100">{props.tagTwo}</button>
+                <button className="h-10 px-5 ml-5 text-gray-600 transition-colors duration-150 border border-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-600 hover:text-indigo-100">{props.tagThree}</button>
             </div>
         </div>
     ); 
