@@ -12,10 +12,9 @@ export default function NavBar() {
                 />
             </a>
 
-            {/* Centered navbar items */}
             <div className="flex-grow">
-                <div className="hidden items-center justify-center md:flex">
-                    <ul className="flex justify-center flex-wrap items-center mt-4 md:mt-0">
+                <div className="hidden items-left justify-left md:flex">
+                    <ul className="flex justify-left flex-wrap items-left mt-4 md:mt-0">
                         <li>
                             <a
                                 href="/vendorspage"

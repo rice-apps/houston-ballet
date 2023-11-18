@@ -11,36 +11,37 @@ export default async function VendorPage() {
                 <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
                     VENDORS
                 </h1>
-                <h3 className="pt-3 text-center text-xl font-medium text-white">
+                <h3 className="pt-3 text-center text-xl font-bold text-white">
                     BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
                     CATEGORIES.
                 </h3>
             </div>
             <div className="items-left justify-left flex p-6">
                 <div className="relative flex w-full max-w-xl items-center">
-                    <input
-                        type="text"
-                        placeholder="Search by..."
-                        className="h-10 w-full rounded-lg border-2 border-gray-300 bg-white px-5 pl-10 pr-20 text-sm focus:outline-none"
-                    />
-                    <button
-                        className="absolute right-0 top-0 mr-2 mt-1 flex items-center justify-center"
-                        style={{
-                            fontFamily: "sans-serif",
-                            fontSize: "0.875rem",
-                            fontWeight: "500",
-                            lineHeight: "normal",
-                            letterSpacing: "normal",
-                            textAlign: "left",
-                            border: "none",
-                            borderRadius: "50px",
-                            padding: "8px",
-                            cursor: "pointer",
-                            width: "32px",
-                            height: "32px",
-                        }}
-                        aria-label="Search"
-                    >
+            <input
+                type="text"
+                placeholder="Search by..."
+                className="h-10 w-full rounded-lg border-2 border-gray-300 bg-white px-5 pl-10 pr-20 text-sm focus:outline-none"
+            />
+            <button
+                className="absolute inset-y-0 right-0 flex items-center justify-center"
+                style={{
+                    fontFamily: "sans-serif",
+                    fontSize: "0.875rem",
+                    fontWeight: "500",
+                    lineHeight: "normal",
+                    letterSpacing: "normal",
+                    textAlign: "left",
+                    border: "none",
+                    borderRadius: "0 0.5rem 0.5rem 0", 
+                    padding: "8px",
+                    cursor: "pointer",
+                    width: "32px",
+                    height: "100%", 
+                    marginRight: "1px", 
+                }}
+                aria-label="Search"
+            >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
