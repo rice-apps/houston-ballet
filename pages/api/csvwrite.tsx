@@ -23,3 +23,4 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   fs.appendFileSync(filePath, message);
   console.log("wrote to file");
 }
+
