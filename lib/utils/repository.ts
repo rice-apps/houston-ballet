@@ -2,6 +2,7 @@ export interface Category {
     name: string;
     image: string;
     vendors: Vendor[];
+    id: number;
 }
 export interface Vendor {
     shortDesc: string;
@@ -9,6 +10,7 @@ export interface Vendor {
     name: string;
     image: string;
     categories: string[] | undefined;
+    id: number;
 }
 export class VendorsRepo {
     categories: Category[] = [];
@@ -20,7 +22,8 @@ export class VendorsRepo {
             this.categories.push({
                 name: category,
                 vendors: categoriesJson[category].vendors,
-                image: categoriesJson[category].image
+                image: categoriesJson[category].image,
+                id: categoriesJson[category].id
             })
         }
         let vendor_map = {}
@@ -34,6 +37,7 @@ export class VendorsRepo {
                         name: vendor.name,
                         image: vendor.image,
                         categories: [category.name],
+                        id: vendor.id,
                         shortDesc: vendor?.shortDesc ?? "",
                         description: vendor?.description ?? ""
                     }
