@@ -17,12 +17,12 @@ type Props = {
 
 export default function VendorCard(props: Props) {
     return (
-        <Card className="flex flex-grow flex-col rounded-lg rounded-t-none border-black-300 h-[320px] max-w-[24rem] transform overflow-hidden border-2 bg-white shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg">
+        <Card className="flex flex-grow flex-col border-black-300 h-[320px] max-w-[24rem] transform overflow-hidden border-2 bg-white shadow-md transition-transform hover:-translate-y-1 group hover:bg-ballet">
             <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="relative m-0 h-[25vh] rounded-t-lg border-b border-black"
+                className="relative m-0 h-[25vh] border-b border-black"
             >
                 <img
                     src={props.vendorPhoto}
@@ -30,14 +30,13 @@ export default function VendorCard(props: Props) {
                     className="h-full w-full object-cover"
                 />
             </CardHeader>
+
             <CardBody className="flex-grow border-b border-gray-300 p-4">
-                {" "}
-                {/* Border at the bottom of the card body */}
-                <div className="mb-2 flex flex-row justify-between">
+                <div className="mb-2 flex flex-row justify-between group-hover:text-white">
                     <Typography
                         variant="h4"
                         color="blue-gray"
-                        className="text-xl font-semibold"
+                        className="text-xl font-semibold group-hover:text-white"
                     >
                         {props.vendorName}
                     </Typography>
@@ -46,7 +45,7 @@ export default function VendorCard(props: Props) {
                 <Typography
                     variant="lead"
                     color="gray"
-                    className="mt-3 overflow-hidden overflow-ellipsis text-sm font-normal"
+                    className="mt-3 overflow-hidden overflow-ellipsis text-sm font-normal group-hover:text-white"
                 >
                     {props.vendorDescription}
                 </Typography>
@@ -54,19 +53,20 @@ export default function VendorCard(props: Props) {
                     href={props.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 block hover:underline"
+                    className="mt-3 block hover:underline group-hover:text-white"
                 >
                     {props.website}
                 </a>
                 {props.categories.map((category, index) => (
                     <span
                         key={index}
-                        className="border-black-300 mb-2 mr-2 inline-block rounded-md border-2 px-3 py-1 text-sm" /* Border around categories */
+                        className="border-black-300 mb-2 mr-2 inline-block rounded-md border-2 px-3 py-1 text-sm group-hover:text-white"
                     >
                         {category}
                     </span>
                 ))}
             </CardBody>
         </Card>
+
     );
 }
