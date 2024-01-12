@@ -22,6 +22,7 @@ export default function RootLayout({
                 <body className={inter.className}>
                     <NavBar />
                     {children}
+                    <div className="h-20"></div>
                 </body>
             </ClientCookiesProvider>
         </html>

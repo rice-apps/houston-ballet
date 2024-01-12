@@ -17,21 +17,21 @@ type Props = {
 
 export default function VendorCard(props: Props) {
     return (
-        <Card className="flex flex-grow flex-col border-black-300 h-[320px] max-w-[24rem] transform overflow-hidden border-2 bg-white shadow-md transition-transform hover:-translate-y-1 group hover:bg-ballet">
+        <Card className="flex flex-grow flex-col border-black-300 h-[320px] max-w-[24rem] transform border-2 bg-white shadow-md transition-transform hover:-translate-y-1 group rounded-lg">
             <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="relative m-0 h-[25vh] border-b border-black"
+                className="relative m-0 h-[25vh] rounded-t-lg"
             >
                 <img
                     src={props.vendorPhoto}
                     alt="photo of vendor"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover rounded-t-lg"
                 />
             </CardHeader>
 
-            <CardBody className="flex-grow border-b border-gray-300 p-4">
+            <CardBody className="flex-grow border-b border-gray-300 p-4 rounded-b-lg group-hover:bg-ballet">
                 <div className="mb-2 flex flex-row justify-between group-hover:text-white">
                     <Typography
                         variant="h4"

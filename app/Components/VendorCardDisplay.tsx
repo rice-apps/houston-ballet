@@ -36,20 +36,19 @@ export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
-            <>
-                <div className="h-full w-full">
-                    <VendorCardWrapper
-                        photo_path={vendor.image}
-                        name={vendor.name}
-                        description={vendor.description}
-                        website={""}
-                        categories={vendor.categories ?? []}
-                    />
-                </div>
-            </>
+            <div className="h-full w-full" key={vendor.name}>
+                <VendorCardWrapper
+                    photo_path={vendor.image}
+                    name={vendor.name}
+                    description={vendor.description}
+                    website={""}
+                    categories={vendor.categories ?? []}
+                />
+            </div>
         )
     }
     return (
+        // flex wrap instead of grid
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {elements}
         </div>
