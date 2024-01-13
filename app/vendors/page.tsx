@@ -1,11 +1,10 @@
 import { getCategories } from "@/lib/utils/utils";
-import { VendorCardDisplay } from "../Components/VendorCardDisplay";
-import "../globals.css";
 import VendorsSearch from "../Components/VendorsSearch";
+import "../globals.css";
 
 export default async function VendorPage() {
     const vendors = (await getCategories()).getVendors();
-
+    const categories = (await getCategories()).getCategories();
     return (
         <>
             <div className="flex  h-128 flex-col content-center justify-center bg-vendorBackground p-5">
@@ -17,7 +16,7 @@ export default async function VendorPage() {
                     CATEGORIES.
                 </h3>
             </div>
-            <VendorsSearch originalVendors={vendors}/>
+            <VendorsSearch originalVendors={vendors} categories={categories}/>
         </>
     );
 }
