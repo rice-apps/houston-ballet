@@ -1,5 +1,5 @@
 import React from 'react'
-function VendorDescription(props : {lineOne : string, lineTwo : string}) {
+function VendorDescription(props : {description : string}) {
     return (
         <div className="relative flex flex-col text-gray-700 bg-gray-100 shadow-lg w-96 rounded-xl bg-clip-border">
             <div className="p-6">
@@ -7,7 +7,7 @@ function VendorDescription(props : {lineOne : string, lineTwo : string}) {
                 DESCRIPTION
                 </h5>
                 <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
-                    {props.lineOne} <br /> <br /> {props.lineTwo}
+                    {props.description}
                 </p>
             </div>
         </div>

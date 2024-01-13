@@ -30,15 +30,10 @@ export default async function VendorInfoPage({
     <div className="bg-white flex flex-col min-h-screen justify-between">
       <VendorHeader
         vendorName={vendor?.name ?? ""}
-        tagOne={vendor?.categories?.[0] ?? ""}
-        tagTwo={vendor?.categories?.[1] ?? ""}
-        tagThree={vendor?.categories?.[2] ?? ""}
+        tags={vendor?.categories ?? []}
       />
       <div className=" flex flex-row ml-10 mt-10">
-        <VendorDescription
-          lineOne={vendor?.description ?? ""}
-          lineTwo={vendor?.description ?? ""}
-        />
+        <VendorDescription description={vendor?.description ?? ""} />
         <img className="ml-20 object-cover" src={vendor?.image} width={256} />
         <div className="flex flex-col ml-5">
           <img className="object-cover" src={vendor?.image} width={128} />
