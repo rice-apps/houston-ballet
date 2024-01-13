@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
+import NextImage from 'next/image';
 
 export function InfoForm() {
   const [email, setEmail] = React.useState('');
@@ -83,9 +84,12 @@ export function InfoForm() {
 
 
   return (
-    <div className="bg-nutcrackerBackground bg-cover flex flex-col items-center justify-center min-h-screen min w-screen">
-      <h1 className="mb- text-center text-7xl tracking-widest font-extrabold text-white mb-2">
-        CONNECT
+    <div>
+    <div className="relative w-400 h-400">
+      <NextImage src="/background.png" alt="" layout="fill" className="rounded-lg" />
+    </div>
+      <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
+      CONNECT
       </h1>
       <Typography id="subtitle" sx={{ mt: 2, color: 'white', fontWeight: 'bold' }}>
         Never miss a DEAL -- get notified about our raffle, promotions, and special events happening at the market!
@@ -100,9 +104,11 @@ export function InfoForm() {
         </span>
         <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">submit</Button>
       </form>
-  */}
-    </div>
+  */
+      </div>
+
   );
+
 }
 
 
