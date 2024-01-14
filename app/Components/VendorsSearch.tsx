@@ -29,7 +29,6 @@ export default function VendorsSearch({
     const searchParams = useSearchParams();
 
     const categoryParam = searchParams.get("category");
-    console.log(categoryParam);
     useEffect(() => {
         if (
             categoryParam &&
