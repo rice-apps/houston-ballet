@@ -21,7 +21,11 @@ export default function FavoriteStar({ id }: FavoriteProps) {
             }}
             className="text-xl"
         >
-            {favorited[id] ? <div className="text-yellow-200">★</div> : "☆"}
+            {favorited[id] ? (
+                <div className="drop-shadow-glow text-yellow-200">★</div>
+            ) : (
+                <div className="">☆</div>
+            )}
         </button>
     );
 }

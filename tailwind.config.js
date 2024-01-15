@@ -21,6 +21,11 @@ module.exports = {
             height: {
                 128: "32rem",
             },
+            dropShadow: {
+                glow: [
+                    "0 35px 60px -15px rgba(255, 255, 0, 0.3)", // Modified to use yellow color
+                ],
+            },
         },
     },
     plugins: [],

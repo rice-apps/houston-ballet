@@ -1,7 +1,7 @@
 "use client";
 
 import { Category, Vendor } from "@/lib/utils/repository";
-import { TextField } from "@mui/material";
+import { Divider, TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
@@ -11,11 +11,19 @@ import Fuse from "fuse.js";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { VendorCardDisplay } from "./VendorCardDisplay";
+import { withCookies } from "react-cookie";
+import { Cookie } from "universal-cookie";
 
-export default function VendorsSearch({
+function VendorsSearch({
+    cookies,
+    allCookies,
     originalVendors,
     categories,
 }: {
+    cookies: Cookie;
+    allCookies: {
+        [name: string]: Cookie;
+    };
     originalVendors: Vendor[];
     categories: Category[];
 }) {
@@ -25,6 +33,17 @@ export default function VendorsSearch({
     const handleChange = (event: SelectChangeEvent) => {
         setSelectedCategory(event.target.value as string);
     };
+
+    // Get all the vendor cards that are favorited
+    const [favorited, setFavorited] = useState([]);
+    useEffect(() => {
+        // include vendors in list if their corresponding value is true in allCookies
+        const favoritedIds = Object.keys(allCookies).filter(
+            (key) => allCookies[key],
+        );
+
+        setFavorited(favoritedIds);
+    }, [allCookies]);
 
     const searchParams = useSearchParams();
 
@@ -36,7 +55,8 @@ export default function VendorsSearch({
         ) {
             setSelectedCategory(categoryParam);
         }
-    }, [categoryParam]);
+    }, [categoryParam, categories]);
+
     useMemo(() => {
         if (query.trim() === "" && selectedCategory.trim() === "") {
             setVendors(originalVendors);
@@ -110,6 +130,7 @@ export default function VendorsSearch({
                                 <MenuItem
                                     value={category.name}
                                     id={category.id.toString()}
+                                    key={category.id}
                                 >
                                     {category.name}
                                 </MenuItem>
@@ -118,8 +139,21 @@ export default function VendorsSearch({
                     </Select>
                 </FormControl>
             </div>
-
-            <VendorCardDisplay vendors={vendors} />
+            <h1 className="text-2xl">Favorited</h1>
+            {/* display vendors if their id is in favoritedIds*/}
+            <VendorCardDisplay
+                vendors={vendors.filter((vendor) =>
+                    favorited.includes(vendor.name),
+                )}
+            />
+            <Divider className="my-4" />
+            <VendorCardDisplay
+                vendors={vendors.filter(
+                    (vendor) => !favorited.includes(vendor.name),
+                )}
+            />
         </>
     );
 }
+
+export default withCookies(VendorsSearch);
