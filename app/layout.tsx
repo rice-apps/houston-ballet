@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import NavBar from "./Components/Navbar";
 import "./globals.css";
 import { ClientCookiesProvider } from "./Components/ClientCookiesProvider";
+import GoogleAnalytics from "./Components/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+            <GoogleAnalytics GA_TRACKING_ID="G-RVES61K2QJ" />
             <ClientCookiesProvider>
                 <body className={inter.className}>
                     <NavBar />
