@@ -1,14 +1,10 @@
 'use client'
 
-import Image from 'next/image'
 import * as React from 'react';
-// import * as Papa from 'papaparse';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
-import NextImage from 'next/image';
 
 export function InfoForm() {
   const [email, setEmail] = React.useState('');
