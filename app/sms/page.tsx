@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
+// import NavBar from './Components/Navbar';
 
 export function InfoForm() {
   const [email, setEmail] = React.useState('');
@@ -85,7 +86,7 @@ export function InfoForm() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      }}>
+      }}> 
       <div style={{
         backgroundPosition: 'center top',
         backgroundImage: 'url("/background.png")',
