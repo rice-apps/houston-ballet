@@ -9,6 +9,7 @@ export interface Vendor {
     description: string;
     name: string;
     image: string;
+    additionalImages: string[];
     categories: string[] | undefined;
     id: number;
 }
@@ -39,7 +40,8 @@ export class VendorsRepo {
                         categories: [category.name],
                         id: vendor.id,
                         shortDesc: vendor?.shortDesc ?? "",
-                        description: vendor?.description ?? ""
+                        description: vendor?.description ?? "",
+                        additionalImages: vendor.additionalImages
                     }
                 }
             }
@@ -49,6 +51,7 @@ export class VendorsRepo {
         for (let vendor_name in vendor_map) {
             this.vendors.push(vendor_map[vendor_name])
         }
+        console.log(JSON.stringify(this.vendors))
     }
 
     getVendors(): Vendor[] {
