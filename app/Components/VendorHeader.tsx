@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 function VendorHeader(props: { vendorName: string; tags: string[] }) {
   return (
