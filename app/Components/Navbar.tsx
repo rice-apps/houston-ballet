@@ -20,7 +20,7 @@ export default function NavBar() {
                         <li>
                             <Link
                                 href="/vendors"
-                                className="block py-2 px-4 text-xl mr-5 ml-5 text-white hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:hover:text-blue-700"
+                                className="block py-2 px-4 text-xl mr-5 ml-5 text-white hover:text-white md:hover:bg-transparent md:hover:underline"
                             >
                                 Vendors
                             </Link>
@@ -28,7 +28,7 @@ export default function NavBar() {
                         <li>
                             <Link
                                 href="/categories"
-                                className="block py-2 px-4 text-xl text-white hover:bg-gray-200 hover:text-gray-700 md:hover:bg-transparent md:hover:text-blue-700"
+                                className="block py-2 px-4 text-xl text-white hover:text-white md:hover:bg-transparent md:hover:underline"
                             >
                                 Categories
                             </Link>
