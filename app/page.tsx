@@ -86,53 +86,87 @@ export function InfoForm() {
   return (
     <div style={
       {
-        backgroundImage: 'url("/background.png")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center top',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '65vh'
       }}>
+      <div style={{
+        backgroundPosition: 'center top',
+        backgroundImage: 'url("/background.png")',
+        backgroundSize: 'cover',
+        filter: 'brightness(75%)',
+        height: '65vh',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: '0',
+      }}></div>
       <div style={
         {
           display: 'flex',
           flexDirection: 'column',
-          width: '50%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '60%',
           position: 'relative',
           textAlign: 'center',
-          marginTop: '15%'
+          marginTop: '10%'
         }}>
         <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
           CONNECT
         </h1>
 
-        <Typography id="subtitle" sx={{ mt: 2, color: 'white', fontWeight: 'bold' }}>
-          Never miss a DEAL -- get notified about our raffle, promotions, and special events happening at the market!
+        <Typography className="text-center font-sans tracking-widest text-white" id="subtitle" sx={{ mt: 2, color: 'white' }}>
+          GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL EVENTS HAPPENING AT THE MARKET!
         </Typography>
-        <form className="bg-white flex flex-col outline-4" style={
+        <form className="bg-white flex flex-col outline-4 bg-gray-200 border rounded-full dark:text-black-400 font-bold tracking-wide dark:border-gray-600" style={
           {
             display: 'flex',
-            justifyContent: 'center',
+            textAlign: 'left',
             width: '100%',
-            maxWidth: '40%',
-            marginLeft: '30%',
-            marginRight: '30%',
-            marginTop: '15%',
-            borderRadius: '20px'
+            maxWidth: '60%',
+            marginTop: '10%',
+            borderRadius: '20px',
+            padding: '5%',
+            zIndex: 1
           }}>
-          <span className="flex flex-col px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-100 dark:text-gray-400 dark:border-gray-600">
-            Email
-            <TextField className="rounded-2xl" id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <span style={
+            {
+              display: 'flex',
+              flexDirection: 'column',
+            }
+          }>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '10px' }}><img src="/email.png"></img> Email</div>
+            <TextField InputProps={
+              {
+                style: {
+                  marginBottom: '5%',
+                  backgroundColor: '#dddddd',
+                  borderRadius: '10px'
+                }
+              }} id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-            Phone Number
-            <TextField id="phone_number" label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '10px' }}><img src="/phone.png"></img> Phone Number</div>
+            <TextField id="phone_number" InputProps={
+              {
+                style: {
+                  marginBottom: '5%',
+                  backgroundColor: '#dddddd',
+                  borderRadius: '10px'
+                }
+              }} label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
           </span>
-          <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">submit</Button>
         </form>
+        <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-700 dark:hover:bg-gray-800 dark:focus:ring-gray-900" style={
+          {
+            display: 'flex',
+            width: '14%',
+            zIndex: 2,
+            top: '-20px'
+          }}>Submit</Button>
       </div>
     </div>
-
   );
 
 }
