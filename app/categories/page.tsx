@@ -16,7 +16,7 @@ export default async function CategoryPage() {
 
     return (
         <>
-            <div className="bg-nutcrackerBackground h-128 flex flex-col content-center justify-center p-5">
+            <div className="bg-categoryBackground h-128 flex flex-col content-center justify-center p-5">
                 <h1 className="text-center font-sans text-7xl font-bold tracking-widest tracking-[.15em] text-white">
                     CATEGORIES
                 </h1>
