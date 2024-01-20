@@ -10,9 +10,9 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Fuse from "fuse.js";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { VendorCardDisplay } from "./VendorCardDisplay";
 import { withCookies } from "react-cookie";
 import { Cookie } from "universal-cookie";
+import { VendorCardDisplay } from "./VendorCardDisplay";
 
 function VendorsSearch({
     cookies,
@@ -139,19 +139,21 @@ function VendorsSearch({
                     </Select>
                 </FormControl>
             </div>
-            <h1 className="text-2xl">Favorited</h1>
-            {/* display vendors if their id is in favoritedIds*/}
-            <VendorCardDisplay
-                vendors={vendors.filter((vendor) =>
-                    favorited.includes(vendor.name),
-                )}
-            />
-            <Divider className="my-4" />
-            <VendorCardDisplay
-                vendors={vendors.filter(
-                    (vendor) => !favorited.includes(vendor.name),
-                )}
-            />
+            <div className=" mx-9 my-2">
+                <h1 className="text-2xl">Favorited</h1>
+                {/* display vendors if their id is in favoritedIds*/}
+                <VendorCardDisplay
+                    vendors={vendors.filter((vendor) =>
+                        favorited.includes(vendor.name),
+                    )}
+                />
+                <Divider className="my-4" />
+                <VendorCardDisplay
+                    vendors={vendors.filter(
+                        (vendor) => !favorited.includes(vendor.name),
+                    )}
+                />
+            </div>
         </>
     );
 }

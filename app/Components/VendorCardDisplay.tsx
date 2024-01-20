@@ -49,7 +49,7 @@ export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
     }
     return (
         // flex wrap instead of grid
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {elements}
         </div>
     );
