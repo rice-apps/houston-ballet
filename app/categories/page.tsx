@@ -1,6 +1,7 @@
 import { getCategories } from "@/lib/utils/utils";
 import CategoryCard, { CategoryCardProps } from "../Components/CategoryCard";
 
+
 export default async function CategoryPage() {
     // temp card array to be replaced by database info
     const categories = await getCategories();
@@ -13,14 +14,13 @@ export default async function CategoryPage() {
         });
     }
 
-    // how to get the metric font?
     return (
         <>
             <div className="bg-nutcrackerBackground h-128 flex flex-col content-center justify-center p-5">
-                <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
+                <h1 className="text-center font-sans text-7xl font-bold tracking-widest tracking-[.15em] text-white">
                     CATEGORIES
                 </h1>
-                <h3 className="pt-3 text-center text-xl font-medium text-white">
+                <h3 className="pt-3 text-center text-xl font-medium tracking-[.15em] text-white">
                     BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
                     CATEGORIES.
                 </h3>

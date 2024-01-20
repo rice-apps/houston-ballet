@@ -4,6 +4,8 @@ import NavBar from "./Components/Navbar";
 import "./globals.css";
 import { ClientCookiesProvider } from "./Components/ClientCookiesProvider";
 import GoogleAnalytics from "./Components/GoogleAnalytics";
+import localFont from '@next/font/local';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
