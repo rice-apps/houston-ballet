@@ -37,8 +37,8 @@ function VendorHeader(props: { vendorName: string; tags: string[] }) {
         >
           <path
             d="M24.5 2L31.1756 16.4695L47 18.347L35.3005 29.1647L38.406 44.7956L24.5 37.0124L10.594 44.7977L13.6995 29.1669L2 18.3449L17.8266 16.4674L24.5 2Z"
-            strokeWidth="3.22596"
-            strokeLinejoin="round"
+            stroke-width="3.22596"
+            stroke-linejoin="round"
           />
         </svg>
       </div>
