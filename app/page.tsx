@@ -84,28 +84,54 @@ export function InfoForm() {
 
 
   return (
-    <div>
-    <div className="relative w-400 h-400">
-      <NextImage src="/background.png" alt="" layout="fill" className="rounded-lg" />
-    </div>
-      <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
-      CONNECT
-      </h1>
-      <Typography id="subtitle" sx={{ mt: 2, color: 'white', fontWeight: 'bold' }}>
-        Never miss a DEAL -- get notified about our raffle, promotions, and special events happening at the market!
-      </Typography>
-      <form className="bg-white flex flex-col outline-4">
-        <span className="flex flex-col px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-100 dark:text-gray-400 dark:border-gray-600">
-          Email
-          <TextField className="rounded-2xl" id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
+    <div style={
+      {
+        backgroundImage: 'url("/background.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '65vh'
+      }}>
+      <div style={
+        {
+          display: 'flex',
+          flexDirection: 'column',
+          width: '50%',
+          position: 'relative',
+          textAlign: 'center',
+          marginTop: '15%'
+        }}>
+        <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
+          CONNECT
+        </h1>
 
-          Phone Number
-          <TextField id="phone_number" label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-        </span>
-        <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">submit</Button>
-      </form>
-  */
+        <Typography id="subtitle" sx={{ mt: 2, color: 'white', fontWeight: 'bold' }}>
+          Never miss a DEAL -- get notified about our raffle, promotions, and special events happening at the market!
+        </Typography>
+        <form className="bg-white flex flex-col outline-4" style={
+          {
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            maxWidth: '40%',
+            marginLeft: '30%',
+            marginRight: '30%',
+            marginTop: '15%',
+            borderRadius: '20px'
+          }}>
+          <span className="flex flex-col px-3 text-sm text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 rounded-s-md dark:bg-gray-100 dark:text-gray-400 dark:border-gray-600">
+            Email
+            <TextField className="rounded-2xl" id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+            Phone Number
+            <TextField id="phone_number" label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+          </span>
+          <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">submit</Button>
+        </form>
       </div>
+    </div>
 
   );
 
