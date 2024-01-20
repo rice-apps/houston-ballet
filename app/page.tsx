@@ -113,12 +113,12 @@ export function InfoForm() {
           textAlign: 'center',
           marginTop: '10%'
         }}>
-        <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
+        <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white" style={{ fontSize: '6rem' }}>
           CONNECT
         </h1>
 
-        <Typography className="text-center font-sans tracking-widest text-white" id="subtitle" sx={{ mt: 2, color: 'white' }}>
-          GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL EVENTS HAPPENING AT THE MARKET!
+        <Typography className="text-center font-sans tracking-widest text-white" id="subtitle" sx={{ mt: 2, color: 'white', fontSize: '24px'}}>
+            GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL EVENTS <br /> HAPPENING AT THE MARKET!
         </Typography>
         <form className="bg-white flex flex-col outline-4 bg-gray-200 border rounded-full dark:text-black-400 font-bold tracking-wide dark:border-gray-600" style={
           {
@@ -161,9 +161,11 @@ export function InfoForm() {
         <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-700 dark:hover:bg-gray-800 dark:focus:ring-gray-900" style={
           {
             display: 'flex',
-            width: '14%',
+            width: '10%',
             zIndex: 2,
-            top: '-20px'
+            top: '-20px',
+            borderRadius: '10px',
+            textTransform: 'none',
           }}>Submit</Button>
       </div>
     </div>
