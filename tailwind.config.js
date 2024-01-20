@@ -12,8 +12,7 @@ module.exports = {
             backgroundImage: {
                 nutcrackerBackground:
                     "url('../public/nutcrackerBackground.png')",
-                vendorBackground:
-                    "url('../public/vendorBackground.png')",
+                vendorBackground: "url('../public/vendorBackground.png')",
             },
             colors: {
                 ballet: "#33323c",
@@ -25,6 +24,9 @@ module.exports = {
                 glow: [
                     "0 35px 60px -15px rgba(255, 255, 0, 0.3)", // Modified to use yellow color
                 ],
+            },
+            screens: {
+                s: "400px",
             },
         },
     },

@@ -89,7 +89,7 @@ function VendorsSearch({
                 <TextField
                     type="text"
                     placeholder="Search by..."
-                    className="w-1/3 focus:outline-none"
+                    className="s:w-1/2 focus:outline-none md:w-1/3"
                     onChange={(e) => setSearch(e.target.value)}
                     InputProps={{
                         startAdornment: (
@@ -113,7 +113,7 @@ function VendorsSearch({
                         ),
                     }}
                 />
-                <FormControl sx={{ width: 1 / 5 }}>
+                <FormControl className="s:w-1/3 md:w-1/5">
                     <InputLabel id="demo-simple-select-label">
                         Category
                     </InputLabel>
