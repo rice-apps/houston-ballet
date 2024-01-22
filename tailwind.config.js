@@ -8,8 +8,13 @@ module.exports = {
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
+        fontFamily: {
+            'Metric': ['"Metric-Regular"', 'serif'] 
+          },
         extend: {
             backgroundImage: {
+                categoryBackground:
+                    "url('../public/categoryBackground.png')",
                 nutcrackerBackground:
                     "url('../public/nutcrackerBackground.png')",
                 vendorBackground:

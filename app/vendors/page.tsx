@@ -9,12 +9,11 @@ export default async function VendorPage() {
     return (
         <>
             <div className="flex  h-128 flex-col content-center justify-center bg-vendorBackground p-5">
-                <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white">
+                <h1 className="text-center font-sans text-7xl font-bold tracking-widest tracking-[.15em] text-white">
                     VENDORS
                 </h1>
-                <h3 className="pt-3 text-center text-xl font-bold text-white">
-                    BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
-                    CATEGORIES.
+                <h3 className="pt-3 text-center text-xl font-medium tracking-[.15em] text-white">
+                    BROWSE THROUGH OUR VENDORS WITH A BUILT IN SEARCH FEATURE
                 </h3>
             </div>
             <VendorsSearch originalVendors={vendors}/>
