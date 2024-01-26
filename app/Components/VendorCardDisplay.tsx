@@ -9,6 +9,7 @@ interface VendorsPageProps {
     description: string;
     website: string;
     categories: string[];
+    id: number;
 }
 
 export function VendorCardWrapper({
@@ -17,6 +18,7 @@ export function VendorCardWrapper({
     description,
     website,
     categories,
+    id
 }: VendorsPageProps) {
     return (
         <>
@@ -27,6 +29,7 @@ export function VendorCardWrapper({
                 vendorDescription={description}
                 website={website}
                 categories={categories}
+                id={id}
             />
         </>
     );
@@ -43,6 +46,7 @@ export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
                     description={vendor.description}
                     website={""}
                     categories={vendor.categories ?? []}
+                    id={vendor.id}
                 />
             </div>
         )
