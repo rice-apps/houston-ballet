@@ -1,12 +1,7 @@
 "use client";
 
-<<<<<<< HEAD
 import VendorCard from "./VendorCard";
 import { Vendor } from "@/lib/utils/repository";
-=======
-import { Vendor } from "@/lib/utils/repository";
-import VendorCard from "./VendorCard";
->>>>>>> 3979ccce501dfd0edfb3783a2a8caf7d07ef9a9c
 
 interface VendorsPageProps {
     photo_path: string;
