@@ -1,7 +1,12 @@
 "use client";
 
+<<<<<<< HEAD
 import VendorCard from "./VendorCard";
 import { Vendor } from "@/lib/utils/repository";
+=======
+import { Vendor } from "@/lib/utils/repository";
+import VendorCard from "./VendorCard";
+>>>>>>> 3979ccce501dfd0edfb3783a2a8caf7d07ef9a9c
 
 interface VendorsPageProps {
     photo_path: string;
@@ -18,7 +23,6 @@ export function VendorCardWrapper({
     description,
     website,
     categories,
-    id
 }: VendorsPageProps) {
     return (
         <>
@@ -29,13 +33,12 @@ export function VendorCardWrapper({
                 vendorDescription={description}
                 website={website}
                 categories={categories}
-                id={id}
             />
         </>
     );
 }
 
-export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
+export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
@@ -48,12 +51,12 @@ export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
                     categories={vendor.categories ?? []}
                     id={vendor.id}
                 />
-            </div>
-        )
+            </div>,
+        );
     }
     return (
         // flex wrap instead of grid
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 flex-col gap-16 justify-between md:grid-cols-3">
             {elements}
         </div>
     );

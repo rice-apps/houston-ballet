@@ -51,7 +51,6 @@ export class VendorsRepo {
         for (let vendor_name in vendor_map) {
             this.vendors.push(vendor_map[vendor_name])
         }
-        console.log(JSON.stringify(this.vendors))
     }
 
     getVendors(): Vendor[] {

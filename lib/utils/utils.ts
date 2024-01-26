@@ -24,7 +24,7 @@ export async function getCategories(): VendorsRepo {
     let categoriesResp = await resp.json();
 
     categoriesResp.data.forEach(category => 
-      ret[category.name] = {vendors: [], image: category.primaryImage?.url ?? "", id: category.id}
+      ret[category.name] = {vendors: [], image: category?.primaryImage?.url ?? "", id: category.id}
     );
 
     vendorsResp.data.forEach(vendor => {

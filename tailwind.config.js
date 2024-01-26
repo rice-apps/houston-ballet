@@ -28,7 +28,6 @@ module.exports = {
             height: {
                 128: "32rem",
             },
-
           letterSpacing: {
             tightest: '-.075em',
             tighter: '-.05em',
@@ -38,7 +37,15 @@ module.exports = {
             wider: '.05em',
             widest: '.1em',
             widest: '.20em',
-          }
+          },
+          dropShadow: {
+            glow: [
+                "0 35px 60px -15px rgba(255, 255, 0, 0.3)", // Modified to use yellow color
+            ],
+          },
+          screens: {
+              s: "400px",
+          },
         },
     },
   plugins: [],
