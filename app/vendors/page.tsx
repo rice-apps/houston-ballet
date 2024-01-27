@@ -7,22 +7,19 @@ export default async function VendorPage() {
     const categories = (await getCategories()).getCategories();
     return (
         <>
-            <div className="h-128 w-full bg-violet-950 absolute opacity-40 z-10">
-            </div>
-            <div className="h-128 w-full bg-vendorBackground p-5 absolute z-0">
-            </div>
-            <div className="h-128 flex flex-col justify-center p-5 z-20 relative">
-                <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white bg-none top-20">
+            <div className="absolute z-0 h-128 w-full bg-vendorBackground p-5"></div>
+            <div className="relative z-20 flex h-128 flex-col justify-center p-5">
+                <h1 className="font-sans top-20 bg-none text-center text-7xl font-bold tracking-[.15em] text-white">
                     VENDORS
                 </h1>
-                <h3 className="pt-3 text-center text-xl font-bold text-white">
+                <h3 className="pt-3 text-center text-xl font-medium tracking-[.15em] text-white">
                     BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
                     CATEGORIES.
                 </h3>
             </div>
             <div></div>
-            
-            <VendorsSearch originalVendors={vendors} categories={categories}/>
+
+            <VendorsSearch originalVendors={vendors} categories={categories} />
         </>
     );
 }
