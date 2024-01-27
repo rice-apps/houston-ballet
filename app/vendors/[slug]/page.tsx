@@ -1,4 +1,5 @@
 import VendorHeader from "../../Components/VendorHeader";
+import VendorImages from "../../Components/VendorImages";
 import VendorDescription from "../../Components/VendorDescription";
 import Contact from "../../Components/Contact";
 import Image from "next/image";
@@ -34,10 +35,8 @@ export default async function VendorInfoPage({
       />
       <div className=" flex flex-row ml-10 mt-10">
         <VendorDescription description={vendor?.description ?? ""} />
-        <img className="ml-20 object-cover" src={vendor?.image} width={256} />
-        <div className="flex flex-col ml-5">
-          <img className="object-cover" src={vendor?.image} width={128} />
-          <img className="object-cover" src={vendor?.image} width={128} />
+        <div className="ml-80">
+          <VendorImages></VendorImages>
         </div>
       </div>
       <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
