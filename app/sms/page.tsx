@@ -174,7 +174,7 @@ export function InfoForm() {
             }
           }>
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2%' }}><img src="/email.png"></img> Email</div>
-            <TextField InputProps={
+            <TextField required InputProps={
               {
                 style: {
                   marginBottom: '5%',
@@ -184,7 +184,7 @@ export function InfoForm() {
               }} id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
 
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2%' }}><img src="/phone.png"></img> Phone Number</div>
-            <TextField id="phone_number" InputProps={
+            <TextField required id="phone_number" InputProps={
               {
                 style: {
                   marginBottom: '5%',
@@ -203,7 +203,7 @@ export function InfoForm() {
             borderRadius: '10px',
             textTransform: 'none',
             backgroundColor: 'rgb(55,65,81)'
-          }}>Get notified!</Button>
+          }}>Get Notified!</Button>
       </div>
       <ToastContainer
         position="top-right"
