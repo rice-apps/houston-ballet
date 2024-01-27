@@ -4,6 +4,7 @@ const { url } = require("inspector");
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    "./public/**/*.html",
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     "./node_modules/flowbite-react/lib/**/*.js",

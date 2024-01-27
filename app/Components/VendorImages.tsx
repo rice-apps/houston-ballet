@@ -3,14 +3,17 @@ export default function VendorImages() {
     return (
        <div id="default-carousel" className="relative w-full" data-carousel="static">
             <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-                <div className="duration-700 ease-in-out" data-carousel-item>
-                    <img className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" src = "/alaska_fur.png"/>
+                <div className="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="./alaska_fur.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
                 </div>
-                <div className="duration-700 ease-in-out" data-carousel-item>
-                    <img className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" src = "/alaska_fur.png"/>
-                </div>   
-                <div className="duration-700 ease-in-out" data-carousel-item>
-                    <img className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" src = "/alaska_fur.png"/>
+
+                <div className="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="./alaska_fur.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+                </div>
+
+                <div className="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="./alaska_fur.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+                </div>
             </div>
             <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
                 <button type="button" className="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
@@ -35,6 +38,5 @@ export default function VendorImages() {
                 </span>
             </button>
         </div>
-    </div>
     );
 }
