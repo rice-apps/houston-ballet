@@ -1,6 +1,8 @@
 'use client'
 
 import * as React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -42,9 +44,8 @@ export function InfoForm() {
 
   // Store phone number from input textbox.
   const handleSubmit = async () => {
-
+    // If inputs are non-empty
     if (email != '' && phoneNumber != '') {
-      console.log("name from input box: " + name);
       console.log("phone number from input box: " + phoneNumber);
       console.log("email from input box: " + email);
 
@@ -52,13 +53,37 @@ export function InfoForm() {
       console.log("new email: " + userInput["emailString"]);
       console.log("new number: " + userInput["phoneNumberString"]);
 
-      await postData("api/csvwrite", userInput)
+      await postData("/api/csvwrite", userInput)
+
+      console.log("logged")
+      // Display notification toast
+      toast.success("Submitted successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
 
       // Clear form after submission
       setEmail("");
       setPhoneNumber("");
+    } else {
+      // If email or phone number is empty
+      toast.error("Please fill in all fields.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     }
-    // TODO: error handling for invalid phone numbers
 
     // fetching csvwrite api endpoint to send the phone number to the server side
     async function postData(url: string, userInput: UserData) {
@@ -72,8 +97,22 @@ export function InfoForm() {
         body: JSON.stringify(userInput)
       };
       // Make call to API endpoint.
-      const response = await fetch(url, request);
+      console.log("url", url)
+      const response = await fetch(url, request)
       console.log("response status: " + response.status);
+      const responseText = response.text();
+      console.log("response text: ", responseText);
+
+        // .then(res => {
+        //   var respjson = res.json();
+        //   console.log(respjson)
+        //   return respjson
+        // })
+        // .catch(error => {
+        //   console.log("ERROR: ", error)
+        //   return error
+        // });
+      // console.log("response status: " + response.status);
       return response.json(); // parses JSON response into native JavaScript objects
     }
 
@@ -86,7 +125,7 @@ export function InfoForm() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      }}> 
+      }}>
       <div style={{
         backgroundPosition: 'center top',
         backgroundImage: 'url("/background.png")',
@@ -114,8 +153,8 @@ export function InfoForm() {
           CONNECT
         </h1>
 
-        <Typography className="text-center font-sans tracking-widest text-white" id="subtitle" sx={{ mt: 2, color: 'white', fontSize: '24px'}}>
-            GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL EVENTS <br /> HAPPENING AT THE MARKET!
+        <Typography className="text-center font-sans tracking-widest text-white" id="subtitle" sx={{ mt: 2, color: 'white', fontSize: '24px' }}>
+          RAFFLES! PROMOTIONS! SPECIAL EVENTS!
         </Typography>
         <form className="bg-white flex flex-col outline-4 bg-gray-200 border rounded-full dark:text-black-400 font-bold tracking-wide dark:border-gray-600" style={
           {
@@ -134,8 +173,8 @@ export function InfoForm() {
               flexDirection: 'column',
             }
           }>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '10px' }}><img src="/email.png"></img> Email</div>
-            <TextField required InputProps={
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2%' }}><img src="/email.png"></img> Email</div>
+            <TextField InputProps={
               {
                 style: {
                   marginBottom: '5%',
@@ -144,8 +183,8 @@ export function InfoForm() {
                 }
               }} id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '10px' }}><img src="/phone.png"></img> Phone Number</div>
-            <TextField required id="phone_number" InputProps={
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2%' }}><img src="/phone.png"></img> Phone Number</div>
+            <TextField id="phone_number" InputProps={
               {
                 style: {
                   marginBottom: '5%',
@@ -155,7 +194,7 @@ export function InfoForm() {
               }} label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
           </span>
         </form>
-        <Button onClick={handleSubmit} variant="contained" className="dark:bg-gray-700 dark:hover:bg-gray-800 dark:focus:ring-gray-900" style={
+        <Button onClick={handleSubmit} variant="contained" className="dark:hover:bg-gray-800 dark:focus:ring-gray-900" style={
           {
             display: 'flex',
             width: '10%',
@@ -163,8 +202,23 @@ export function InfoForm() {
             top: '-20px',
             borderRadius: '10px',
             textTransform: 'none',
-          }}>Submit</Button>
+            backgroundColor: 'rgb(55,65,81)'
+          }}>Get notified!</Button>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
     </div>
   );
 
