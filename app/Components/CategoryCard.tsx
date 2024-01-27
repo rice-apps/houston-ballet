@@ -21,7 +21,7 @@ export default function CategoryCard(props: CategoryCardProps) {
                     floated={false}
                     shadow={false}
                     color="transparent"
-                    className="relative m-0 h-[25vh] rounded-t-lg border-b border-black"
+                    className="relative m-0 h-[25vh] rounded-t-md rounded-b-none border-b border-black"
                 >
                     <img
                         className="h-full w-full object-cover"
