@@ -17,10 +17,10 @@ export default async function CategoryPage() {
     return (
         <>
             <div className="flex h-128 flex-col content-center justify-center bg-categoryBackground p-5">
-                <h1 className="font-sans text-center text-7xl font-bold tracking-[.15em] text-white">
+                <h1 className="font-sans text-center text-5xl md:text-7xl font-bold tracking-[.15em] text-white">
                     CATEGORIES
                 </h1>
-                <h3 className="pt-3 text-center text-xl font-medium tracking-[.15em] text-white">
+                <h3 className="pt-3 text-center text-lg font-medium tracking-[.15em] text-white">
                     BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
                     CATEGORIES.
                 </h3>
