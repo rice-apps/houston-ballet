@@ -11,6 +11,7 @@
 body {
     color: rgb(var(--foreground-rgb));
     font-family: Arial, sans-serif; /* Add your preferred font family */
+    overflow-x: hidden;
     /* background: linear-gradient(
         to bottom,
         rgb(var(--background-start-rgb)),
