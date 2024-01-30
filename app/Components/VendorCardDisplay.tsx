@@ -9,6 +9,7 @@ interface VendorsPageProps {
     description: string;
     website: string;
     categories: string[];
+    id: number;
 }
 
 export function VendorCardWrapper({
@@ -32,7 +33,7 @@ export function VendorCardWrapper({
     );
 }
 
-export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
+export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
@@ -43,13 +44,14 @@ export function VendorCardDisplay({vendors}:{vendors: Vendor[]}) {
                     description={vendor.description}
                     website={""}
                     categories={vendor.categories ?? []}
+                    id={vendor.id}
                 />
-            </div>
-        )
+            </div>,
+        );
     }
     return (
         // flex wrap instead of grid
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 flex-col gap-16 justify-between md:grid-cols-3">
             {elements}
         </div>
     );

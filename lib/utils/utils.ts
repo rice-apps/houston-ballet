@@ -24,7 +24,7 @@ export async function getCategories(): VendorsRepo {
     let categoriesResp = await resp.json();
 
     categoriesResp.data.forEach(category => 
-      ret[category.name] = {vendors: [], image: category.primaryImage?.url ?? "", id: category.id}
+      ret[category.name] = {vendors: [], image: category?.primaryImage?.url ?? "", id: category.id}
     );
 
     vendorsResp.data.forEach(vendor => {
@@ -36,6 +36,7 @@ export async function getCategories(): VendorsRepo {
         vendor_desc["id"] = vendor.id;
         vendor_desc["description"] = vendor.description ?? "";
         vendor_desc["shortDesc"] = vendor.shortDesc ?? "";
+        vendor_desc["additionalImages"] = vendor.additionalImages?.map((rawImage)=>rawImage.url) ?? [];
         ret[category.name].vendors.push(vendor_desc)
       });
     })

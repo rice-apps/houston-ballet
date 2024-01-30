@@ -17,21 +17,22 @@ type Props = {
 
 export default function VendorCard(props: Props) {
     return (
-        <Card className="flex flex-grow flex-col border-black-300 h-[320px] max-w-[24rem] transform border-2 bg-white shadow-md transition-transform hover:-translate-y-1 group rounded-lg">
+        // <Card className="group my-3 flex h-[360px] max-w-[24rem] flex-grow transform flex-col rounded-sm border border-gray-400 bg-white shadow-md transition-transform hover:-translate-y-1">
+        <Card className="group my-3 flex h-full max-w-full flex-grow transform flex-col rounded-sm border border-gray-400 bg-white shadow-md transition-transform hover:-translate-y-1">
             <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="relative m-0 h-[25vh] rounded-t-lg"
+                className="relative m-0 h-[28vh] rounded-t-sm border-b border-gray-400"
             >
                 <img
                     src={props.vendorPhoto}
                     alt="photo of vendor"
-                    className="h-full w-full object-cover rounded-t-lg"
+                    className="h-full w-full rounded-t-sm object-cover"
                 />
             </CardHeader>
 
-            <CardBody className="flex-grow border-b border-gray-300 p-4 rounded-b-lg group-hover:bg-ballet">
+            <CardBody className="flex-grow rounded-b-sm border-b border-gray-400 p-4 group-hover:bg-ballet">
                 <div className="mb-2 flex flex-row justify-between group-hover:text-white">
                     <Typography
                         variant="h4"
@@ -67,6 +68,5 @@ export default function VendorCard(props: Props) {
                 ))}
             </CardBody>
         </Card>
-
     );
 }
