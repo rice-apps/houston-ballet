@@ -42,6 +42,26 @@ export function InfoForm() {
     phoneNumberString: string;
   }
 
+  // fetching csvwrite api endpoint to send the phone number to the server side
+  async function postData(url: string, userInput: UserData) {
+    // Formulate API request.
+    const request = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(userInput)
+    };
+    // Make call to API endpoint.
+    console.log("url", url)
+    const response = await fetch(url, request)
+    if(response.ok){
+     return response.json(); 
+    }
+  }
+
+
   // Store phone number from input textbox.
   const handleSubmit = async () => {
     // If inputs are non-empty
@@ -53,19 +73,19 @@ export function InfoForm() {
       console.log("new email: " + userInput["emailString"]);
       console.log("new number: " + userInput["phoneNumberString"]);
 
-      await postData("/api/csvwrite", userInput)
-
-      console.log("logged")
-      // Display notification toast
-      toast.success("Submitted successfully!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
+      await postData("/api/csvwrite", userInput).then(() => {
+        console.log("logged")
+        // Display notification toast
+        toast.success("Submitted successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
       })
 
       // Clear form after submission
@@ -85,41 +105,7 @@ export function InfoForm() {
       })
     }
 
-    // fetching csvwrite api endpoint to send the phone number to the server side
-    async function postData(url: string, userInput: UserData) {
-      // Formulate API request.
-      const request = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "accept": "application/json"
-        },
-        body: JSON.stringify(userInput)
-      };
-      // Make call to API endpoint.
-      console.log("url", url)
-      const response = await fetch(url, request)
-      // console.log("response status: " + response.status);
-      // const responseText = response.text();
-      // console.log("response text: ", responseText);
-
-        // .then(res => {
-        //   var respjson = res.json();
-        //   console.log(respjson)
-        //   return respjson
-        // })
-        // .catch(error => {
-        //   console.log("ERROR: ", error)
-        //   return error
-        // });
-      // console.log("response status: " + response.status);
-      if(response.ok){
-        // console.log(response.json()); 
-       return response.json(); 
-      }
-      // return response.json(); // parses JSON response into native JavaScript objects
-    }
-
+    
   }
 
 
@@ -222,7 +208,7 @@ export function InfoForm() {
         theme="light"
       />
       {/* Same as */}
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </div>
   );
 
