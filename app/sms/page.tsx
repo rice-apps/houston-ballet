@@ -99,9 +99,9 @@ export function InfoForm() {
       // Make call to API endpoint.
       console.log("url", url)
       const response = await fetch(url, request)
-      console.log("response status: " + response.status);
-      const responseText = response.text();
-      console.log("response text: ", responseText);
+      // console.log("response status: " + response.status);
+      // const responseText = response.text();
+      // console.log("response text: ", responseText);
 
         // .then(res => {
         //   var respjson = res.json();
@@ -113,7 +113,11 @@ export function InfoForm() {
         //   return error
         // });
       // console.log("response status: " + response.status);
-      return response.json(); // parses JSON response into native JavaScript objects
+      if(response.ok){
+        // console.log(response.json()); 
+       return response.json(); 
+      }
+      // return response.json(); // parses JSON response into native JavaScript objects
     }
 
   }
