@@ -17,7 +17,7 @@ module.exports = {
                 categoryBackground:
                     "url('../public/categoryBackground.png')",
                 nutcrackerBackground:
-                    "url('../public/nutcrackerBackground.png')",
+                    "url('../public/background.png')",
                 vendorBackground:
                     "url('../public/vendorBackground.png')",
                 mapBackground:
