@@ -3,6 +3,7 @@ import VendorDescription from "../../Components/VendorDescription";
 import Contact from "../../Components/Contact";
 import Image from "next/image";
 import { getCategories } from "@/lib/utils/utils";
+import VendorImages from "../../Components/VendorImages";
 
 // generate the page at build time
 // with generateStaticParams by looking at getCategories
@@ -34,11 +35,7 @@ export default async function VendorInfoPage({
       />
       <div className=" flex flex-row ml-10 mt-10">
         <VendorDescription description={vendor?.description ?? ""} />
-        <img className="ml-20 object-cover" src={vendor?.image} width={256} />
-        <div className="flex flex-col ml-5">
-          <img className="object-cover" src={vendor?.image} width={128} />
-          <img className="object-cover" src={vendor?.image} width={128} />
-        </div>
+        <VendorImages images={vendor?.additionalImages ?? []} />
       </div>
       <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
     </div>

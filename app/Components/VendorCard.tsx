@@ -23,16 +23,16 @@ export default function VendorCard(props: Props) {
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="relative m-0 h-[28vh] rounded-t-sm border-b border-gray-400"
+                className="relative m-0 h-[28vh] rounded-b-none rounded-t-none border-b border-gray-400"
             >
                 <img
                     src={props.vendorPhoto}
                     alt="photo of vendor"
-                    className="h-full w-full rounded-t-sm object-cover"
+                    className="h-full w-full object-cover"
                 />
             </CardHeader>
 
-            <CardBody className="flex-grow rounded-b-sm border-b border-gray-400 p-4 group-hover:bg-ballet">
+            <CardBody className="flex-grow rounded-b-sm border-b border-gray-400 p-4 transition-colors group-hover:bg-ballet">
                 <div className="mb-2 flex flex-row justify-between group-hover:text-white">
                     <Typography
                         variant="h4"
