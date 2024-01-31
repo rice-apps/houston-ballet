@@ -70,3 +70,5 @@ export default function VendorCard(props: Props) {
         </Card>
     );
 }
+
+

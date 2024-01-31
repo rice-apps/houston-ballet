@@ -1,4 +1,5 @@
 import VendorHeader from "../../Components/VendorHeader";
+import VendorImages from "../../Components/VendorImages";
 import VendorDescription from "../../Components/VendorDescription";
 import Contact from "../../Components/Contact";
 import Image from "next/image";

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import FavoriteStar from "./FavoriteStar";
 
 function VendorHeader(props: { vendorName: string; tags: string[] }) {
   return (
@@ -27,23 +28,10 @@ function VendorHeader(props: { vendorName: string; tags: string[] }) {
       </Link>
       {/*Vendor Name*/}
       <div className="flex flex-row">
-        <h1 className="ml-10 text-4xl mt-8 tracking-widest font-extrabold text-gray-900">
+        <h1 className="ml-10 text-4xl tracking-widest font-extrabold text-gray-900">
           {props.vendorName}
         </h1>
-        <svg
-          className="stroke-current ml-6 mt-8 text-slate-950"
-          width="49"
-          height="36"
-          viewBox="0 0 49 47"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M24.5 2L31.1756 16.4695L47 18.347L35.3005 29.1647L38.406 44.7956L24.5 37.0124L10.594 44.7977L13.6995 29.1669L2 18.3449L17.8266 16.4674L24.5 2Z"
-            stroke-width="3.22596"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <FavoriteStar id={props.vendorName}/>
       </div>
       {/*Buttons*/}
       <div className="flex flex-row pt-5 pl-10 gap-x-3">
