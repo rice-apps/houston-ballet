@@ -18,6 +18,7 @@ export function VendorCardWrapper({
     description,
     website,
     categories,
+    id,
 }: VendorsPageProps) {
     return (
         <>
@@ -28,6 +29,7 @@ export function VendorCardWrapper({
                 vendorDescription={description}
                 website={website}
                 categories={categories}
+                id={id}
             />
         </>
     );
