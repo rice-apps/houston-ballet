@@ -21,6 +21,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log("message: " + message);
   const filePath = './app/phonenumbers.csv';
 
+  // Ensure the file exists. If not, create it with headers.
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, 'Email,PhoneNumber\n', { encoding: 'utf8' });
+  }
+
   fs.appendFileSync(filePath, message);
   console.log("wrote to file");
 }
