@@ -46,10 +46,10 @@ export function InfoForm() {
   async function postData(url: string, userInput: UserData) {
     // Formulate API request.
     const request = {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "accept": "application/json"
+        "Accept": "application/json"
       },
       body: JSON.stringify(userInput)
     };
