@@ -19,7 +19,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.status(200).json({ text: message });
   
   console.log("message: " + message);
-  const filePath = './app/phonenumbers.csv';
+  const filePath = '/temp/phonenumbers.csv';
 
   // Ensure the file exists. If not, create it with headers.
   if (!fs.existsSync(filePath)) {
