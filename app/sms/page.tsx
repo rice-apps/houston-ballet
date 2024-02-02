@@ -49,7 +49,7 @@ export function InfoForm() {
       method: type,
       headers: {
         "Content-Type": "application/json",
-        "accept": "application/json"
+        "Accept": "application/json"
       },
       body: JSON.stringify(userInput)
     };
