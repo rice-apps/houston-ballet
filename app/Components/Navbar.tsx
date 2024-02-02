@@ -41,6 +41,14 @@ export default function NavBar() {
                                 Map
                             </Link>
                         </li>
+                        <li>
+                            <Link
+                                href="/sms"
+                                className="block px-4 py-2 text-white hover:bg-gray-200 md:hover:bg-transparent md:hover:underline"
+                            >
+                                Notifications
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
