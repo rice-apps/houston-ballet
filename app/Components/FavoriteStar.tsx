@@ -1,6 +1,6 @@
-"use client"
-import React from 'react';
-import { useCookies } from 'react-cookie';
+"use client";
+import React from "react";
+import { useCookies } from "react-cookie";
 
 interface FavoriteProps {
     id: string;
@@ -12,7 +12,7 @@ interface StarSVGProps {
 
 const StarSVG = ({ isFilled }: StarSVGProps) => (
     <svg
-        className={`transition duration-300 ease-in-out transform ${isFilled ? 'fill-yellow-400 stroke-yellow-400' : 'fill-transparent stroke-gray-400'} hover:scale-110`}
+        className={`transform transition duration-300 ease-in-out ${isFilled ? "fill-yellow-400 stroke-yellow-400" : "fill-transparent stroke-gray-400"} hover:scale-110`}
         width="36"
         height="25"
         viewBox="0 0 49 47"
@@ -30,19 +30,24 @@ export default function FavoriteStar({ id }: FavoriteProps) {
     const [favorited, setFavorited, removeFavorited] = useCookies([id]);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.stopPropagation();
         if (favorited[id]) {
             removeFavorited(id);
         } else {
             setFavorited(id, true);
         }
+
+        event.nativeEvent.preventDefault();
+        event.nativeEvent.stopImmediatePropagation();
+        event.preventDefault();
+        event.stopPropagation();
+        event.nativeEvent.stopPropagation();
     };
 
     return (
         <button
             aria-label={favorited[id] ? "Unfavorite" : "Favorite"}
             onClick={handleClick}
-            className="p-2 ml-2 rounded-full transition duration-300 ease-in-out"
+            className="ml-2 rounded-full p-2 transition duration-300 ease-in-out"
         >
             <StarSVG isFilled={!!favorited[id]} />
         </button>
