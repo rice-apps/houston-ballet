@@ -43,10 +43,10 @@ export function InfoForm() {
   }
 
   // fetching csvwrite api endpoint to send the phone number to the server side
-  async function postData(url: string, userInput: UserData) {
+  async function postData(url: string, userInput: UserData, type: string) {
     // Formulate API request.
     const request = {
-      method: "PUT",
+      method: type,
       headers: {
         "Content-Type": "application/json",
         "accept": "application/json"
@@ -73,7 +73,7 @@ export function InfoForm() {
       console.log("new email: " + userInput["emailString"]);
       console.log("new number: " + userInput["phoneNumberString"]);
 
-      await postData("/api/csvwrite", userInput).then(() => {
+      await postData("/api/csvwrite", userInput, "PUT").then(() => {
         console.log("logged")
         // Display notification toast
         toast.success("Submitted successfully!", {
@@ -88,7 +88,7 @@ export function InfoForm() {
         })
       })
 
-      await postData("https://hb-strapi-production.up.railway.app/admin/api/form-process", userInput).then(() => {
+      await postData("https://hb-strapi-production.up.railway.app/admin/api/form-process", userInput, "POST").then(() => {
         console.log("pushed to strapi")
       })
 
