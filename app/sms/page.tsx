@@ -88,7 +88,7 @@ export function InfoForm() {
         })
       })
 
-      await postData("https://hb-strapi-production.up.railway.app/admin/api/form-process", userInput, "POST").then(() => {
+      await postData("https://hb-strapi-production.up.railway.app/api/form-process", userInput, "POST").then(() => {
         console.log("pushed to strapi")
       })
 
