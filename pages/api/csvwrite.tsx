@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from 'next/server';
 import {google} from "googleapis";
 
 const fs = require('fs');
@@ -47,11 +46,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
     // const sheets = google.sheets({ version: 'v4', auth: await auth.getClient() });
 
-
+    
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      // spreadsheetId: "1O8mUZi3QzjFZ7fYzWNE1MX_CC-OzMxewIutQH8J5Pr0",
       // range: 'A1:B1',
-      range: 'Sheet1!A1:B2',
+      range: 'Sheet1',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
           values: [
