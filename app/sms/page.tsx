@@ -88,6 +88,10 @@ export function InfoForm() {
         })
       })
 
+      await postData("https://hb-strapi-production.up.railway.app/admin/api/form-process", userInput).then(() => {
+        console.log("pushed to strapi")
+      })
+
       // Clear form after submission
       setEmail("");
       setPhoneNumber("");
