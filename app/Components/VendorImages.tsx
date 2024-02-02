@@ -6,10 +6,10 @@ export default function VendorImages() {
         <div>
             <Carousel className="h-60 w-60">
                 <div>
-                    <img src="/alaska_fur.png" alt="..." />
+                    <img src="/akfurgallery1.jpg" alt="..." />
                 </div>
                 <div>
-                    <img src="/art_by_amy.png" alt="..." />
+                    <img src="/akfurgallery2.jpeg" alt="..." />
                 </div>
             </Carousel>
        </div>
