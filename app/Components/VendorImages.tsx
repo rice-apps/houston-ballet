@@ -11,6 +11,12 @@ export default function VendorImages() {
                 <div>
                     <img src="/akfurgallery2.jpeg" alt="..." />
                 </div>
+                <div>
+                    <img src="/akfurgallery3.png" alt="..." />
+                </div>
+                <div>
+                    <img src="/akfurgallery4.png" alt="..." />
+                </div>
             </Carousel>
        </div>
     );
