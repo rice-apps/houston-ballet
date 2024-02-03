@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Modal from '@mui/material/Modal';
-// import NavBar from './Components/Navbar';
+// import NavBar from '../Components/Navbar';
 
 export function InfoForm() {
   const [email, setEmail] = React.useState('');
@@ -132,6 +132,7 @@ export function InfoForm() {
         width: '100%',
         zIndex: '0',
       }}></div>
+      {/* <NavBar /> */}
       <div style={
         {
           display: 'flex',
@@ -143,11 +144,11 @@ export function InfoForm() {
           textAlign: 'center',
           marginTop: '10%'
         }}>
-        <h1 className="text-center font-sans text-5xl font-bold tracking-widest text-white" style={{ fontSize: '6rem' }}>
+        <h1 className="font-sans text-center text-4xl md:text-7xl font-bold tracking-[.15em] text-white">
           CONNECT
         </h1>
 
-        <Typography className="text-center font-sans tracking-widest text-white" id="subtitle" sx={{ mt: 2, color: 'white', fontSize: '24px' }}>
+        <Typography className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
           RAFFLES! PROMOTIONS! SPECIAL EVENTS!
         </Typography>
         <form className="bg-white flex flex-col outline-4 bg-gray-200 border rounded-full dark:text-black-400 font-bold tracking-wide dark:border-gray-600" style={

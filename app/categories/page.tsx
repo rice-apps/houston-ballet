@@ -20,7 +20,7 @@ export default async function CategoryPage() {
                 <h1 className="font-sans text-center text-4xl md:text-7xl font-bold tracking-[.15em] text-white">
                     CATEGORIES
                 </h1>
-                <h3 className="pt-3 text-center text-lg font-medium tracking-[.15em] text-white">
+                <h3 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
                     BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
                     CATEGORIES.
                 </h3>
