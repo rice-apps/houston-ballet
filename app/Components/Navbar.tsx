@@ -81,6 +81,7 @@ export default function NavBar() {
                         onClick={(event) => {
                             handleClick(link.path);
                         }}
+                        key={index}
                     >
                         {link.displayText}
                     </ListItemButton>
@@ -104,7 +105,7 @@ export default function NavBar() {
                 <div className="items-left justify-left hidden md:flex ">
                     <ul className="justify-left items-left mt-4 flex flex-wrap gap-4 md:mt-0">
                         {navigationLinks.map((link: Link, idx) => (
-                            <li>
+                            <li key={idx}>
                                 <Link
                                     href={link.path}
                                     className="ml-5 block px-4 py-2 text-white hover:bg-gray-200 md:hover:bg-transparent md:hover:underline"
