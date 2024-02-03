@@ -11,6 +11,15 @@ export async function getCategories(): VendorsRepo {
 			}
 		});
 
+    resp = await fetch('https://hb-strapi-production.up.railway.app/api/about', 
+    {
+      method: "GET",
+			headers: {
+				'Authorization': 'bearer ' + process.env.STRAPI_API_KEY,
+			}
+		});
+    let aboutMeContent = (await resp.json()).data.content;
+
     let ret = {}
     let vendorsResp = await resp.json()
     resp = await fetch('https://hb-strapi-production.up.railway.app/api/categories?populate[0]=primaryImage', 
@@ -41,7 +50,7 @@ export async function getCategories(): VendorsRepo {
       });
     })
     
-    return new VendorsRepo(ret);
+    return new VendorsRepo(ret, aboutMeContent);
 }
 /*
 {

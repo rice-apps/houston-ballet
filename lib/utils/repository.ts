@@ -16,7 +16,10 @@ export interface Vendor {
 export class VendorsRepo {
     categories: Category[] = [];
     vendors: Vendor[] = [];
-    constructor(categoriesJson: any) {
+    aboutMe: string = "";
+
+    constructor(categoriesJson: any, aboutMe: string) {
+        this.aboutMe = aboutMe;
         this.categories = [];
 
         for (let category in categoriesJson) {
@@ -67,5 +70,9 @@ export class VendorsRepo {
 
     getVendor(name: string): Vendor | undefined {
         return this.vendors.find((category) => category.name == name);
+    }
+
+    getAboutMe(): String {
+        return this.aboutMe;
     }
 }
