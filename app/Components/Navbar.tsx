@@ -49,6 +49,14 @@ export default function NavBar() {
                                 Notifications
                             </Link>
                         </li>
+                        <li>
+                            <Link
+                                href="/about"
+                                className="block px-4 py-2 text-white hover:bg-gray-200 md:hover:bg-transparent md:hover:underline"
+                            >
+                                About
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
