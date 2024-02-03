@@ -17,6 +17,10 @@ type Props = {
     id: number;
 };
 
+/*
+Hello my name is 
+*/
+
 export default function VendorCard(props: Props) {
     return (
         <Link href={`/vendors/${props.id}`}>
