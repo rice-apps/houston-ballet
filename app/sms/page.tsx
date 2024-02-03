@@ -6,8 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import Modal from '@mui/material/Modal';
-// import NavBar from './Components/Navbar';
+import NavBar from '../Components/Navbar';
 
 export function InfoForm() {
   const [email, setEmail] = React.useState('');
@@ -221,11 +220,14 @@ export function InfoForm() {
 
 export default function Home() {
   return (
-    <main className=" bg-white flex min-h-screen flex-col justify-between">
-      <div>
-        <InfoForm />
-      </div>
-    </main>
+        <div className=" bg-white flex min-h-screen flex-col justify-between">
+          <div className='relative'>
+            <InfoForm/>
+            <div className='absolute'>
+              <NavBar />
+            </div>
+          </div>
+        </div>
   )
 }
 
