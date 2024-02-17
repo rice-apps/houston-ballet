@@ -69,7 +69,7 @@ export default function NavBar() {
             <div className="flex">
                 <IconButton
                     onClick={toggleDrawer(anchor, true)}
-                    className="ml-auto"
+                    className="my-2 ml-auto mr-2"
                 >
                     <CloseIcon className="text-white" />
                 </IconButton>
