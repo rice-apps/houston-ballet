@@ -3,6 +3,8 @@ import VendorImages from "../../Components/VendorImages";
 import VendorDescription from "../../Components/VendorDescription";
 import Contact from "../../Components/Contact";
 import { getCategories } from "@/lib/utils/utils";
+import { Gallery } from "../../../lib/utils/ImageGrid";
+import ImageGrid from "@/app/Components/ImageGrid";
 
 // generate the page at build time
 // with generateStaticParams by looking at getCategories
@@ -15,6 +17,53 @@ export async function generateStaticParams() {
     };
   });
 }
+
+// Images to be in the grid
+
+const galleryImages = [
+    {
+      src: "/alaska_fur.png",
+      width: 320,
+      height: 174,
+      isSelected: false,
+      caption: "Test One",
+    },
+    {
+      src: "/art_by_amy.png",
+      width: 320,
+      height: 174,
+      isSelected: false,
+      caption: "Test Two",
+    },
+    {
+      src: "/bear_creek.png",
+      width: 320,
+      height: 174,
+      isSelected: false,
+      caption: "Test Three",
+    },
+    {
+      src: "/akfurgallery4.png",
+      width: 320,
+      height: 174,
+      isSelected: false,
+      caption: "Test One",
+    },
+    {
+      src: "/boutique.jpg",
+      width: 320,
+      height: 174,
+      isSelected: false,
+      caption: "Test Two",
+    },
+    {
+      src: "/china_baroque.png",
+      width: 320,
+      height: 174,
+      isSelected: false,
+      caption: "Test Three",
+    },
+];
 
 export default async function VendorInfoPage({
   params: { slug },
@@ -34,7 +83,7 @@ export default async function VendorInfoPage({
       />
       <div className=" flex flex-row ml-10 mt-10">
         <VendorDescription description={vendor?.description ?? ""} />
-        <VendorImages images={vendor?.additionalImages ?? []} />
+          <div className='ml-16'><ImageGrid /></div>
       </div>
       <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
     </div>
