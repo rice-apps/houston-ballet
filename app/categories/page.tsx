@@ -17,7 +17,7 @@ export default async function CategoryPage() {
     return (
         <>
             <div className="flex h-128 flex-col content-center justify-center bg-categoryBackground p-5">
-                <h1 className="font-sans text-center text-4xl md:text-7xl font-bold tracking-[.15em] text-white">
+                <h1 className="font-sans text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl">
                     CATEGORIES
                 </h1>
                 <h3 className="pt-3 text-center text-lg font-medium tracking-[.15em] text-white">
@@ -26,7 +26,7 @@ export default async function CategoryPage() {
                 </h3>
             </div>
             <div className="p-5">
-                <div className="grid gap-7 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2  md:gap-7 lg:grid-cols-3 xl:grid-cols-4">
                     {tempCardArray.map((card: CategoryCardProps) => {
                         return <CategoryCard {...card} key={card.vendorName} />;
                     })}

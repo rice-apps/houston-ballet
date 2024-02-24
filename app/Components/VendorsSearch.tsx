@@ -93,8 +93,13 @@ function VendorsSearch({
                 <TextField
                     type="text"
                     placeholder="Search by..."
-                    className="focus:outline-none w-2/5 md:w-1/3"
+                    className="w-full focus:outline-none md:w-1/3"
                     onChange={(e) => setSearch(e.target.value)}
+                    sx={{
+                        "& input:focus": {
+                            ringWidth: 0,
+                        },
+                    }}
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
@@ -150,7 +155,7 @@ function VendorsSearch({
                         )
                     }
                     onClick={() => setShowFavorites(!showFavorites)}
-                    className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
+                    className="transform border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600 md:ml-auto"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
                 >
                     Favorites
