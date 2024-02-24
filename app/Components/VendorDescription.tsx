@@ -1,7 +1,7 @@
 import React from 'react'
 function VendorDescription(props : {description : string}) {
     return (
-        <div className="relative flex flex-col text-gray-700 bg-gray-100 shadow-lg w-96 rounded-xl bg-clip-border">
+        <div className="relative flex flex-col text-gray-700 bg-gray-100 shadow-lg w-60 sm:w-96 mb-10 sm:mb-0 rounded-xl bg-clip-border">
             <div className="p-6">
                 <h5 className="block mb-2 text-xl antialiased font-bold leading-snug tracking-wider text-slate-900">
                 DESCRIPTION

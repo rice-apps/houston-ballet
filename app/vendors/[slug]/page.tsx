@@ -32,7 +32,7 @@ export default async function VendorInfoPage({
         vendorName={vendor?.name ?? ""}
         tags={vendor?.categories ?? []}
       />
-      <div className=" flex flex-row ml-10 mt-10">
+      <div className="flex sm:flex-row flex-col ml-10 mt-10">
         <VendorDescription description={vendor?.description ?? ""} />
         <VendorImages images={vendor?.additionalImages ?? []} />
       </div>
