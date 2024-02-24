@@ -27,8 +27,9 @@ export default async function VendorInfoPage({
     .find((vendor) => vendor.id.toString() === slug);
 
   return (
-    <div className="bg-white flex flex-col min-h-screen justify-between">
-      <VendorHeader
+    <div className="bg-white flex flex-col items-center">
+      <div className="bg-white flex flex-col min-h-screen w-full sm:w-3/5 justify-between">
+        <VendorHeader
         vendorName={vendor?.name ?? ""}
         tags={vendor?.categories ?? []}
       />
@@ -36,7 +37,9 @@ export default async function VendorInfoPage({
         <VendorDescription description={vendor?.description ?? ""} />
         <VendorImages images={vendor?.additionalImages ?? []} />
       </div>
-      <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
+        <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
+      </div>
     </div>
   );
 }
+
