@@ -26,6 +26,7 @@ export default async function VendorInfoPage({
     .getVendors()
     .find((vendor) => vendor.id.toString() === slug);
 
+  console.log(vendor);
   return (
     <div className="bg-white flex flex-col min-h-screen justify-between">
       <VendorHeader
@@ -34,7 +35,7 @@ export default async function VendorInfoPage({
       />
       <div className=" flex flex-row ml-10 mt-10">
         <VendorDescription description={vendor?.description ?? ""} />
-        <VendorImages images={vendor?.additionalImages ?? []} />
+        <VendorImages images={vendor?.additionalImages.length == 0 ? ["/placeholder.jpg"] : vendor?.additionalImages ?? ["/placeholder.jpg"]} />
       </div>
       <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
     </div>

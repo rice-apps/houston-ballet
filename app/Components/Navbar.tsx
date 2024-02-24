@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function NavBar() {
     return (
-        <nav className="flex w-full items-center justify-between bg-ballet p-2">
+        <nav className="flex w-full items-center justify-between bg-ballet p-2 pl-28">
             {/* Logo in the top left corner */}
             <Link href="/" className="shrink-0">
                 <img
@@ -14,8 +14,8 @@ export default function NavBar() {
                 />
             </Link>
 
-            <div className="flex-grow">
-                <div className="items-left justify-left hidden md:flex">
+            <div className="flex-grow ml-96 justify-end">
+                <div className="justify-end mr-28 hidden md:flex">
                     <ul className="justify-left items-left mt-4 flex flex-wrap gap-4 md:mt-0">
                         <li>
                             <Link

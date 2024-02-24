@@ -1,16 +1,16 @@
 import React from 'react'
 import { Carousel } from 'flowbite-react';
 
-export default function VendorImages() {
+export default function VendorImages(props : {images : string[]}) {
+    console.log(props.images);
     return (
         <div>
             <Carousel className="h-60 w-60">
-                <div>
-                    <img src="/akfurgallery3.png" alt="..." />
-                </div>
-                <div>
-                    <img src="/akfurgallery4.png" alt="..." />
-                </div>
+                {props.images.map((image) =>
+                    <div>
+                        <img src = {image} alt = ".." />
+                    </div>
+                )}
             </Carousel>
        </div>
     );
