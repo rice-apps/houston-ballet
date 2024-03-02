@@ -6,8 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import Modal from '@mui/material/Modal';
-// import NavBar from './Components/Navbar';
+import NavBar from '../Components/Navbar';
 
 export function InfoForm() {
   const [email, setEmail] = React.useState('');
@@ -43,13 +42,13 @@ export function InfoForm() {
   }
 
   // fetching csvwrite api endpoint to send the phone number to the server side
-  async function postData(url: string, userInput: UserData) {
+  async function postData(url: string, userInput: UserData, type: string) {
     // Formulate API request.
     const request = {
-      method: "PUT",
+      method: type,
       headers: {
         "Content-Type": "application/json",
-        "accept": "application/json"
+        "Accept": "application/json"
       },
       body: JSON.stringify(userInput)
     };
@@ -73,7 +72,7 @@ export function InfoForm() {
       console.log("new email: " + userInput["emailString"]);
       console.log("new number: " + userInput["phoneNumberString"]);
 
-      await postData("/api/csvwrite", userInput).then(() => {
+      await postData("/api/csvwrite", userInput, "PUT").then(() => {
         console.log("logged")
         // Display notification toast
         toast.success("Submitted successfully!", {
@@ -86,6 +85,10 @@ export function InfoForm() {
           progress: undefined,
           theme: "light",
         })
+      })
+
+      await postData("https://hb-strapi-production.up.railway.app/api/form-process", userInput, "POST").then(() => {
+        console.log("pushed to strapi")
       })
 
       // Clear form after submission
@@ -217,11 +220,14 @@ export function InfoForm() {
 
 export default function Home() {
   return (
-    <main className=" bg-white flex min-h-screen flex-col justify-between">
-      <div>
-        <InfoForm />
-      </div>
-    </main>
+        <div className=" bg-white flex min-h-screen flex-col justify-between">
+          <div className='relative'>
+            <InfoForm/>
+            <div className='absolute'>
+              <NavBar />
+            </div>
+          </div>
+        </div>
   )
 }
 
