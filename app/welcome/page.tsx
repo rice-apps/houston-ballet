@@ -20,12 +20,23 @@ export default async function WelcomePage() {
     return (
         <>
         <div className="flex flex-row h-screen">
-            <div className='absolute z-0 h-full w-1/2 bg-welcomeImage bg-cover flex flex-col left-0'>        
+            <div className='h-full w-1/2 bg-welcomeImage bg-cover flex flex-col left-0'>        
                 <h1 className='font-sans top-40 bg-none text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl'>WELCOME!</h1>
                 <h2 className='pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white'>FIRST TIME AT THE MARKET? </h2>
             </div>
-            <div className="w-1/2 bg-black">HIII</div>
+            <div className="h-full w-1/2 flex items-center justify-center text-white"></div>
         </div>
+
+        {/* <div className="flex flex-row h-screen">
+    <div className='h-full w-1/2 bg-welcomeImage bg-cover flex flex-col left-0'>        
+        <h1 className='font-sans top-40 bg-none text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl'>WELCOME!</h1>
+        <h2 className='pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white'>FIRST TIME AT THE MARKET? </h2>
+    </div>
+    <div className="h-full w-1/2 bg-black flex items-center justify-center text-white">
+        HIII
+    </div>
+</div> */}
+
 
             {/* <div className='absolute z-10 right-0'> */}
                 {/* <InterestsButton allCategories={allCategories} /> */}
