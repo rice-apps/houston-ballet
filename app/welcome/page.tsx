@@ -26,7 +26,7 @@ export default async function WelcomePage() {
             </div>
             <div className="h-full w-1/2 flex flex-col">
                 <div className="font-sans text-4xl text-[#423E4C] w-full">Choose Your Interests ...</div>
-                <div className='absolute z-10 right-0'> */
+                <div className=''> 
                 <InterestsButton allCategories={allCategories} />
                     {tempCategoryArray.map((category, index) => (
                         <button
