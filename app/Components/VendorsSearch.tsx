@@ -31,11 +31,19 @@ function VendorsSearch({
 }) {
     const [query, setSearch] = useState("");
     const [showFavorites, setShowFavorites] = useState(false);
+    const [showInterests, setShowInterests] = useState(false);
     const [vendors, setVendors] = useState(originalVendors);
     const [selectedCategory, setSelectedCategory] = useState("");
     const handleChange = (event: SelectChangeEvent) => {
         setSelectedCategory(event.target.value as string);
     };
+
+    const [interests, setInterests] = useState([]);
+    useEffect(() => {
+        const interestsTemp = JSON.parse(localStorage.getItem('interests') ?? "");
+        setInterests(interestsTemp);
+        console.log(interestsTemp);
+    }, [localStorage.getItem('interests')])
 
     // Get all the vendor cards that are favorited
     const [favorited, setFavorited] = useState([]);
@@ -149,18 +157,45 @@ function VendorsSearch({
                             <StarBorderOutlinedIcon />
                         )
                     }
-                    onClick={() => setShowFavorites(!showFavorites)}
+                    onClick={() => {
+                        if (!showFavorites) {
+                            setShowInterests(false);
+                        }
+                        setShowFavorites(!showFavorites);
+                        
+                    }}
                     className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
                 >
                     Favorites
+                </Button>
+                <Button
+                    variant="outlined"
+                    startIcon={
+                        showInterests ? (
+                            <StarOutlinedIcon className="animate-pulse" />
+                        ) : (
+                            <StarBorderOutlinedIcon />
+                        )
+                    }
+                    onClick={() => {
+                        if (!showInterests) {
+                            setShowFavorites(false);
+                        }
+                        setShowInterests(!showInterests)
+                    }}
+                    className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
+                    style={{ padding: "8px 16px", borderWidth: "2px" }}
+                >
+                    Interests
                 </Button>
                 {/* </div>                 */}
             </div>
             <div className="mx-9 my-2 transform transition duration-300 ease-in-out ">
                 <VendorCardDisplay
                     vendors={vendors.filter((vendor) =>
-                        showFavorites ? favorited.includes(vendor?.name) : true,
+                        showFavorites ? favorited.includes(vendor?.name) :
+                        (showInterests ? vendor?.categories?.some((category) => (interests.includes(category))) : true),
                     )}
                 />
             </div>
