@@ -2,40 +2,42 @@ import React from "react";
 import { getCategories } from "@/lib/utils/utils";
 import WelcomeCategoryCard, { WelcomeCategoryCardProps } from "../Components/WelcomeCategoryCard";
 import card from "@material-tailwind/react/theme/components/card";
+import InterestsButton from "../Components/InterestsButton"
 
 
 export default async function WelcomePage() {
     // Get all categories
-    const categories = await getCategories();
-    const tempCategoryArray: Array<WelcomeCategoryCardProps> = [];
-    for (let category of categories.getCategories()) {
-        tempCategoryArray.push({
-            categoryName: category.name,
-        });
-    }
+    const allCategories = (await getCategories()).getCategories()
+    // const tempCategoryArray: Array<WelcomeCategoryCardProps> = [];
+    // for (let category of categories.getCategories()) {
+    //     tempCategoryArray.push({
+    //         categoryName: category.name,
+    //     });
+    // }
 
     // const tempCategoryArray: Array<String> = ["Christmas/Holiday", "Apparel", "Gourmet Food"];
 
     return (
         <>
-            <div className='absolute z-0 h-full w-full bg-welcomeImage bg-cover flex flex-col'>
-
-                <h1 className=' text-center text-7xl tracking-widest font-extrabold text-white'>WELCOME</h1>
-                <h2 className='pt-3 mt-5 text-center text-lg font-semibold text-white'>BROWSE THROUGH OUR VENDORS... AND CATEGORIES. </h2>
+        <div className="flex flex-row h-screen">
+            <div className='absolute z-0 h-full w-1/2 bg-welcomeImage bg-cover flex flex-col left-0'>        
+                <h1 className='font-sans top-40 bg-none text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl'>WELCOME!</h1>
+                <h2 className='pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white'>FIRST TIME AT THE MARKET? </h2>
             </div>
-            <span className='absolute z-10 bg-white bg-opacity-100'>
-                <div className='absolute z-20'>
-                    {tempCategoryArray.map((category, index) => (
-                        <button
-                            className="h-10 px-5 text-gray-600 type = radio transition-colors duration-150 border border-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-600 focus:bg-white hover:text-indigo-100"
-                            key={index}
-                        >
-                            {category.categoryName}
-                        </button>
-                    ))}
-                </div>
-            </span >
+            <div className="w-1/2 bg-black">HIII</div>
+        </div>
 
+            {/* <div className='absolute z-10 right-0'> */}
+                {/* <InterestsButton allCategories={allCategories} /> */}
+                {/* {tempCategoryArray.map((category, index) => (
+                    <button
+                        className="h-10 px-5 text-gray-600 type = radio transition-colors duration-150 border border-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-600 focus:bg-white hover:text-indigo-100"
+                        key={index}
+                    >
+                        {category.categoryName}
+                    </button>
+                ))} */}
+            {/* </div> */}
         </>
     );
 }
