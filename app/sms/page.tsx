@@ -171,7 +171,7 @@ export function InfoForm() {
                   backgroundColor: '#dddddd',
                   borderRadius: '10px'
                 }
-              }} id="email" label="Insert email here" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
+              }} id="email" label="" variant="outlined" value={email} onChange={(e) => setEmail(e.target.value)} />
 
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2%' }}><img src="/phone.png"></img> Phone Number</div>
             <TextField required id="phone_number" InputProps={
@@ -181,7 +181,7 @@ export function InfoForm() {
                   backgroundColor: '#dddddd',
                   borderRadius: '10px'
                 }
-              }} label="Add phone number here" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+              }} label="" variant="outlined" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
           </span>
         </form>
         <Button onClick={handleSubmit} variant="contained" className="dark:hover:bg-gray-800 dark:focus:ring-gray-900" style={
