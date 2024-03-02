@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default function MapTitle(){
+export default function MapTitle({subtitle: string}: {subtitle: string}){
 
     return (
         <div className='bg-mapBackground bg-cover flex flex-col content-center justify-center p-44'>

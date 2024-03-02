@@ -13,12 +13,18 @@ export interface Vendor {
     categories: string[] | undefined;
     id: number;
 }
+
+type Subtitles = {
+    [key: string]: string;
+};
+
 export class VendorsRepo {
     categories: Category[] = [];
     vendors: Vendor[] = [];
-    constructor(categoriesJson: any) {
+    subtitle: Subtitles;
+    constructor(categoriesJson: any, subtitle: any) {
         this.categories = [];
-
+        this.subtitle = {};
         for (let category in categoriesJson) {
             this.categories.push({
                 name: category,
@@ -61,6 +67,14 @@ export class VendorsRepo {
         return this.categories;
     }
 
+    getSubtitle(key: string): string {
+        if (key in this.subtitle) {
+            return this.subtitle[key];
+        } else {
+            return "";
+        }
+    }
+
     getCategory(name: string): Category | undefined {
         return this.categories.find((category) => category.name == name);
     }
@@ -68,4 +82,5 @@ export class VendorsRepo {
     getVendor(name: string): Vendor | undefined {
         return this.vendors.find((category) => category.name == name);
     }
+
 }
