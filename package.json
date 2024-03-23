@@ -25,6 +25,7 @@
     "eslint-config-next": "13.5.3",
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",
+    "framer-motion": "^11.0.20",
     "fuse.js": "^7.0.0",
     "googleapis": "^131.0.0",
     "next": "13.5.3",
