@@ -2,9 +2,14 @@ import React from "react";
 import Link from "next/link";
 import FavoriteStar from "./FavoriteStar";
 
-function VendorHeader(props: { vendorName: string; tags: string[] }) {
+function VendorHeader(props: { vendorName: string; vendorImage: string; tags: string[] }) {
   return (
     <div className="flex flex-col">
+      {/* Header Image */}
+      <div className="max-h-[50vh] overflow-hidden">
+    <img src={props.vendorImage} alt={`Image of ${props.vendorName}`} className="w-full object-cover object-center">
+        </img>
+      </div>
       {/* Back button */}
       <Link href="/vendors">
         <div className="pt-5 pl-10 pb-5">
