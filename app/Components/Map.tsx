@@ -2,7 +2,8 @@ import React from "react"
 
 export default function Map(){
   return (
-    <div className='bg-white flex flex-col content-center justify-center p-10'>
+    // <div className='bg-white flex flex-col content-center justify-center p-10'>
+    <div className="justify-left flex flex-wrap items-center gap-7 p-6">
       <iframe 
         title="Mappedin Map" 
         name="Mappedin Map" 
