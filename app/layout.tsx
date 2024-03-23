@@ -40,7 +40,7 @@ export default function RootLayout({
             <ClientCookiesProvider>
                 <body className={metric.className}>
                     <NavBar />
-                    {children}
+                    <main>{children}</main>
                     <div className="h-20"></div>
                 </body>
             </ClientCookiesProvider>
