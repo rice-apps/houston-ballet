@@ -114,27 +114,14 @@ export function InfoForm() {
     };
 
     return (
-        <div className="flex items-center justify-center">
-            <div
-                style={{
-                    backgroundPosition: "center top",
-                    backgroundImage: 'url("/background.png")',
-                    backgroundSize: "cover",
-                    filter: "brightness(75%)",
-                    height: "65vh",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    zIndex: "0",
-                }}
-            ></div>
+        <>
+            <div className='absolute z-0 bg-smsBackground bg-cover w-full h-128 flex flex-col content-center justify-center p-5'></div>
             <div className="relative mt-44 flex flex-col items-center justify-center text-center">
                 <h1 className="font-sans text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl">
                     CONNECT
                 </h1>
 
-                <h3 className="font-sans mx-3 mt-4 pt-3 text-center text-lg font-medium tracking-[.15em] text-white md:text-xl">
+                <h3 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
                     GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL
                     EVENTS HAPPENING AT THE MARKET!
                 </h3>
@@ -202,7 +189,7 @@ export function InfoForm() {
                 pauseOnHover
                 theme="light"
             />
-        </div>
+        </>
     );
 }
 
