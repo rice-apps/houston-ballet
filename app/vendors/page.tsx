@@ -1,4 +1,4 @@
-import { getCategories } from "@/lib/utils/utils";
+import { getCategories } from "@/lib/utils/utils"
 import VendorsSearch from "../Components/VendorsSearch";
 import "../globals.css";
 
