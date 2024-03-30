@@ -1,6 +1,7 @@
 export interface Category {
     name: string;
     image: string;
+    icon: string;
     vendors: Vendor[];
     id: number;
 }
@@ -24,7 +25,8 @@ export class VendorsRepo {
                 name: category,
                 vendors: categoriesJson[category].vendors,
                 image: categoriesJson[category].image,
-                id: categoriesJson[category].id
+                id: categoriesJson[category].id,
+                icon: categoriesJson[category].smallIcon
             })
         }
         let vendor_map = {}
