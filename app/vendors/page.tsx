@@ -1,5 +1,6 @@
 import { getCategories } from "@/lib/utils/utils";
 import VendorsSearch from "../Components/VendorsSearch";
+import PaginationBar from "../Components/PaginationBar";
 import "../globals.css";
 
 export default async function VendorPage() {
@@ -20,6 +21,9 @@ export default async function VendorPage() {
             <div></div>
 
             <VendorsSearch originalVendors={vendors} categories={categories} />
+            <div className = "flex justify-center mt-14">
+                <PaginationBar totalPages={20}/>
+            </div>
         </>
     );
 }
