@@ -1,39 +1,11 @@
-"use client";
 import React from "react";
-import { useEffect, useState } from "react";
-import WelcomeCategoryCard, { WelcomeCategoryCardProps } from "../Components/WelcomeCategoryCard";
-import card from "@material-tailwind/react/theme/components/card";
 import InterestsButton from "../Components/InterestsButton"
-import local from "next/font/local";
+import { getCategories } from "@/lib/utils/utils";
 
-export default function WelcomePage() {
+
+export default async function WelcomePage() {
     // Get all categories
-    // const allCategories = getCategories().getCategories();
-    // const tempCategoryArray: Array<WelcomeCategoryCardProps> = [];
-    // for (let category of allCategories) {
-    //     tempCategoryArray.push({
-    //         categoryName: category.name,
-    //     });
-    // }
-
-    // var selectedInterests = JSON.parse(localStorage.getItem('interests') ?? "")
-
-    const handleInterestSelect = (category: WelcomeCategoryCardProps) => {
-        // localStorage.setItem("interests", )
-    }
-
-    // // Initialize localStorage if necessary
-    // if (!localStorage.getItem("interests")) {
-    //     localStorage.setItem("interests", `[]`)
-    // }
-
-    // const [interests, setInterests] = useState([]);
-    // useEffect(() => {
-    //     const interestsTemp = JSON.parse(localStorage.getItem('interests') ?? "");
-    //     setInterests(interestsTemp);
-    //     console.log(interestsTemp);
-    // }, [localStorage.getItem('interests')])
-
+    const allCategories = (await getCategories()).getCategories();
 
     return (
             <div className="flex flex-row h-screen w-screen">
@@ -45,7 +17,7 @@ export default function WelcomePage() {
                     <h1 className="font-sans font-bold ml-12 mt-28 text-4xl tracking-[.15em] text-black md:text-6xl">CHOOSE YOUR <br /> INTERESTS...</h1>
                     <h2 className="font-sans font-medium mt-8 ml-12 text-2xl tracking-wide text-black">Please select your interests to personalize your <br /> experience and 
                     discover the magic of ballet that <br /> resonates with you!</h2>
-                    <InterestsButton/>
+                    <InterestsButton allCategories={allCategories}/>
                 </div>
             </div>
     );
