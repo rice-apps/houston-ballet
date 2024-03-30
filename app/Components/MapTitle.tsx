@@ -2,7 +2,6 @@ import React from 'react';
 
 
 export default function MapTitle(){
-
     return (
         <div className='bg-mapBackground bg-cover flex flex-col content-center justify-center p-5 z-0 h-128 '>
             <h1 className='font-sans text-center text-4xl md:text-7xl font-bold tracking-[.15em] text-white'>MAP</h1>
