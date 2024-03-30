@@ -35,7 +35,7 @@ export default function VendorCard(props: Props) {
                 </CardHeader>
 
                 <CardBody className="flex-grow rounded-b-sm border-b border-gray-400 pt-4 pr-4 pb-0 pl-4 transition-colors group-hover:bg-ballet">
-                    <div className="flex flex-row justify-between items-start group-hover:text-white bg-red"> {/* Adjust alignment here */}
+                    <div className="flex flex-row justify-between group-hover:text-white bg-red">
                         <Typography
                             variant="h4"
                             color="blue-gray"
@@ -43,8 +43,8 @@ export default function VendorCard(props: Props) {
                         >
                             {props.vendorName}
                         </Typography>
-                        <div>
-                            <FavoriteStar id={props.vendorName} />
+                        <div className="">
+                           <FavoriteStar id={props.vendorName} />
                         </div>
                     </div>
                     <Typography
