@@ -43,7 +43,7 @@ export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
                 <VendorCardWrapper
                     photo_path={vendor.image}
                     name={vendor.name}
-                    description={vendor.description}
+                    description={vendor.shortDesc}
                     website={""}
                     categories={vendor.categories ?? []}
                     id={vendor.id}
@@ -53,7 +53,7 @@ export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
     }
     return (
         // flex wrap instead of grid
-        <div className="grid grid-cols-1 flex-col gap-16 justify-between md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 flex-col gap-10 justify-between md:grid-cols-2 lg:grid-cols-3">
             {elements}
         </div>
     );

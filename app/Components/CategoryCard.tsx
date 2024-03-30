@@ -11,7 +11,7 @@ export type CategoryCardProps = {
 export default function CategoryCard(props: CategoryCardProps) {
     return (
         <Link href={`/vendors?category=${props.vendorName}`}>
-            <Card className="group inline-grid w-full rounded-sm cursor-pointer">
+            <Card className="group inline-grid w-full rounded-sm cursor-pointer font-Figtree">
                 <CardHeader
                     floated={false}
                     shadow={false}
@@ -24,7 +24,7 @@ export default function CategoryCard(props: CategoryCardProps) {
                         alt={props.vendorName}
                         aspect-ratio={1/1}
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center font-Figtree">
                         <Typography className="text-lg text-white font-semibold">
                             {props.vendorName}
                         </Typography>

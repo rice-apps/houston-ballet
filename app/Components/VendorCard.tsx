@@ -20,7 +20,7 @@ type Props = {
 export default function VendorCard(props: Props) {
     return (
         <Link href={`/vendors/${props.id}`}>
-            <Card className="group my-3 flex h-full max-w-full flex-grow transform flex-col rounded-sm border border-gray-400 bg-white shadow-md transition-transform hover:-translate-y-1">
+            <Card className="group my-3 flex h-full max-w-full flex-grow transform flex-col rounded-sm border border-gray-400 bg-white shadow-md transition-transform hover:-translate-y-1 font-Figtree">
                 <CardHeader
                     floated={false}
                     shadow={false}
@@ -34,8 +34,8 @@ export default function VendorCard(props: Props) {
                     />
                 </CardHeader>
 
-                <CardBody className="flex-grow rounded-b-sm border-b border-gray-400 p-4 transition-colors group-hover:bg-ballet">
-                    <div className="mb-2 flex flex-row justify-between group-hover:text-white">
+                <CardBody className="flex-grow rounded-b-sm border-b border-gray-400 pt-4 pr-4 pb-0 pl-4 transition-colors group-hover:bg-ballet">
+                    <div className="flex flex-row justify-between items-start group-hover:text-white bg-red"> {/* Adjust alignment here */}
                         <Typography
                             variant="h4"
                             color="blue-gray"
@@ -43,12 +43,14 @@ export default function VendorCard(props: Props) {
                         >
                             {props.vendorName}
                         </Typography>
-                        <FavoriteStar id={props.vendorName} />
+                        <div>
+                            <FavoriteStar id={props.vendorName} />
+                        </div>
                     </div>
                     <Typography
                         variant="lead"
                         color="gray"
-                        className="mt-3 overflow-hidden overflow-ellipsis text-sm font-normal group-hover:text-white"
+                        className="overflow-hidden overflow-ellipsis text-md font-normal group-hover:text-white"
                     >
                         {props.vendorDescription}
                     </Typography>
