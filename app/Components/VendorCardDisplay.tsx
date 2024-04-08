@@ -39,7 +39,7 @@ export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
-            <div className="h-full w-full" key={vendor.name}>
+            <section className="h-full w-full" key={vendor.name} aria-label={`Vendor: ${vendor.name}`} tabIndex={0}>
                 <VendorCardWrapper
                     photo_path={vendor.image}
                     name={vendor.name}
@@ -48,12 +48,12 @@ export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
                     categories={vendor.categories ?? []}
                     id={vendor.id}
                 />
-            </div>,
+            </section>,
         );
     }
     return (
         // flex wrap instead of grid
-        <div className="grid grid-cols-1 flex-col gap-16 justify-between md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 flex-col gap-16 justify-between md:grid-cols-2 lg:grid-cols-3" role="list">
             {elements}
         </div>
     );
