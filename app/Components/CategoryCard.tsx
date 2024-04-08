@@ -16,6 +16,7 @@ export type CategoryCardProps = {
 export default function CategoryCard(props: CategoryCardProps) {
     return (
         <Link href={`/vendors?category=${props.vendorName}`}>
+            <div role="link" aria-label={`View vendors for ${props.vendorName}`} tabIndex={0} style={{ textDecoration: 'none' }}>
             <Card className="group inline-grid w-full rounded-lg border border-black">
                 <CardHeader
                     floated={false}
@@ -26,7 +27,7 @@ export default function CategoryCard(props: CategoryCardProps) {
                     <img
                         className="h-full w-full object-cover"
                         src={props.image}
-                        alt="snoopy"
+                        alt={props.vendorName}
                     />
                 </CardHeader>
                 <CardBody className="rounded-b-md p-4 transition-colors group-hover:bg-ballet">
@@ -35,6 +36,7 @@ export default function CategoryCard(props: CategoryCardProps) {
                     </Typography>
                 </CardBody>
             </Card>
+            </div>
         </Link>
     );
 }
