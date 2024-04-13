@@ -78,7 +78,7 @@ function VendorsSearch({
         const interestsTemp = JSON.parse(localStorage.getItem('interests') ?? "");
         setInterests(interestsTemp);
         console.log(interestsTemp);
-    }, [localStorage.getItem('interests')])
+    }, [])
 
     useEffect(() => {
         let tempArr: Vendor[] = []
