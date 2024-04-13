@@ -12,6 +12,7 @@ module.exports = {
     theme: {
         fontFamily: {
             Metric: ['"Metric-Regular"', "serif"],
+            Figtree: ['"Figtree"', 'sans-serif'], // New font added
         },
         extend: {
             backgroundImage: {
