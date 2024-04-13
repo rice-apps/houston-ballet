@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import FavoriteStar from "./FavoriteStar";
 
-function VendorHeader(props: { vendorName: string; tags: string[] }) {
+function VendorHeader(props: { vendorName: string; vendorImage: string; tags: string[] }) {
   return (
     <div className="flex flex-col" role="banner">
       {/* Back button */}
