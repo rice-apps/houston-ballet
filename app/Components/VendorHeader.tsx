@@ -4,10 +4,10 @@ import FavoriteStar from "./FavoriteStar";
 
 function VendorHeader(props: { vendorName: string; tags: string[] }) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" role="banner">
       {/* Back button */}
       <Link href="/vendors">
-        <div className="pt-5 pl-10 pb-5">
+        <a className="pt-5 pl-10 pb-5" aria-label="Go back to vendor list">
           <button className="inline-flex items-center mt-7 h-10 px-5 text-white transition-colors duration-150 bg-slate-700 rounded-lg focus:shadow-outline hover:bg-slate-800">
             <svg
               className="w-4 h-4 mr-3 fill-current"
@@ -16,6 +16,7 @@ function VendorHeader(props: { vendorName: string; tags: string[] }) {
               viewBox="0 0 16 16"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M4.17294 8.91666L9.30627 14.05L8.00002 15.3333L0.666687 8L8.00002 0.666664L9.30627 1.95L4.17294 7.08333H15.3334V8.91666H4.17294Z"
@@ -24,10 +25,10 @@ function VendorHeader(props: { vendorName: string; tags: string[] }) {
             </svg>
             <span>Back</span>
           </button>
-        </div>
+        </a>
       </Link>
       {/*Vendor Name*/}
-      <div className="flex flex-row">
+      <div className="flex flex-row" aria-label={`Vendor: ${props.vendorName}`}>
         <h1 className="ml-10 text-4xl tracking-widest font-extrabold text-gray-900">
           {props.vendorName}
         </h1>
@@ -40,6 +41,7 @@ function VendorHeader(props: { vendorName: string; tags: string[] }) {
           <button
             className="h-10 px-5 text-gray-600 transition-colors duration-150 border border-gray-600 rounded-lg focus:shadow-outline hover:bg-gray-600 hover:text-indigo-100"
             key={i}
+            aria-label={`Tag: ${props.tags}`}
           >
             {i}
           </button>

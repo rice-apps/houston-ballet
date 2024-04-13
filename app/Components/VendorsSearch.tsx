@@ -96,6 +96,7 @@ function VendorsSearch({
                     className="focus:outline-none w-2/5 md:w-1/3"
                     onChange={(e) => setSearch(e.target.value)}
                     InputProps={{
+                        "aria-label": 'Vendors search bar', // aria for search bar
                         startAdornment: (
                             <InputAdornment position="start">
                                 <svg
@@ -118,7 +119,7 @@ function VendorsSearch({
                     }}
                 />
                 <FormControl className="w-2/5 md:w-1/5">
-                    <InputLabel id="demo-simple-select-label">
+                    <InputLabel id="demo-simple-select-label" aria-label="Category drop-down menu">
                         Category
                     </InputLabel>
                     <Select
@@ -152,6 +153,7 @@ function VendorsSearch({
                     onClick={() => setShowFavorites(!showFavorites)}
                     className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
+                    aria-label={showFavorites ? "Hide Favorites" : "Show Favorites"} // added aria-label here!
                 >
                     Favorites
                 </Button>
