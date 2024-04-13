@@ -8,11 +8,11 @@ export default function VendorImages(props: { images: string[] }) {
         </div>)
     } else {
         return (
-            <div>
+            <div className="ml-3">
               <Carousel className="h-60 w-60">
                 {props.images.map((image, index) => (
-                  <div key={index}> {/* Adding a key for each div for React's reconciliation process */}
-                    <img src={image} alt={`Gallery image ${index + 1}`} />
+                  <div key={index} className='relative overflow-hidden rounded-xl h-60'> 
+                    <img className= "object-fill h-60" src={image} alt={`Gallery image ${index + 1}`} />
                   </div>
                 ))}
               </Carousel>

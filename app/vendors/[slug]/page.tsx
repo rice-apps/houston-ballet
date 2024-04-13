@@ -1,7 +1,6 @@
 import VendorHeader from "../../Components/VendorHeader";
 import VendorImages from "../../Components/VendorImages";
 import VendorDescription from "../../Components/VendorDescription";
-import Contact from "../../Components/Contact";
 import { getCategories } from "@/lib/utils/utils";
 
 // generate the page at build time
@@ -37,8 +36,6 @@ export default async function VendorInfoPage({
         <VendorDescription description={vendor?.description ?? ""} />
         <VendorImages images={vendor?.additionalImages ?? []} />
       </div>
-
-      <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
     </div>
   );
 }
