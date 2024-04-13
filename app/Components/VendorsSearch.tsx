@@ -251,15 +251,13 @@ function VendorsSearch({
                 >
                     Interests
                 </Button>
-                {/* </div>                 */}
             </div>
             <div className="mx-9 my-2 transform transition duration-300 ease-in-out ">
                 <VendorCardDisplay
                     vendors={vendors.filter((vendor) =>
                         showFavorites ? favorited.includes(vendor?.name) :
-                        (showInterests ? vendor?.categories?.some((category) => (interests.includes(category))) : true),
-                    vendors={vendorsList.filter((vendor) =>
-                        showFavorites ? favorited.includes(vendor?.name) : true,
+                        (showInterests ? vendor?.categories?.some((category) => (interests.includes(category))) : true)
+                    
                     )}
                 />
             </div>
