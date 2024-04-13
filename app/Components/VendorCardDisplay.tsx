@@ -43,7 +43,7 @@ export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
                 <VendorCardWrapper
                     photo_path={vendor.image}
                     name={vendor.name}
-                    description={vendor.description}
+                    description={vendor.shortDesc}
                     website={""}
                     categories={vendor.categories ?? []}
                     id={vendor.id}
