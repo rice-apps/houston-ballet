@@ -15,6 +15,32 @@ import { useEffect, useMemo, useState } from "react";
 import { withCookies } from "react-cookie";
 import { Cookie } from "universal-cookie";
 import { VendorCardDisplay } from "./VendorCardDisplay";
+import vendorProducts from "@/app/Components/VendorProducts";
+
+function useScrollPosition() {
+    const [scrollPosition, setScrollPosition] = useState(0);
+
+    function handleScroll() {
+        const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+
+        const windowScroll = document.documentElement.scrollTop;
+
+        const scrolled = (windowScroll / height) * 100;
+
+        setScrollPosition(scrolled);
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    });
+
+    return scrollPosition;
+}
 
 function VendorsSearch({
     cookies,
@@ -34,6 +60,10 @@ function VendorsSearch({
     const [showInterests, setShowInterests] = useState(false);
     const [vendors, setVendors] = useState(originalVendors);
     const [selectedCategory, setSelectedCategory] = useState("");
+    const [vendorsList, setVendorsList] = useState<Vendor[]>([]);
+    const [loadedIdx, setLoadedIdx] = useState(0);
+    const scrollPosition = useScrollPosition();
+    const numToLoad = 3;
     const handleChange = (event: SelectChangeEvent) => {
         setSelectedCategory(event.target.value as string);
     };
@@ -44,6 +74,36 @@ function VendorsSearch({
         setInterests(interestsTemp);
         console.log(interestsTemp);
     }, [localStorage.getItem('interests')])
+
+    useEffect(() => {
+        let tempArr: Vendor[] = []
+        for (let i = 0; i < numToLoad; i++) {
+            // setVendorsList([...vendorsList, vendors[i]])
+            tempArr.push(vendors[i])
+        }
+        setVendorsList(tempArr);
+        setLoadedIdx(numToLoad);
+        console.log(vendorsList);
+    }, []);
+
+    useEffect(() => {
+        if (scrollPosition == 100) {
+            addVendors();
+        }
+    }, [scrollPosition]);
+
+
+    const addVendors = () => {
+        let tempArr: Vendor[] = []
+        for (let i = loadedIdx; i < numToLoad + loadedIdx; i++) {
+            if (loadedIdx < vendors.length) {
+                tempArr.push(vendors[i])
+                // setVendorsList([...vendorsList, vendors[loadedIdx]]);
+            }
+        }
+        setLoadedIdx(loadedIdx + numToLoad);
+        setVendorsList([...vendorsList, ...tempArr]);
+    }
 
     // Get all the vendor cards that are favorited
     const [favorited, setFavorited] = useState([]);
@@ -104,6 +164,7 @@ function VendorsSearch({
                     className="focus:outline-none w-2/5 md:w-1/3"
                     onChange={(e) => setSearch(e.target.value)}
                     InputProps={{
+                        "aria-label": 'Vendors search bar', // aria for search bar
                         startAdornment: (
                             <InputAdornment position="start">
                                 <svg
@@ -126,7 +187,7 @@ function VendorsSearch({
                     }}
                 />
                 <FormControl className="w-2/5 md:w-1/5">
-                    <InputLabel id="demo-simple-select-label">
+                    <InputLabel id="demo-simple-select-label" aria-label="Category drop-down menu">
                         Category
                     </InputLabel>
                     <Select
@@ -166,6 +227,7 @@ function VendorsSearch({
                     }}
                     className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
+                    aria-label={showFavorites ? "Hide Favorites" : "Show Favorites"} // added aria-label here!
                 >
                     Favorites
                 </Button>
@@ -196,9 +258,12 @@ function VendorsSearch({
                     vendors={vendors.filter((vendor) =>
                         showFavorites ? favorited.includes(vendor?.name) :
                         (showInterests ? vendor?.categories?.some((category) => (interests.includes(category))) : true),
+                    vendors={vendorsList.filter((vendor) =>
+                        showFavorites ? favorited.includes(vendor?.name) : true,
                     )}
                 />
             </div>
+
         </>
     );
 }

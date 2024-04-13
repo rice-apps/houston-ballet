@@ -16,7 +16,7 @@ export default async function CategoryPage() {
     // how to get the metric font?
     return (
         <>
-            <div className="flex h-128 flex-col content-center justify-center bg-categoryBackground p-5">
+            <header className="flex h-128 flex-col content-center justify-center bg-categoryBackground p-5">
                 <h1 className="font-sans text-center text-4xl md:text-7xl font-bold tracking-[.15em] text-white">
                     CATEGORIES
                 </h1>
@@ -24,7 +24,7 @@ export default async function CategoryPage() {
                     BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
                     CATEGORIES.
                 </h3>
-            </div>
+            </header>
             <div className="py-6 px-5 sm:px-5 md:px-10 lg:px-20">
                 <div className="grid gap-7 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {tempCardArray.map((card: CategoryCardProps) => {
