@@ -51,6 +51,17 @@ export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
             </section>,
         );
     }
+
+    if (elements.length == 0) {
+        return (
+            <div className="flex items-center h-96">
+                <div className="Metric" key={"no_res"}>
+                    No Results Found
+                </div>
+            </div>
+        )
+    }
+
     return (
         // flex wrap instead of grid
         <div className="grid grid-cols-1 flex-col gap-16 justify-between md:grid-cols-2 lg:grid-cols-3" role="list">

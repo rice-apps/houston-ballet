@@ -16,7 +16,7 @@ export default async function CategoryPage() {
     // how to get the metric font?
     return (
         <>
-            <header className="flex h-128 flex-col content-center justify-center bg-categoryBackground p-5">
+            <header className="flex h-screen flex-col content-center justify-center bg-categoryBackground p-5">
                 <h1 className="font-sans text-center text-4xl md:text-7xl font-bold tracking-[.15em] text-white">
                     CATEGORIES
                 </h1>

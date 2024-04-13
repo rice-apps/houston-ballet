@@ -7,8 +7,8 @@ export default async function VendorPage() {
     const categories = (await getCategories()).getCategories();
     return (
         <>
-            <div className="absolute z-0 h-128 w-full bg-vendorBackground p-5" role="banner"></div>
-            <div className="relative z-20 flex h-128 flex-col justify-center p-5">
+            <div className="absolute z-0 h-screen w-full bg-vendorBackground p-5" role="banner"></div>
+            <div className="relative z-20 flex h-screen flex-col justify-center p-5">
                 <h1 className="font-sans top-20 bg-none text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl" role="main">
                     VENDORS
                 </h1>

@@ -6,9 +6,10 @@ function VendorHeader(props: { vendorName: string; tags: string[] }) {
   return (
     <div className="flex flex-col" role="banner">
       {/* Back button */}
-      <Link href="/vendors">
-        <a className="pt-5 pl-10 pb-5" aria-label="Go back to vendor list">
-          <button className="inline-flex items-center mt-7 h-10 px-5 text-white transition-colors duration-150 bg-slate-700 rounded-lg focus:shadow-outline hover:bg-slate-800">
+      <div className="pt-5 pl-10 pb-5">
+      <Link href="/vendors" aria-label="Go back to vendor list">
+        
+        <button className="inline-flex items-center mt-7 h-10 px-5 text-white transition-colors duration-150 bg-slate-700 rounded-lg focus:shadow-outline hover:bg-slate-800">
             <svg
               className="w-4 h-4 mr-3 fill-current"
               width="16"
@@ -25,8 +26,10 @@ function VendorHeader(props: { vendorName: string; tags: string[] }) {
             </svg>
             <span>Back</span>
           </button>
-        </a>
-      </Link>
+
+    </Link>
+      </div>
+      
       {/*Vendor Name*/}
       <div className="flex flex-row" aria-label={`Vendor: ${props.vendorName}`}>
         <h1 className="ml-10 text-4xl tracking-widest font-extrabold text-gray-900">
