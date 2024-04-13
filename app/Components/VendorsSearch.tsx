@@ -216,14 +216,6 @@ function VendorsSearch({
                 >
                     Favorites
                 </Button>
-                <Button
-                    variant="outlined"
-                    onClick={() => addVendors()}
-                    className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
-                    style={{ padding: "8px 16px", borderWidth: "2px" }}
-                >
-                    Load More!
-                </Button>
                 {/* </div>                 */}
             </div>
             <div className="mx-9 my-2 transform transition duration-300 ease-in-out ">
