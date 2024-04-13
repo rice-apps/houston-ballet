@@ -5,11 +5,11 @@ import { getCategories } from "@/lib/utils/utils";
 
 export default async function WelcomePage() {
     // Get all categories
-    const allCategories = (await getCategories()).getCategories();
+    const allCategories = (await getCategories()).getCategories().map((category) => ({"name": category.name, "icon": category.icon, "id": category.id}));
 
     return (
             <div className="flex flex-row h-screen w-screen">
-                <div className='h-screen w-1/2 bg-welcomeImage bg-cover flex flex-col left-0'>
+                <div className='h-screen w-1/2 bg-welcomeImage bg-cover bg-no-repeat bg-center flex flex-col left-0'>
                     <h1 className='font-sans bg-none text-center text-4xl mt-72 font-bold tracking-[.15em] text-white md:text-7xl'>WELCOME!</h1>
                     <h2 className='pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white'>FIRST TIME AT THE MARKET? </h2>
                 </div>
