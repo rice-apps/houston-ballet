@@ -39,7 +39,7 @@ export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
-            <div className="h-full w-full" key={vendor.name}>
+            <div className="h-full w-full cursor-pointer" key={vendor.name}>
                 <VendorCardWrapper
                     photo_path={vendor.image}
                     name={vendor.name}

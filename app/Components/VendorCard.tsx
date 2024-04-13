@@ -19,7 +19,7 @@ type Props = {
 
 export default function VendorCard(props: Props) {
     return (
-        <Link href={`/vendors/${props.id}`}>
+        <Link href={`/vendors/${props.id}`} legacyBehavior>
             <Card className="group my-3 flex h-full max-w-full flex-grow transform flex-col rounded-sm border border-gray-400 bg-white shadow-md transition-transform hover:-translate-y-1">
                 <CardHeader
                     floated={false}
