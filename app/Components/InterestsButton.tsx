@@ -40,10 +40,10 @@ export default function InterestsButton({
 
 
     return (
-        <div className="flex flex-wrap gap-4 ml-12 mt-8 w-3/4">
+        <div className="flex flex-wrap gap-4 mt-8 mb-4 w-3/4 align-items justify-center">
             {allCategories.map((category, index) => (
                 <button
-                    className={`focus:shadow-outline h-10 rounded-lg border border-gray-600 px-5 text-gray-600 transition-colors duration-150
+                    className={`focus:shadow-outline h-10 rounded-lg border border-gray-600 px-2 text-gray-600 transition-colors duration-150
                     ${interests.some(interest => interest.id === category.id) ? 'bg-gray-600 text-indigo-100' : 'hover:bg-gray-200'
                         }`}
                     key={index}
@@ -51,7 +51,7 @@ export default function InterestsButton({
                         toggleInterest(category);
                     }}
                 >
-                    <img src={category.icon} alt={category.name} className="w-4 h-4 inline-block ml-2" />
+                    <img src={category.icon} alt={category.name} className="w-4 h-4 inline-block mr-0.5 mb-1" />
                     {category.name}
                 </button>
             ))}

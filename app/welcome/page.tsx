@@ -9,16 +9,16 @@ export default async function WelcomePage() {
 
     return (
             <div className="flex flex-col sm:flex-row h-screen w-screen">
-                <div className='sm:h-1/2 sm:w-screen lg:h-screen lg:w-1/2 bg-welcomeImage bg-cover flex flex-col'>
-                    <h1 className='font-sans text-center mt-72 text-4xl font-bold tracking-[.15em] text-white md:text-7xl'>WELCOME!</h1>
-                    <h2 className='pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white'>FIRST TIME AT THE MARKET? </h2>
-                </div>
-                <div className="sm:h-1/2 sm:w-screen lg:h-screen lg:w-1/2 flex flex-col">
-                    <h1 className="font-sans font-bold ml-12 mt-28 text-4xl tracking-[.15em] text-black md:text-6xl">CHOOSE YOUR <br /> INTERESTS...</h1>
-                    <h2 className="font-sans font-medium mt-8 ml-12 text-2xl tracking-wide text-black">Please select your interests to personalize your <br /> experience and 
-                    discover the magic of ballet that <br /> resonates with you!</h2>
-                    <InterestsButton allCategories={allCategories}/>
-                </div>
+            <div className='h-1/2 w-screen py-10 sm:h-screen sm:w-1/2 bg-welcomeImage bg-cover flex flex-col items-center justify-center'>
+                <h1 className='font-sans text-center text-3xl md:text-5xl lg:text-6xl font-bold tracking-[.15em] text-white'>WELCOME!</h1>
+                <h2 className='pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white'>FIRST TIME AT THE MARKET? </h2>
             </div>
+            <div className="h-auto w-screen sm:h-screen sm:w-1/2 flex flex-col items-center justify-center">
+                <h1 className="font-sans font-bold mt-4 text-2xl md:text-3xl lg:text-5xl tracking-[.15em] text-black text-center max-w-[10em]">CHOOSE YOUR INTERESTS...</h1>
+                <h2 className="font-sans font-medium mt-3 px-1 text-base md:text-lg lg:text-xl tracking-wide text-black text-center max-w-[20em]">Please select your interests to personalize your experience and 
+                discover the magic of ballet that resonates with you!</h2>
+                <InterestsButton allCategories={allCategories}/>
+            </div>
+        </div>
     );
 }
