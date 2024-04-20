@@ -20,6 +20,7 @@ module.exports = {
                 nutcrackerBackground: "url('../public/background.png')",
                 vendorBackground: "url('../public/vendorBackground.png')",
                 mapBackground: "url('/assets/MapCover.png')",
+                welcomeImage: "url('../public/welcomeImage.png')",
             },
             colors: {
                 ballet: "#33323c",

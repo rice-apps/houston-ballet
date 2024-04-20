@@ -48,17 +48,17 @@ export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
+
 }) {
+
     return (
         <html lang="en">
             <GoogleAnalytics GA_TRACKING_ID="G-RVES61K2QJ" />
-            <ClientCookiesProvider>
                 <body className={metric.className}>
                     <NavBar />
                     {children}
-                    <div className="h-20"></div>
+            
                 </body>
-            </ClientCookiesProvider>
         </html>
     );
 }
