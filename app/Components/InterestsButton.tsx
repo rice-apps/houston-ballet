@@ -35,7 +35,7 @@ export default function InterestsButton({
 
     useEffect(() => {
         // Update local storage when interests change
-        localStorage.setItem('interests', JSON.stringify(interests));
+        localStorage.setItem('interests', JSON.stringify(interests.map(interest => (interest.name))));
     }, [interests]);
 
 
