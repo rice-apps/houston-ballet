@@ -21,6 +21,21 @@ const metric = localFont({
     variable: "--font-metric",
 });
 
+// figtree (the good one)
+const figtree = localFont({
+    src: [
+        {
+            path: "../public/fonts/Figtree-Italic-VariableFont_wght.ttf",
+            weight: "400",
+        },
+        {
+            path: "../public/fonts/Figtree-VariableFont_wght.ttf",
+            weight: "400",
+        },
+    ],
+    variable: "--font-figtree",
+});
+
 // inter font
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,17 +48,17 @@ export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
+
 }) {
+
     return (
         <html lang="en">
             <GoogleAnalytics GA_TRACKING_ID="G-RVES61K2QJ" />
-            <ClientCookiesProvider>
                 <body className={metric.className}>
                     <NavBar />
                     {children}
-                    <div className="h-20"></div>
+            
                 </body>
-            </ClientCookiesProvider>
         </html>
     );
 }

@@ -114,7 +114,7 @@ export function InfoForm() {
     };
 
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center" role="main">
             <div
                 style={{
                     backgroundPosition: "center top",
@@ -128,6 +128,7 @@ export function InfoForm() {
                     width: "100%",
                     zIndex: "0",
                 }}
+                aria-hidden="true" // tells screen reader to IGNORE decorative background
             ></div>
             <div className="relative mt-44 flex flex-col items-center justify-center text-center">
                 <h1 className="font-sans text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl">
@@ -138,7 +139,7 @@ export function InfoForm() {
                     GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL
                     EVENTS HAPPENING AT THE MARKET!
                 </h3>
-                <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-4  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8">
+                <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-4  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
                     <span className="flex flex-col">
                         <div className="mb-1 flex flex-row items-center">
                             <img src="/email.png"></img> Email
@@ -157,6 +158,7 @@ export function InfoForm() {
                             variant="outlined"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            aria-label="Email"
                         />
 
                         <div className="mb-1 flex flex-row items-center">
@@ -176,6 +178,7 @@ export function InfoForm() {
                             variant="outlined"
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
+                            aria-label="Phone Number"
                         />
                     </span>
                 </form>
@@ -186,6 +189,7 @@ export function InfoForm() {
                     style={{
                         textTransform: "none",
                     }}
+                    aria-label="Submit Form"
                 >
                     Submit
                 </Button>
