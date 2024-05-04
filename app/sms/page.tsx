@@ -185,7 +185,7 @@ export function InfoForm() {
                 <Button
                     onClick={handleSubmit}
                     variant="contained"
-                    className="top -top-3 z-10 flex w-1/12 rounded-lg bg-ballet dark:hover:bg-gray-800 dark:focus:ring-gray-900 md:-top-5"
+                    className="top -top-3 z-10 flex w-1/12 rounded-lg bg-ballet dark:hover:bg-gray-800 dark:focus:ring-gray-900 md:-top-5  bg-no-repeat bg-cover"
                     style={{
                         textTransform: "none",
                     }}

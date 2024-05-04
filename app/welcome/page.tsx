@@ -1,7 +1,7 @@
 import React from "react";
 import InterestsButton from "../Components/InterestsButton"
 import { getCategories } from "@/lib/utils/utils";
-
+import Link from "next/link";
 
 export default async function WelcomePage() {
     // Get all categories
@@ -18,6 +18,15 @@ export default async function WelcomePage() {
                 <h2 className="font-sans font-medium mt-3 px-1 text-base md:text-lg lg:text-xl tracking-wide text-black text-center max-w-[20em]">Please select your interests to personalize your experience and 
                 discover the magic of ballet that resonates with you!</h2>
                 <InterestsButton allCategories={allCategories}/>
+                <div className="py-10">
+                    <Link href={`/vendors`}>
+                        <div className="pl-5">
+                            <button className="focus:shadow-outline inline-flex h-10 items-center rounded-lg bg-slate-700 px-5 text-white transition-colors duration-150 hover:bg-slate-800">
+                                <span>Continue</span>
+                            </button>
+                        </div>
+                    </Link>
+                </div>
             </div>
         </div>
     );
