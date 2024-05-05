@@ -56,8 +56,8 @@ export default function RootLayout({
             <GoogleAnalytics GA_TRACKING_ID="G-RVES61K2QJ" />
                 <body className={metric.className}>
                     <NavBar />
-                    {children}
-            
+                    <main>{children}</main>
+                    <div className="h-20"></div>
                 </body>
         </html>
     );
