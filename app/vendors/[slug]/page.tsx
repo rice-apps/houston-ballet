@@ -29,18 +29,18 @@ export default async function VendorInfoPage({
 
     return (
         <Transition>
-            <div className="flex min-h-screen flex-col justify-between bg-white">
+            <div className="bg-white flex flex-col min-h-screen justify-between">
                 <VendorHeader
                     vendorName={vendor?.name ?? ""}
+                    vendorImage={vendor?.image ?? ""}
                     tags={vendor?.categories ?? []}
                 />
-                <div className=" ml-10 mt-10 flex flex-row">
+                <div className="flex flex-row ml-10 mt-10 items-stretch">
                     <VendorDescription
                         description={vendor?.description ?? ""}
                     />
                     <VendorImages images={vendor?.additionalImages ?? []} />
                 </div>
-                <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
             </div>
         </Transition>
     );
