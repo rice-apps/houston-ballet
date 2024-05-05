@@ -52,13 +52,15 @@ function VendorHeader(props: {
             <div className="flex flex-row gap-x-3 pl-10 pt-5">
                 {/*Tags*/}
                 {props.tags?.map((i) => (
-                    <button
-                        className="focus:shadow-outline h-10 rounded-lg border border-gray-600 px-5 text-gray-600 transition-colors duration-150 hover:bg-gray-600 hover:text-indigo-100"
-                        key={i}
-                        aria-label={`Tag: ${props.tags}`}
-                    >
-                        {i}
-                    </button>
+                    <Link href={`/vendors?category=${i}`} key={i}>
+                        <button
+                            className="focus:shadow-outline h-10 rounded-lg border border-gray-600 px-5 text-gray-600 transition-colors duration-150 hover:bg-gray-600 hover:text-indigo-100"
+                            key={i}
+                            aria-label={`Tag: ${props.tags}`}
+                        >
+                            {i}
+                        </button>
+                    </Link>
                 ))}
             </div>
         </div>

@@ -13,7 +13,7 @@ export default function InterestsButton({
     useEffect(() => {
         // Load interests from local storage on component mount
         if (!localStorage.getItem("interests")) {
-            localStorage.setItem("Interests", "")
+            localStorage.setItem("interests", "")
         }
         const storedInterests = JSON.parse(localStorage.getItem('interests')) || [];
         setInterests(storedInterests);
