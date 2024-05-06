@@ -1,5 +1,4 @@
 import { getCategories } from "@/lib/utils/utils";
-import Contact from "../../Components/Contact";
 import Transition from "../../Components/Transition";
 import VendorDescription from "../../Components/VendorDescription";
 import VendorHeader from "../../Components/VendorHeader";
@@ -29,13 +28,13 @@ export default async function VendorInfoPage({
 
     return (
         <Transition>
-            <div className="bg-white flex flex-col min-h-screen">
+            <div className="flex min-h-screen flex-col bg-white">
                 <VendorHeader
                     vendorName={vendor?.name ?? ""}
                     vendorImage={vendor?.image ?? ""}
                     tags={vendor?.categories ?? []}
                 />
-                <div className="flex flex-col md:flex-row px-10 gap-y-16 mt-10 items-center md:items-between justify-around w-full h-full">
+                <div className="md:items-between mt-10 flex h-full w-full flex-col items-center justify-around gap-x-16 gap-y-16 px-10 md:flex-row">
                     <VendorDescription
                         description={vendor?.description ?? ""}
                     />
