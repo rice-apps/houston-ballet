@@ -29,13 +29,13 @@ export default async function VendorInfoPage({
 
     return (
         <Transition>
-            <div className="bg-white flex flex-col min-h-screen justify-between">
+            <div className="bg-white flex flex-col min-h-screen">
                 <VendorHeader
                     vendorName={vendor?.name ?? ""}
                     vendorImage={vendor?.image ?? ""}
                     tags={vendor?.categories ?? []}
                 />
-                <div className="flex flex-row ml-10 mt-10 items-stretch">
+                <div className="flex flex-col md:flex-row px-10 gap-y-16 mt-10 items-center md:items-between justify-around w-full h-full">
                     <VendorDescription
                         description={vendor?.description ?? ""}
                     />

@@ -9,7 +9,7 @@ function VendorHeader(props: {
     return (
         <div className="flex flex-col" role="banner">
             {/* Back button */}
-            <div className="flex flex-row pb-5 pl-10 pt-5">
+            <div className="flex flex-row pb-5 pl-10 mb-5 pt-48" style={{ backgroundImage: `url('${props.vendorImage}')`, backgroundSize: "cover", backgroundPosition: "center" }}>
                 <Link href="/vendors" aria-label="Go back to vendor list">
                     <button className="focus:shadow-outline mt-7 inline-flex h-10 items-center rounded-lg bg-slate-700 px-5 text-white transition-colors duration-150 hover:bg-slate-800">
                         <svg
@@ -40,10 +40,10 @@ function VendorHeader(props: {
 
             {/*Vendor Name*/}
             <div
-                className="flex flex-row"
+                className="flex flex-row mx-10 gap-x-5"
                 aria-label={`Vendor: ${props.vendorName}`}
             >
-                <h1 className="ml-10 text-4xl font-extrabold tracking-widest text-gray-900">
+                <h1 className="text-4xl font-extrabold tracking-wider text-gray-900">
                     {props.vendorName}
                 </h1>
                 <FavoriteStar id={props.vendorName} />
