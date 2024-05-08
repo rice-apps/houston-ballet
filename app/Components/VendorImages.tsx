@@ -73,7 +73,7 @@ const modalTheme: FlowbiteModalTheme = {
   },
   "content": {
     "base": "relative h-full w-full p-4 md:h-auto",
-    "inner": "relative flex max-h-[90dvh] flex-col rounded-lg shadow dark:bg-gray-700 items-end"
+    "inner": "relative flex max-h-[90dvh] flex-col rounded-lg dark:bg-gray-700 items-end"
   },
   "body": {
     "base": "flex-1 overflow-auto p-6 mx-auto text-center",
