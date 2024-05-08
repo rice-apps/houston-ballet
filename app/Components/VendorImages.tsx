@@ -130,6 +130,7 @@ export default function VendorImages(props: { images: string[] }) {
                                 className="h-72 w-72 object-fill"
                                 src={image}
                                 alt={`Gallery image ${index + 1}`}
+                                key={index}
                             />
                         </div>
                     ))}
@@ -154,6 +155,7 @@ export default function VendorImages(props: { images: string[] }) {
                                 className="h-96 w-96 object-cover"
                                 src={image}
                                 alt={`Item ${index + 1}`}
+                                key={index}
                             />
                             ))}
                         </Carousel>
