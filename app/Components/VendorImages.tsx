@@ -84,7 +84,7 @@ const modalTheme: FlowbiteModalTheme = {
     "popup": "border-b-0 p-2",
     "title": "text-xl font-medium text-gray-900 dark:text-white text-center",
     "close": {
-      "base": "ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-lg text-white hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white",
+      "base": "ml-auto inline-flex items-center rounded-full bg-transparent p-1.5 text-lg text-white hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white border border-2 antialiased",
       "icon": "h-10 w-10"
     }
   },
@@ -112,7 +112,7 @@ export default function VendorImages(props: { images: string[] }) {
                 </div>
                 <Carousel
                     className="h-72 w-72"
-                    slideInterval={3000}
+                    slideInterval={5000}
                     theme={hiddenTheme}
                     leftControl={false}
                     rightControl={false}
@@ -147,6 +147,7 @@ export default function VendorImages(props: { images: string[] }) {
                         <Carousel
                             className="h-96 w-96"
                             theme={visibleTheme}
+                            slideInterval={1000000}
                         >
                             {props.images.map((image, index) => (
                                 <img
