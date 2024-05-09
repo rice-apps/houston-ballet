@@ -24,15 +24,15 @@ const hiddenTheme: FlowbiteCarouselTheme = {
 const visibleTheme: FlowbiteCarouselTheme = {
   indicators: {
     active: {
-      off: "bg-gray-800/80 hover:bg-gray-800",
-      on: "bg-gray-800 dark:bg-gray-800",
+      off: "bg-gray-300/50",
+      on: "bg-white",
     },
     base: "h-3 w-3 rounded-full",
-    wrapper: "absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3",
+    wrapper: "absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3 rounded-lg bg-gray-800/80 p-[.35rem]",
   },
   control: {
     base: "inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-800/65 group-hover:bg-gray-800/80 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-10 sm:w-10",
-    icon: "h-5 w-5 text-grat-800 dark:text-gray-800 sm:h-6 sm:w-6",
+    icon: "h-5 w-5 sm:h-6 sm:w-6 text-white",
   },
   scrollContainer: {
     base: "flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg",
@@ -146,13 +146,13 @@ export default function VendorImages(props: { images: string[] }) {
                     </Modal.Header>
                     <Modal.Body>
                         <Carousel
-                            className="h-96 w-96"
+                            className="h-96 w-96 md:h-[540px] md:w-[724px]"
                             theme={visibleTheme}
                             slideInterval={1000000}
                         >
                             {props.images.map((image, index) => (
                                 <img
-                                className="h-96 w-96 object-cover"
+                                className="h-96 w-96 md:h-[540px] md:w-[724px] object-cover"
                                 src={image}
                                 alt={`Item ${index + 1}`}
                                 key={index}
