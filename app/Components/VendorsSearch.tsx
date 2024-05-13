@@ -166,8 +166,15 @@ function VendorsSearch({
                 <TextField
                     type="text"
                     placeholder="Search by..."
-                    className="focus:outline-none w-2/5 md:w-1/3"
+                    className="focus:outline-none w-full md:w-1/3"
                     onChange={(e) => setSearch(e.target.value)}
+                    inputProps={{
+                        style: {
+                            padding: '16.5px 14px 16.5px 0px',
+                            // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
+                            "--tw-ring-offset-width": '0'
+                        }
+                    }}
                     InputProps={{
                         "aria-label": 'Vendors search bar', // aria for search bar
                         startAdornment: (
