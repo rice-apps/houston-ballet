@@ -35,7 +35,7 @@ export function VendorCardWrapper({
     );
 }
 
-export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
+export function VendorCardDisplay({ vendors, showInterests, showFavorites }: { vendors: Vendor[], showInterests: boolean, showFavorites: boolean }) {
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
@@ -54,9 +54,10 @@ export function VendorCardDisplay({ vendors }: { vendors: Vendor[] }) {
 
     if (elements.length == 0) {
         return (
-            <div className="flex items-center h-96">
-                <div className="Metric" key={"no_res"}>
-                    No Results Found
+            <div className="flex items-center justify-center h-96">
+                <div className="Metric text-center font-medium text-xl" key={"no_res"}>
+                    No {showInterests ? "interests" : (showFavorites ? "favorites" : "results")} found. {" "}
+                    {showInterests ? "Try pressing on the interests button to clear interest filter." : (showFavorites ? "Try pressing on the favorites button to clear favorite filter." : "")}
                 </div>
             </div>
         )

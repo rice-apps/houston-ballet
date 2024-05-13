@@ -3,6 +3,8 @@
 import { Category, Vendor } from "@/lib/utils/repository";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
+import InterestsIcon from "@mui/icons-material/Interests";
+import InterestsOutlinedIcon from "@mui/icons-material/InterestsOutlined";
 import { Button, TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -247,9 +249,9 @@ function VendorsSearch({
                     variant="outlined"
                     startIcon={
                         showInterests ? (
-                            <StarOutlinedIcon className="animate-pulse" />
+                            <InterestsIcon className="animate-pulse" />
                         ) : (
-                            <StarBorderOutlinedIcon />
+                            <InterestsOutlinedIcon />
                         )
                     }
                     onClick={() => {
@@ -271,6 +273,8 @@ function VendorsSearch({
                         (showInterests ? vendor?.categories?.some((category) => (interests.includes(category))) : true)
                     
                     )}
+                    showInterests={showInterests}
+                    showFavorites={showFavorites}
                 />
             </div>
 
