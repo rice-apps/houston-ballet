@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { StyledEngineProvider } from '@mui/material/styles';
 import localFont from "next/font/local";
-import { ClientCookiesProvider } from "./Components/ClientCookiesProvider";
 import GoogleAnalytics from "./Components/GoogleAnalytics";
 import NavBar from "./Components/Navbar";
 import "./globals.css";
@@ -48,17 +48,17 @@ export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
-
 }) {
-
     return (
         <html lang="en">
-            <GoogleAnalytics GA_TRACKING_ID="G-RVES61K2QJ" />
+            <StyledEngineProvider injectFirst>
+                <GoogleAnalytics GA_TRACKING_ID="G-RVES61K2QJ" />
                 <body className={metric.className}>
                     <NavBar />
                     <main>{children}</main>
                     <div className="h-20"></div>
                 </body>
+            </StyledEngineProvider>
         </html>
     );
 }
