@@ -159,7 +159,7 @@ export default function VendorImages(props: { images: string[] }) {
                             />
                             ))}
                         </Carousel>
-                        <>
+                        {/* <>
                           <h1 className="text-wider text-4xl font-semibold text-white m-3">
                               ITEM NAME
                           </h1>
@@ -169,7 +169,7 @@ export default function VendorImages(props: { images: string[] }) {
                           <h2 className="text-lg text-gray-200 m-2">
                               ITEM DESCRIPTION
                           </h2>
-                        </>
+                        </> */}
                     </Modal.Body>
                 </Modal>
             </>
