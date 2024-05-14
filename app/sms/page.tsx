@@ -138,7 +138,7 @@ function InfoForm() {
     return (
         <>
             <div className="relative flex flex-col items-center justify-center text-center">
-                <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-4  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
+                <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-6  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
                     <ReCAPTCHA
                             ref={recaptchaRef}
                             size="invisible"
@@ -216,7 +216,7 @@ function InfoForm() {
                 {!submitted ? (<Button
                     onClick={handleSubmit}
                     variant="contained"
-                    className="top -top-3 z-10 flex w-1/12 rounded-lg bg-ballet dark:hover:bg-gray-800 dark:focus:ring-gray-900 md:-top-5  bg-no-repeat bg-cover"
+                    className="top -top-3 z-10 flex w-1/4 md:w-1/6 rounded-lg bg-ballet dark:hover:bg-gray-800 dark:focus:ring-gray-900 md:-top-5  bg-no-repeat bg-cover"
                     style={{
                         textTransform: "none",
                     }}
