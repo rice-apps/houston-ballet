@@ -10,34 +10,12 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export function InfoForm() {
+function InfoForm() {
     const [email, setEmail] = React.useState("");
     const [phoneNumber, setPhoneNumber] = React.useState("");
-    // const [name, setName] = React.useState('');
+    const [submitted, setSubmitted] = React.useState(false);
 
-    const [csvContents, setCsvContents] = React.useState("");
     const recaptchaRef = React.useRef<ReCAPTCHA | null>(null);
-    
-    const config = {
-        delimiter: "", // auto-detect <--------- We don't want this!
-        newline: "", // auto-detect
-        quoteChar: '"',
-        header: false,
-        dynamicTyping: false,
-        preview: 0,
-        encoding: "",
-        worker: false,
-        comments: false,
-        step: undefined,
-        complete: undefined,
-        error: undefined,
-        download: false,
-        skipEmptyLines: false,
-        chunk: undefined,
-        fastMode: undefined,
-        beforeFirstChunk: undefined,
-        withCredentials: undefined,
-    };
 
     type UserData = {
         emailString: string;
@@ -107,9 +85,7 @@ export function InfoForm() {
                 });
             });
 
-            // Clear form after submission
-            setEmail("");
-            setPhoneNumber("");
+            setSubmitted(true);
         } else {
             // If email or phone number is empty
             toast.error("Please fill in all fields.", {
@@ -135,7 +111,9 @@ export function InfoForm() {
                             sitekey="6LdjedspAAAAAOSI0BupgJbODmdYfzG4eV4uwdIL"
                         />
                     <span className="flex flex-col gap-y-10">
+                        {!submitted ? (
                         <TextField
+                            required
                             type="email"
                             label="Email"
                             placeholder="example@gmail.com"
@@ -159,9 +137,13 @@ export function InfoForm() {
                                 ),
                             }}
                             aria-label="Email Address"
-                        />
+                        />) : <>
+                        <h1>
+                            You are now subscribed to our notifications at the email address: {email} and phone number: {phoneNumber}!
+                        </h1>
+                        </>}
 
-                        <TextField
+                        {!submitted ? (<TextField
                             required
                             type="tel"
                             label="Phone Number"
@@ -186,10 +168,11 @@ export function InfoForm() {
                                 ),
                             }}
                             aria-label="Phone Number"
-                        />
+                        />) : <></>}
                     </span>
                 </form>
-                <Button
+
+                {!submitted ? (<Button
                     onClick={handleSubmit}
                     variant="contained"
                     className="top -top-3 z-10 flex w-1/12 rounded-lg bg-ballet dark:hover:bg-gray-800 dark:focus:ring-gray-900 md:-top-5  bg-no-repeat bg-cover"
@@ -199,7 +182,7 @@ export function InfoForm() {
                     aria-label="Submit Form"
                 >
                     Submit
-                </Button>
+                </Button>) : <></>}
             </div>
             <ToastContainer
                 position="top-right"
