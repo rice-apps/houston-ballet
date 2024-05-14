@@ -4,6 +4,7 @@ import CategoryCard, { CategoryCardProps } from "../Components/CategoryCard";
 export default async function CategoryPage() {
     // temp card array to be replaced by database info
     const categories = await getCategories();
+    const subtitle = (await getCategories()).getSubtitle("categories");
 
     const tempCardArray: Array<CategoryCardProps> = [];
     for (let category of categories.getCategories()) {
@@ -21,8 +22,7 @@ export default async function CategoryPage() {
                     CATEGORIES
                 </h1>
                 <h3 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
-                    BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
-                    CATEGORIES.
+                    {subtitle ?? ""}
                 </h3>
             </header>
             <div className="py-6 px-5 sm:px-5 md:px-10 lg:px-20">
