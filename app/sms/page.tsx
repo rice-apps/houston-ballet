@@ -3,40 +3,25 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
+import InputAdornment from "@mui/material/InputAdornment";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
+import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from "react-toastify";
+import { MuiTelInput, matchIsValidTel } from 'mui-tel-input'
 import "react-toastify/dist/ReactToastify.css";
 
-export function InfoForm() {
+function InfoForm() {
     const [email, setEmail] = React.useState("");
     const [phoneNumber, setPhoneNumber] = React.useState("");
-    // const [name, setName] = React.useState('');
+    const [submitted, setSubmitted] = React.useState(false);
 
-    const [csvContents, setCsvContents] = React.useState("");
-
-    const config = {
-        delimiter: "", // auto-detect <--------- We don't want this!
-        newline: "", // auto-detect
-        quoteChar: '"',
-        header: false,
-        dynamicTyping: false,
-        preview: 0,
-        encoding: "",
-        worker: false,
-        comments: false,
-        step: undefined,
-        complete: undefined,
-        error: undefined,
-        download: false,
-        skipEmptyLines: false,
-        chunk: undefined,
-        fastMode: undefined,
-        beforeFirstChunk: undefined,
-        withCredentials: undefined,
-    };
+    const recaptchaRef = React.useRef<ReCAPTCHA | null>(null);
 
     type UserData = {
         emailString: string;
         phoneNumberString: string;
+        token: string;
     };
 
     // fetching csvwrite api endpoint to send the phone number to the server side
@@ -61,20 +46,38 @@ export function InfoForm() {
     // Store phone number from input textbox.
     const handleSubmit = async () => {
         // If inputs are non-empty
-        if (email != "" && phoneNumber != "") {
-            console.log("phone number from input box: " + phoneNumber);
-            console.log("email from input box: " + email);
-
+        if (email != "" && phoneNumber != "" && matchIsValidTel(phoneNumber, {
+            onlyCountryies: ["US"], // optional,
+            excludedCountryies: [], // optional
+            continents: [] // optional
+          }) && email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")) {
+            const recaptchaToken = await recaptchaRef?.current?.executeAsync();
             const userInput: UserData = {
                 emailString: email,
                 phoneNumberString: phoneNumber,
+                token: recaptchaToken,
             };
-            console.log("new email: " + userInput["emailString"]);
-            console.log("new number: " + userInput["phoneNumberString"]);
 
-            await postData("/api/csvwrite", userInput, "PUT").then(() => {
-                console.log("logged");
-                // Display notification toast
+            // await postData("/api/csvwrite", userInput, "PUT").then(() => {
+            //     console.log("logged");
+            //     // Display notification toast
+            //     toast.success("Submitted successfully!", {
+            //         position: "top-right",
+            //         autoClose: 3000,
+            //         hideProgressBar: true,
+            //         closeOnClick: true,
+            //         pauseOnHover: true,
+            //         draggable: true,
+            //         progress: undefined,
+            //         theme: "light",
+            //     });
+            // });
+
+            await postData(
+                "https://hb-strapi-production.up.railway.app/api/form-process",
+                userInput,
+                "POST",
+            ).then(() => {
                 toast.success("Submitted successfully!", {
                     position: "top-right",
                     autoClose: 3000,
@@ -87,112 +90,140 @@ export function InfoForm() {
                 });
             });
 
-            await postData(
-                "https://hb-strapi-production.up.railway.app/api/form-process",
-                userInput,
-                "POST",
-            ).then(() => {
-                console.log("pushed to strapi");
-            });
-
-            // Clear form after submission
-            setEmail("");
-            setPhoneNumber("");
+            setSubmitted(true);
         } else {
             // If email or phone number is empty
-            toast.error("Please fill in all fields.", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+            if (email == "" || phoneNumber == "") {
+                toast.error("Please fill in all fields.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            } else if (!matchIsValidTel(phoneNumber, {
+                onlyCountryies: ["US"], // optional,
+                excludedCountryies: [], // optional
+                continents: [] // optional
+              })) {
+                toast.error("Please enter a valid US phone number.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            } else if (email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")) {
+                toast.error("Please enter a valid email.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            
+            }
         }
     };
 
     return (
-        <div className="flex items-center justify-center" role="main">
-            <div
-                style={{
-                    backgroundPosition: "center top",
-                    backgroundImage: 'url("/background.png")',
-                    backgroundSize: "cover",
-                    filter: "brightness(75%)",
-                    height: "65vh",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    zIndex: "0",
-                }}
-                aria-hidden="true" // tells screen reader to IGNORE decorative background
-            ></div>
-            <div className="relative mt-44 flex flex-col items-center justify-center text-center">
-                <h1 className="font-sans text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl">
-                    CONNECT
-                </h1>
-
-                <h3 className="font-sans mx-3 mt-4 pt-3 text-center text-lg font-medium tracking-[.15em] text-white md:text-xl">
-                    GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL
-                    EVENTS HAPPENING AT THE MARKET!
-                </h3>
-                <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-4  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
-                    <span className="flex flex-col">
-                        <div className="mb-1 flex flex-row items-center">
-                            <img src="/email.png"></img> Email
-                        </div>
+        <>
+            <div className="relative flex flex-col items-center justify-center text-center">
+                <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-6  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
+                    <ReCAPTCHA
+                            ref={recaptchaRef}
+                            size="invisible"
+                            sitekey="6LdjedspAAAAAOSI0BupgJbODmdYfzG4eV4uwdIL"
+                        />
+                    <span className="flex flex-col gap-y-10">
+                        {!submitted ? (
                         <TextField
                             required
-                            InputProps={{
-                                style: {
-                                    marginBottom: "5%",
-                                    backgroundColor: "#dddddd",
-                                    borderRadius: "10px",
-                                },
-                            }}
+                            type="email"
+                            label="Email"
+                            placeholder="example@gmail.com"
                             id="email"
-                            label="Insert email here"
-                            variant="outlined"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            aria-label="Email"
-                        />
-
-                        <div className="mb-1 flex flex-row items-center">
-                            <img src="/phone.png"></img> Phone Number
-                        </div>
-                        <TextField
-                            required
-                            id="phone_number"
-                            InputProps={{
+                            inputProps={{
                                 style: {
-                                    marginBottom: "5%",
-                                    backgroundColor: "#dddddd",
-                                    borderRadius: "10px",
+                                    padding: '16.5px 14px 16.5px 0px',
+                                    // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
+                                    "--tw-ring-offset-width": '0'
                                 },
+                                pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}",
                             }}
-                            label="Add phone number here"
-                            variant="outlined"
+                            InputProps={{
+                                "aria-label": 'Vendors search bar', // aria for search bar
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <EmailIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
+                            aria-label="Email Address"
+                            error={email != "" && !email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")}
+                        />) : <>
+                        <h1>
+                            You are now subscribed to our notifications at the email address: {email} and phone number: {phoneNumber}!
+                        </h1>
+                        </>}
+
+                        {!submitted ? (<MuiTelInput
+                            required
+                            type="tel"
+                            label="Phone Number"
+                            placeholder="123 456 7890"
+                            id="phone_number"
+                            className="focus:outline-none"
                             value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            onChange={(e) => setPhoneNumber(e)}
+                            inputProps={{
+                                style: {
+                                    padding: '16.5px 14px 16.5px 0px',
+                                    // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
+                                    "--tw-ring-offset-width": '0'
+                                }
+                            }}
+                            InputProps={{
+                                "aria-label": 'Vendors search bar', // aria for search bar
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <PhoneIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
                             aria-label="Phone Number"
-                        />
+                            forceCallingCode defaultCountry="US"
+                            error={phoneNumber.trim() != "" && !matchIsValidTel(phoneNumber, {
+                                onlyCountryies: ["US"], // optional,
+                                excludedCountryies: [], // optional
+                                continents: [] // optional
+                              })}
+                        />) : <></>}
                     </span>
                 </form>
-                <Button
+
+                {!submitted ? (<Button
                     onClick={handleSubmit}
                     variant="contained"
-                    className="top -top-3 z-10 flex w-1/12 rounded-lg bg-ballet dark:hover:bg-gray-800 dark:focus:ring-gray-900 md:-top-5  bg-no-repeat bg-cover"
+                    className="top -top-3 z-10 flex w-1/4 md:w-1/6 rounded-lg bg-ballet dark:hover:bg-gray-800 dark:focus:ring-gray-900 md:-top-5  bg-no-repeat bg-cover"
                     style={{
                         textTransform: "none",
                     }}
                     aria-label="Submit Form"
                 >
                     Submit
-                </Button>
+                </Button>) : <></>}
             </div>
             <ToastContainer
                 position="top-right"
@@ -206,16 +237,24 @@ export function InfoForm() {
                 pauseOnHover
                 theme="light"
             />
-        </div>
+        </>
     );
 }
 
 export default function Page() {
     return (
-        <div className=" flex flex-col justify-between bg-white">
-            <div className="relative">
+        <>
+            <div className="absolute z-0 h-screen w-full bg-nutcrackerBackground p-5 bg-no-repeat bg-cover" role="banner"></div>
+            <div className="relative z-20 flex h-screen flex-col justify-center p-5">
+                <h1 className="font-sans top-20 bg-none text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl" role="main">
+                    CONNECT
+                </h1>
+                <h3 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
+                    GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL
+                    EVENTS HAPPENING AT THE MARKET!
+                </h3>
                 <InfoForm />
             </div>
-        </div>
+        </>
     );
 }

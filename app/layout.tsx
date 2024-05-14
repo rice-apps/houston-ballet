@@ -56,7 +56,6 @@ export default function RootLayout({
                 <body className={metric.className}>
                     <NavBar />
                     <main>{children}</main>
-                    <div className="h-20"></div>
                 </body>
             </StyledEngineProvider>
         </html>
