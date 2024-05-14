@@ -24,7 +24,7 @@ export default function CategoryCard(props: CategoryCardProps) {
                       alt={props.vendorName}
                       aspect-ratio={1/1}
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-35 group-hover:bg-opacity-60 flex items-center justify-center font-Figtree">
+                  <div className="transition duration-150 absolute inset-0 bg-black bg-opacity-35 group-hover:bg-opacity-60 flex items-center justify-center font-Figtree">
                       <Typography className="text-lg text-white font-semibold">
                           {props.vendorName}
                       </Typography>
