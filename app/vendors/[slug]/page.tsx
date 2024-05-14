@@ -1,42 +1,46 @@
+import { getCategories } from "@/lib/utils/utils";
+import Transition from "../../Components/Transition";
+import VendorDescription from "../../Components/VendorDescription";
 import VendorHeader from "../../Components/VendorHeader";
 import VendorImages from "../../Components/VendorImages";
-import VendorDescription from "../../Components/VendorDescription";
-import Contact from "../../Components/Contact";
-import { getCategories } from "@/lib/utils/utils";
 
 // generate the page at build time
 // with generateStaticParams by looking at getCategories
 // and getVendors
 export async function generateStaticParams() {
-  const repo = await getCategories();
-  return repo.getVendors().map((vendor) => {
-    return {
-      slug: vendor.id.toString(),
-    };
-  });
+    const repo = await getCategories();
+    return repo.getVendors().map((vendor) => {
+        return {
+            slug: vendor.id.toString(),
+        };
+    });
 }
 
 export default async function VendorInfoPage({
-  params: { slug },
+    params: { slug },
 }: {
-  params: { slug: string };
+    params: { slug: string };
 }) {
-  const repo = await getCategories();
-  const vendor = repo
-    .getVendors()
-    .find((vendor) => vendor.id.toString() === slug);
+    const repo = await getCategories();
+    const vendor = repo
+        .getVendors()
+        .find((vendor) => vendor.id.toString() === slug);
 
-  return (
-    <div className="bg-white flex flex-col min-h-screen justify-between">
-      <VendorHeader
-        vendorName={vendor?.name ?? ""}
-        tags={vendor?.categories ?? []}
-      />
-      <div className=" flex flex-row ml-10 mt-10">
-        <VendorDescription description={vendor?.description ?? ""} />
-        <VendorImages images={vendor?.additionalImages ?? []} />
-      </div>
-      <Contact contactText="You can reach us Monday-Friday at shop@adelineandco.com. Expect a reply within 24-hours." />
-    </div>
-  );
+    return (
+        <Transition>
+            <div className="flex min-h-screen flex-col bg-white">
+                <VendorHeader
+                    vendorName={vendor?.name ?? ""}
+                    vendorImage={vendor?.image ?? ""}
+                    tags={vendor?.categories ?? []}
+                />
+                <div className="md:items-between mt-10 flex h-full w-full flex-col items-center justify-around gap-x-16 gap-y-16 px-10 md:flex-row">
+                    <VendorDescription
+                        description={vendor?.description ?? ""}
+                    />
+                    <VendorImages images={vendor?.additionalImages ?? []} />
+                </div>
+            </div>
+        </Transition>
+    );
 }

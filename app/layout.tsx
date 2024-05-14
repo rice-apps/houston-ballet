@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { StyledEngineProvider } from '@mui/material/styles';
 import localFont from "next/font/local";
-import { ClientCookiesProvider } from "./Components/ClientCookiesProvider";
 import GoogleAnalytics from "./Components/GoogleAnalytics";
 import NavBar from "./Components/Navbar";
 import "./globals.css";
@@ -21,6 +21,21 @@ const metric = localFont({
     variable: "--font-metric",
 });
 
+// figtree (the good one)
+const figtree = localFont({
+    src: [
+        {
+            path: "../public/fonts/Figtree-Italic-VariableFont_wght.ttf",
+            weight: "400",
+        },
+        {
+            path: "../public/fonts/Figtree-VariableFont_wght.ttf",
+            weight: "400",
+        },
+    ],
+    variable: "--font-figtree",
+});
+
 // inter font
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,14 +51,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <GoogleAnalytics GA_TRACKING_ID="G-RVES61K2QJ" />
-            <ClientCookiesProvider>
+            <StyledEngineProvider injectFirst>
+                <GoogleAnalytics GA_TRACKING_ID="G-RVES61K2QJ" />
                 <body className={metric.className}>
                     <NavBar />
-                    {children}
-                    <div className="h-20"></div>
+                    <main>{children}</main>
                 </body>
-            </ClientCookiesProvider>
+            </StyledEngineProvider>
         </html>
     );
 }

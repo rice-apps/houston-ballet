@@ -1,6 +1,7 @@
 export interface Category {
     name: string;
     image: string;
+    icon: string;
     vendors: Vendor[];
     id: number;
 }
@@ -24,13 +25,14 @@ export class VendorsRepo {
     subtitle: Subtitles;
     constructor(categoriesJson: any, subtitle: any) {
         this.categories = [];
-        this.subtitle = {};
+        this.subtitle = subtitle;
         for (let category in categoriesJson) {
             this.categories.push({
                 name: category,
                 vendors: categoriesJson[category].vendors,
                 image: categoriesJson[category].image,
-                id: categoriesJson[category].id
+                id: categoriesJson[category].id,
+                icon: categoriesJson[category].smallIcon
             })
         }
         let vendor_map = {}
@@ -60,11 +62,11 @@ export class VendorsRepo {
     }
 
     getVendors(): Vendor[] {
-        return this.vendors;
+        return this.vendors.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     getCategories(): Category[] {
-        return this.categories;
+        return this.categories.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     getSubtitle(key: string): string {

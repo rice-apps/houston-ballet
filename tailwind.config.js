@@ -12,13 +12,15 @@ module.exports = {
     theme: {
         fontFamily: {
             Metric: ['"Metric-Regular"', "serif"],
+            Figtree: ['"Figtree"', 'sans-serif'], // New font added
         },
         extend: {
             backgroundImage: {
                 categoryBackground: "url('../public/categoryBackground.png')",
-                nutcrackerBackground: "url('../public/background.png')",
+                nutcrackerBackground: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../public/background.png')",
                 vendorBackground: "url('../public/vendorBackground.png')",
                 mapBackground: "url('/assets/MapCover.png')",
+                welcomeImage: "url('../public/welcomeImage.png')",
             },
             colors: {
                 ballet: "#33323c",

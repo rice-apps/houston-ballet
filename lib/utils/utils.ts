@@ -22,7 +22,7 @@ export async function getCategories(): VendorsRepo {
 
     let ret = {}
     let vendorsResp = await resp.json()
-    resp = await fetch('https://hb-strapi-production.up.railway.app/api/categories?populate[0]=primaryImage', 
+    resp = await fetch('https://hb-strapi-production.up.railway.app/api/categories?populate[0]=primaryImage&populate[1]=smallIcon', 
     {
       method: "GET",
 			headers: {
@@ -33,7 +33,7 @@ export async function getCategories(): VendorsRepo {
     let categoriesResp = await resp.json();
 
     categoriesResp.data.forEach(category => 
-      ret[category.name] = {vendors: [], image: category?.primaryImage?.url ?? "", id: category.id}
+      ret[category.name] = {vendors: [], image: category?.primaryImage?.url ?? "", id: category.id, smallIcon: category?.smallIcon?.url ?? ""}
     );
 
     vendorsResp.data.forEach(vendor => {

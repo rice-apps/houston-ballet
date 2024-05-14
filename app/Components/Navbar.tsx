@@ -40,19 +40,19 @@ export default function NavBar() {
 
     const navigationLinks: Array<Link> = [
         {
-            displayText: "VENDORS",
+            displayText: "Vendors",
             path: "/vendors",
         },
         {
-            displayText: "CATEGORIES",
+            displayText: "Categories",
             path: "/categories",
         },
         {
-            displayText: "MAP",
+            displayText: "Map",
             path: "/map",
         },
         {
-            displayText: "NOTIFICATIONS",
+            displayText: "Notifications",
             path: "/sms",
         },
     ];
@@ -102,7 +102,7 @@ export default function NavBar() {
             </Link>
 
             <div className="flex-grow s:invisible md:visible">
-                <div className="items-left justify-left hidden md:flex ">
+                <div className="items-left justify-left hidden md:flex font-Figtree">
                     <ul className="justify-left items-left mt-4 flex flex-wrap gap-4 md:mt-0">
                         {navigationLinks.map((link: Link, idx) => (
                             <li key={idx}>

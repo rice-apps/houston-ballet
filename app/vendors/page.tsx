@@ -9,9 +9,9 @@ export default async function VendorPage() {
     
     return (
         <>
-            <div className="absolute z-0 h-128 w-full bg-vendorBackground p-5"></div>
-            <div className="relative z-20 flex h-128 flex-col justify-center p-5">
-                <h1 className="font-sans top-20 bg-none text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl">
+            <div className="absolute z-0 h-screen w-full bg-vendorBackground p-5 bg-no-repeat bg-cover" role="banner"></div>
+            <div className="relative z-20 flex h-screen flex-col justify-center p-5">
+                <h1 className="font-sans top-20 bg-none text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl" role="main">
                     VENDORS
                 </h1>
                 <h3 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
@@ -20,7 +20,7 @@ export default async function VendorPage() {
             </div>
             <div></div>
 
-            <VendorsSearch originalVendors={vendors} categories={categories} />
+            <VendorsSearch originalVendors={vendors} categories={categories} aria-label="Vendor Search"/>
         </>
     );
 }

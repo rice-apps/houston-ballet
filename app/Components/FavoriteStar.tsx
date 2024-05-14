@@ -47,7 +47,7 @@ export default function FavoriteStar({ id }: FavoriteProps) {
         <button
             aria-label={favorited[id] ? "Unfavorite" : "Favorite"}
             onClick={handleClick}
-            className="ml-2 rounded-full p-2 transition duration-300 ease-in-out"
+            className="rounded-full p-0 pt-1 transition duration-300 ease-in-out"
         >
             <StarSVG isFilled={!!favorited[id]} />
         </button>
