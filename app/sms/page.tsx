@@ -3,6 +3,9 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
+import InputAdornment from "@mui/material/InputAdornment";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -62,30 +65,25 @@ export function InfoForm() {
     const handleSubmit = async () => {
         // If inputs are non-empty
         if (email != "" && phoneNumber != "") {
-            console.log("phone number from input box: " + phoneNumber);
-            console.log("email from input box: " + email);
-
             const userInput: UserData = {
                 emailString: email,
                 phoneNumberString: phoneNumber,
             };
-            console.log("new email: " + userInput["emailString"]);
-            console.log("new number: " + userInput["phoneNumberString"]);
 
-            await postData("/api/csvwrite", userInput, "PUT").then(() => {
-                console.log("logged");
-                // Display notification toast
-                toast.success("Submitted successfully!", {
-                    position: "top-right",
-                    autoClose: 3000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-            });
+            // await postData("/api/csvwrite", userInput, "PUT").then(() => {
+            //     console.log("logged");
+            //     // Display notification toast
+            //     toast.success("Submitted successfully!", {
+            //         position: "top-right",
+            //         autoClose: 3000,
+            //         hideProgressBar: true,
+            //         closeOnClick: true,
+            //         pauseOnHover: true,
+            //         draggable: true,
+            //         progress: undefined,
+            //         theme: "light",
+            //     });
+            // });
 
             await postData(
                 "https://hb-strapi-production.up.railway.app/api/form-process",
@@ -140,44 +138,58 @@ export function InfoForm() {
                     EVENTS HAPPENING AT THE MARKET!
                 </h3>
                 <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-4  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
-                    <span className="flex flex-col">
-                        <div className="mb-1 flex flex-row items-center">
-                            <img src="/email.png"></img> Email
-                        </div>
+                    <span className="flex flex-col gap-y-10">
+
                         <TextField
-                            required
-                            InputProps={{
-                                style: {
-                                    marginBottom: "5%",
-                                    backgroundColor: "#dddddd",
-                                    borderRadius: "10px",
-                                },
-                            }}
+                            type="email"
+                            label="Email"
+                            placeholder="example@gmail.com"
                             id="email"
-                            label="Insert email here"
-                            variant="outlined"
+                            className="focus:outline-none"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            aria-label="Email"
+                            inputProps={{
+                                style: {
+                                    padding: '16.5px 14px 16.5px 0px',
+                                    // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
+                                    "--tw-ring-offset-width": '0'
+                                }
+                            }}
+                            InputProps={{
+                                "aria-label": 'Vendors search bar', // aria for search bar
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <EmailIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
+                            aria-label="Email Address"
                         />
 
-                        <div className="mb-1 flex flex-row items-center">
-                            <img src="/phone.png"></img> Phone Number
-                        </div>
                         <TextField
                             required
+                            type="tel"
+                            label="Phone Number"
+                            placeholder="(123) 456-7890"
                             id="phone_number"
-                            InputProps={{
-                                style: {
-                                    marginBottom: "5%",
-                                    backgroundColor: "#dddddd",
-                                    borderRadius: "10px",
-                                },
-                            }}
-                            label="Add phone number here"
-                            variant="outlined"
+                            className="focus:outline-none"
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
+                            inputProps={{
+                                style: {
+                                    padding: '16.5px 14px 16.5px 0px',
+                                    // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
+                                    "--tw-ring-offset-width": '0'
+                                }
+                            }}
+                            InputProps={{
+                                "aria-label": 'Vendors search bar', // aria for search bar
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <PhoneIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
                             aria-label="Phone Number"
                         />
                     </span>
