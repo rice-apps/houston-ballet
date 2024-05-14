@@ -56,11 +56,11 @@ export class VendorsRepo {
     }
 
     getVendors(): Vendor[] {
-        return this.vendors;
+        return this.vendors.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     getCategories(): Category[] {
-        return this.categories;
+        return this.categories.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     getCategory(name: string): Category | undefined {
