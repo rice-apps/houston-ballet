@@ -5,6 +5,8 @@ import "../globals.css";
 export default async function VendorPage() {
     const vendors = (await getCategories()).getVendors();
     const categories = (await getCategories()).getCategories();
+    const subtitle = (await getCategories()).getSubtitle("vendors");
+    
     return (
         <>
             <div className="absolute z-0 h-screen w-full bg-vendorBackground p-5 bg-no-repeat bg-cover" role="banner"></div>
@@ -13,8 +15,7 @@ export default async function VendorPage() {
                     VENDORS
                 </h1>
                 <h3 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
-                    BROWSE THROUGH OUR VENDORS WITH OUR DIVERSE LIST OF
-                    CATEGORIES.
+                    {subtitle ?? ""}
                 </h3>
             </div>
             <div></div>
