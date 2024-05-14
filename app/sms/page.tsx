@@ -6,6 +6,7 @@ import * as React from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
+import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -15,7 +16,8 @@ export function InfoForm() {
     // const [name, setName] = React.useState('');
 
     const [csvContents, setCsvContents] = React.useState("");
-
+    const recaptchaRef = React.useRef<ReCAPTCHA | null>(null);
+    
     const config = {
         delimiter: "", // auto-detect <--------- We don't want this!
         newline: "", // auto-detect
@@ -40,6 +42,7 @@ export function InfoForm() {
     type UserData = {
         emailString: string;
         phoneNumberString: string;
+        token: string;
     };
 
     // fetching csvwrite api endpoint to send the phone number to the server side
@@ -65,9 +68,11 @@ export function InfoForm() {
     const handleSubmit = async () => {
         // If inputs are non-empty
         if (email != "" && phoneNumber != "") {
+            const recaptchaToken = await recaptchaRef?.current?.executeAsync();
             const userInput: UserData = {
                 emailString: email,
                 phoneNumberString: phoneNumber,
+                token: recaptchaToken,
             };
 
             // await postData("/api/csvwrite", userInput, "PUT").then(() => {
@@ -124,8 +129,12 @@ export function InfoForm() {
         <>
             <div className="relative flex flex-col items-center justify-center text-center">
                 <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-4  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
+                    <ReCAPTCHA
+                            ref={recaptchaRef}
+                            size="invisible"
+                            sitekey="6LdjedspAAAAAOSI0BupgJbODmdYfzG4eV4uwdIL"
+                        />
                     <span className="flex flex-col gap-y-10">
-
                         <TextField
                             type="email"
                             label="Email"
