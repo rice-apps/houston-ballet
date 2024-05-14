@@ -90,7 +90,16 @@ export function InfoForm() {
                 userInput,
                 "POST",
             ).then(() => {
-                console.log("pushed to strapi");
+                toast.success("Submitted successfully!", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             });
 
             // Clear form after submission
@@ -112,31 +121,8 @@ export function InfoForm() {
     };
 
     return (
-        <div className="flex items-center justify-center" role="main">
-            <div
-                style={{
-                    backgroundPosition: "center top",
-                    backgroundImage: 'url("/background.png")',
-                    backgroundSize: "cover",
-                    filter: "brightness(75%)",
-                    height: "65vh",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    zIndex: "0",
-                }}
-                aria-hidden="true" // tells screen reader to IGNORE decorative background
-            ></div>
-            <div className="relative mt-44 flex flex-col items-center justify-center text-center">
-                <h1 className="font-sans text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl">
-                    CONNECT
-                </h1>
-
-                <h3 className="font-sans mx-3 mt-4 pt-3 text-center text-lg font-medium tracking-[.15em] text-white md:text-xl">
-                    GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL
-                    EVENTS HAPPENING AT THE MARKET!
-                </h3>
+        <>
+            <div className="relative flex flex-col items-center justify-center text-center">
                 <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-4  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
                     <span className="flex flex-col gap-y-10">
 
@@ -218,16 +204,24 @@ export function InfoForm() {
                 pauseOnHover
                 theme="light"
             />
-        </div>
+        </>
     );
 }
 
 export default function Page() {
     return (
-        <div className=" flex flex-col justify-between bg-white">
-            <div className="relative">
+        <>
+            <div className="absolute z-0 h-screen w-full bg-nutcrackerBackground p-5 bg-no-repeat bg-cover" role="banner"></div>
+            <div className="relative z-20 flex h-screen flex-col justify-center p-5">
+                <h1 className="font-sans top-20 bg-none text-center text-4xl font-bold tracking-[.15em] text-white md:text-7xl" role="main">
+                    CONNECT
+                </h1>
+                <h3 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
+                    GET NOTIFIED ABOUT OUR RAFFLE, PROMOTIONS, AND SPECIAL
+                    EVENTS HAPPENING AT THE MARKET!
+                </h3>
                 <InfoForm />
             </div>
-        </div>
+        </>
     );
 }
