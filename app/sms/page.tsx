@@ -8,6 +8,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from "react-toastify";
+import { MuiTelInput, matchIsValidTel } from 'mui-tel-input'
 import "react-toastify/dist/ReactToastify.css";
 
 function InfoForm() {
@@ -45,7 +46,11 @@ function InfoForm() {
     // Store phone number from input textbox.
     const handleSubmit = async () => {
         // If inputs are non-empty
-        if (email != "" && phoneNumber != "") {
+        if (email != "" && phoneNumber != "" && matchIsValidTel(phoneNumber, {
+            onlyCountryies: ["US"], // optional,
+            excludedCountryies: [], // optional
+            continents: [] // optional
+          }) && email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")) {
             const recaptchaToken = await recaptchaRef?.current?.executeAsync();
             const userInput: UserData = {
                 emailString: email,
@@ -88,16 +93,45 @@ function InfoForm() {
             setSubmitted(true);
         } else {
             // If email or phone number is empty
-            toast.error("Please fill in all fields.", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
+            if (email == "" || phoneNumber == "") {
+                toast.error("Please fill in all fields.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            } else if (!matchIsValidTel(phoneNumber, {
+                onlyCountryies: ["US"], // optional,
+                excludedCountryies: [], // optional
+                continents: [] // optional
+              })) {
+                toast.error("Please enter a valid US phone number.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            } else if (email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")) {
+                toast.error("Please enter a valid email.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            
+            }
         }
     };
 
@@ -118,7 +152,6 @@ function InfoForm() {
                             label="Email"
                             placeholder="example@gmail.com"
                             id="email"
-                            className="focus:outline-none"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             inputProps={{
@@ -126,7 +159,8 @@ function InfoForm() {
                                     padding: '16.5px 14px 16.5px 0px',
                                     // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
                                     "--tw-ring-offset-width": '0'
-                                }
+                                },
+                                pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}",
                             }}
                             InputProps={{
                                 "aria-label": 'Vendors search bar', // aria for search bar
@@ -137,21 +171,22 @@ function InfoForm() {
                                 ),
                             }}
                             aria-label="Email Address"
+                            error={email != "" && !email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")}
                         />) : <>
                         <h1>
                             You are now subscribed to our notifications at the email address: {email} and phone number: {phoneNumber}!
                         </h1>
                         </>}
 
-                        {!submitted ? (<TextField
+                        {!submitted ? (<MuiTelInput
                             required
                             type="tel"
                             label="Phone Number"
-                            placeholder="(123) 456-7890"
+                            placeholder="123 456 7890"
                             id="phone_number"
                             className="focus:outline-none"
                             value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            onChange={(e) => setPhoneNumber(e)}
                             inputProps={{
                                 style: {
                                     padding: '16.5px 14px 16.5px 0px',
@@ -168,6 +203,12 @@ function InfoForm() {
                                 ),
                             }}
                             aria-label="Phone Number"
+                            forceCallingCode defaultCountry="US"
+                            error={phoneNumber.trim() != "" && !matchIsValidTel(phoneNumber, {
+                                onlyCountryies: ["US"], // optional,
+                                excludedCountryies: [], // optional
+                                continents: [] // optional
+                              })}
                         />) : <></>}
                     </span>
                 </form>
