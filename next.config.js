@@ -2,7 +2,13 @@
 const nextConfig = {
     // output: "export",
     images: {
-        domains: ['hb-bucket-2023.s3.us-east-1.amazonaws.com'],
+        remotePatterns: [
+            {
+              protocol: 'https',
+              hostname: 'hb-bucket-2023.s3.us-east-1.amazonaws.com',
+              pathname: '**',
+            },
+        ],
     },
     typescript: {
         ignoreBuildErrors: true,
