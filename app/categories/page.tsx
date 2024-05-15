@@ -25,7 +25,6 @@ export default async function CategoryPage() {
     return <>
 <header className="relative flex h-screen flex-col content-center justify-center p-5 overflow-hidden">
     <Image
-        priority
         // Change this path to your actual image location
         src='/categoryBackground.png'
         priority
