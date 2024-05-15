@@ -3,6 +3,7 @@ import Transition from "../../Components/Transition";
 import VendorDescription from "../../Components/VendorDescription";
 import VendorHeader from "../../Components/VendorHeader";
 import VendorImages from "../../Components/VendorImages";
+import { Footer } from "@/app/Components/Footer";
 
 // generate the page at build time
 // with generateStaticParams by looking at getCategories
@@ -41,6 +42,7 @@ export default async function VendorInfoPage({
                     <VendorImages images={vendor?.additionalImages ?? []} />
                 </div>
             </div>
+            <Footer/>
         </Transition>
     );
 }
