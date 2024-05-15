@@ -16,7 +16,7 @@ export default async function WelcomePage() {
 
     return (
         <div className="flex flex-col sm:flex-row h-screen w-screen">
-        <div className='relative h-1/2 sm:h-screen w-screen sm:w-1/2 py-10 flex flex-col items-center justify-center'>
+        <div className='relative h-1/2 sm:h-screen w-screen sm:w-1/2 py-64 flex flex-col items-center justify-center'>
             <Image
                 priority
                 // Adjust the path to your image
