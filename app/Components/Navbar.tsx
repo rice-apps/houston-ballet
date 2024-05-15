@@ -109,8 +109,8 @@ export default function NavBar() {
                                 <Link
                                     href={link.path}
                                     color="#FFFFFF"
-                                    underline="hover"
-                                    className="ml-5 block px-4 py-2 hover:underline"
+                                    underline="none"
+                                    className="ml-5 block px-4 py-2 transition-colors duration-300 hover:bg-white hover:text-black rounded-lg"
                                 >
                                     {link.displayText}
                                 </Link>
