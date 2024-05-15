@@ -3,6 +3,7 @@ import VendorsSearch from "../Components/VendorsSearch";
 import "../globals.css";
 import { Footer } from "../Components/Footer";
 import Image from "next/image";
+import { Suspense } from "react";
 export const metadata = {
     title: "Merchants",
     description: "Scroll through the merchants at the Nutcracker Market.",
@@ -35,8 +36,9 @@ export default async function VendorPage() {
         </h3>
     </div>
 </div>
-
+<Suspense>
 <VendorsSearch originalVendors={vendors} categories={categories} aria-label="Vendor Search"/>
+</Suspense>
 <Footer/>
 </>;
 }

@@ -3,6 +3,7 @@ import MapTitle from '../Components/MapTitle';
 import Map from '../Components/Map';
 import { getCategories } from '@/lib/utils/utils';
 import { Footer } from '../Components/Footer';
+import { Suspense } from 'react'
 
 export const metadata = {
   title: "Nutcracker Market Map",
@@ -20,7 +21,9 @@ export default async function Home() {
       <Contact /> */}
       {/* exporting components of the Map Page in sequential order */}
       <MapTitle subtitle={subtitle}/>
-      <Map />
+      <Suspense>
+        <Map />
+      </Suspense>
       <Footer/>
     </div>
   );
