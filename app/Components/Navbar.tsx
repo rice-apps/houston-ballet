@@ -6,6 +6,9 @@ import { Box, Drawer, IconButton, Link, ListItemButton } from "@mui/material";
 import { List } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import Image from "next/image";
+import Logo from "../../public/nutcrackerLogo.png";
+
 export default function NavBar() {
     const [state, setState] = React.useState({
         right: false,
@@ -93,10 +96,10 @@ export default function NavBar() {
     return (
         <nav className="flex w-full items-center justify-between bg-ballet p-2">
             {/* Logo in the top left corner */}
-            <Link href="/" className="shrink-0">
-                <img
-                    src="/nutcrackerLogo.png"
-                    alt="Company Logo"
+            <Link href="/">
+                <Image
+                    src={Logo}
+                    alt="Nutcracker Logo"
                     className="h-10 w-auto"
                 />
             </Link>
