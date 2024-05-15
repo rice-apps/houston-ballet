@@ -1,5 +1,6 @@
 import { getCategories } from "@/lib/utils/utils";
 import CategoryCard, { CategoryCardProps } from "../Components/CategoryCard";
+import { Footer } from "../Components/Footer";
 
 export default async function CategoryPage() {
     // temp card array to be replaced by database info
@@ -32,6 +33,7 @@ export default async function CategoryPage() {
                     })}
                 </div>
             </div>
+            <Footer/>
         </>
     );
 }

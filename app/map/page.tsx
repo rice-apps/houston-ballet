@@ -2,6 +2,7 @@ import React from 'react';
 import MapTitle from '../Components/MapTitle';
 import Map from '../Components/Map';
 import { getCategories } from '@/lib/utils/utils';
+import { Footer } from '../Components/Footer';
 
 export default async function Home() {
   const subtitle = (await getCategories()).getSubtitle("map");
@@ -15,6 +16,7 @@ export default async function Home() {
       {/* exporting components of the Map Page in sequential order */}
       <MapTitle subtitle={subtitle}/>
       <Map />
+      <Footer/>
     </div>
   );
 };

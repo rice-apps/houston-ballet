@@ -2,6 +2,7 @@ import React from "react";
 import InterestsButton from "../Components/InterestsButton"
 import { getCategories } from "@/lib/utils/utils";
 import Link from "next/link";
+import { Footer } from "../Components/Footer";
 
 export default async function WelcomePage() {
     // Get all categories
@@ -27,6 +28,7 @@ export default async function WelcomePage() {
                         </div>
                     </Link>
                 </div>
+                <Footer/>
             </div>
         </div>
     );

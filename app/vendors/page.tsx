@@ -1,6 +1,7 @@
 import { getCategories } from "@/lib/utils/utils";
 import VendorsSearch from "../Components/VendorsSearch";
 import "../globals.css";
+import { Footer } from "../Components/Footer";
 
 export default async function VendorPage() {
     const vendors = (await getCategories()).getVendors();
@@ -21,6 +22,7 @@ export default async function VendorPage() {
             <div></div>
 
             <VendorsSearch originalVendors={vendors} categories={categories} aria-label="Vendor Search"/>
+            <Footer/>
         </>
     );
 }
