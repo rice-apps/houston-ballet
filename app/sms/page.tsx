@@ -1,6 +1,11 @@
 import { getCategories } from "@/lib/utils/utils";
 import InfoForm from "../Components/InfoForm";
 
+export const metadata = {
+    title: "Notifications",
+    description: "Sign up for notifications from the Nutcracker Market.",
+}
+
 export default async function Page() {
     const subtitle = (await getCategories()).getSubtitle("notifications");
     return (

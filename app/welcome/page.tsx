@@ -4,6 +4,11 @@ import { getCategories } from "@/lib/utils/utils";
 import Link from "next/link";
 import { Footer } from "../Components/Footer";
 
+export const metadata = {
+    title: "Nutcracker Market",
+    description: "Welcome to the Nutcracker Market!",
+}
+
 export default async function WelcomePage() {
     // Get all categories
     const allCategories = (await getCategories()).getCategories().map((category) => ({"name": category.name, "icon": category.icon, "id": category.id}));

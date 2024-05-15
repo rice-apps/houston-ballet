@@ -2,6 +2,11 @@ import { getCategories } from "@/lib/utils/utils";
 import CategoryCard, { CategoryCardProps } from "../Components/CategoryCard";
 import { Footer } from "../Components/Footer";
 
+export const metadata = {
+    title: "Merchant Categories",
+    description: "Scroll through the categories of merchants at the Nutcracker Market.",
+}
+
 export default async function CategoryPage() {
     // temp card array to be replaced by database info
     const categories = await getCategories();

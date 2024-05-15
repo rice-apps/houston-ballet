@@ -3,6 +3,11 @@ import VendorsSearch from "../Components/VendorsSearch";
 import "../globals.css";
 import { Footer } from "../Components/Footer";
 
+export const metadata = {
+    title: "Merchants",
+    description: "Scroll through the merchants at the Nutcracker Market.",
+}
+
 export default async function VendorPage() {
     const vendors = (await getCategories()).getVendors();
     const categories = (await getCategories()).getCategories();

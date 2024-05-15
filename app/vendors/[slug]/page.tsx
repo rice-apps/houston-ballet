@@ -4,6 +4,20 @@ import VendorDescription from "../../Components/VendorDescription";
 import VendorHeader from "../../Components/VendorHeader";
 import VendorImages from "../../Components/VendorImages";
 import { Footer } from "@/app/Components/Footer";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+
+
+export async function generateMetadata({ params } : Params) {
+    const repo = await getCategories();
+    const vendor = repo
+        .getVendors()
+        .find((vendor) => vendor.id.toString() === params.slug);
+
+    return {
+        title: vendor?.name ?? "",
+        description: vendor?.shortDesc ?? "",
+    };
+}
 
 // generate the page at build time
 // with generateStaticParams by looking at getCategories

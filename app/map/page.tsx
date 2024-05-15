@@ -4,6 +4,11 @@ import Map from '../Components/Map';
 import { getCategories } from '@/lib/utils/utils';
 import { Footer } from '../Components/Footer';
 
+export const metadata = {
+  title: "Nutcracker Market Map",
+  description: "Find your way around the Nutcracker Market.",
+}
+
 export default async function Home() {
   const subtitle = (await getCategories()).getSubtitle("map");
   return (
