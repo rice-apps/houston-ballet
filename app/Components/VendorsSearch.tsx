@@ -17,7 +17,6 @@ import { useEffect, useMemo, useState } from "react";
 import { withCookies } from "react-cookie";
 import { Cookie } from "universal-cookie";
 import { VendorCardDisplay } from "./VendorCardDisplay";
-import vendorProducts from "@/app/Components/VendorProducts";
 import {redirect} from "next/navigation";
 
 function useScrollPosition() {
@@ -78,7 +77,7 @@ function VendorsSearch({
             redirect('/welcome');
         }
         const interestsTemp = JSON.parse(localStorage.getItem('interests') ?? "");
-        setInterests(interestsTemp);
+        setInterests(interestsTemp.map((interest: { name: string; }) => (interest.name)));
         console.log(interestsTemp);
     }, [])
 
