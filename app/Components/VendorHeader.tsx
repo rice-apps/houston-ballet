@@ -1,6 +1,6 @@
 import Link from "next/link";
 import FavoriteStar from "./FavoriteStar";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 function VendorHeader(props: {
     vendorName: string;
@@ -13,14 +13,17 @@ function VendorHeader(props: {
     {/* Back button */}
     <div className="relative flex flex-row pb-5 pl-10 mb-5 pt-64">
     <Image
-        priority 
-        src={props.vendorImage} // Ensure this is the correct path
-        layout='fill'
-        objectFit='cover'
-        objectPosition='center'
+        priority
+        // Ensure this is the correct path
+        src={props.vendorImage}
         alt="Vendor background"
         className="z-0"
-    />
+        fill
+        sizes="100vw"
+        style={{
+            objectFit: "cover",
+            objectPosition: "center"
+        }} />
     <div className="absolute bottom-0 left-0 right-0 flex gap-x-5 items-center pt-10 px-10 py-5 z-10">
         <Link href="/vendors" aria-label="Go back to vendor list">
             <button className="focus:shadow-outline inline-flex h-10 items-center rounded-lg bg-slate-700 px-5 text-white transition-colors duration-150 hover:bg-slate-800">

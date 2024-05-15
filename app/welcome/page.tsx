@@ -3,7 +3,7 @@ import InterestsButton from "../Components/InterestsButton"
 import { getCategories } from "@/lib/utils/utils";
 import Link from "next/link";
 import { Footer } from "../Components/Footer";
-import Image from "next/legacy/image"
+import Image from "next/image"
 
 export const metadata = {
     title: "Nutcracker Market",
@@ -18,13 +18,16 @@ export default async function WelcomePage() {
         <div className="flex flex-col sm:flex-row h-screen w-screen">
         <div className='relative h-1/2 sm:h-screen w-screen sm:w-1/2 py-10 flex flex-col items-center justify-center'>
             <Image
-                priority 
-                src='/welcomeImage.png' // Adjust the path to your image
-                layout='fill'
-                objectFit='cover'
+                priority
+                // Adjust the path to your image
+                src='/welcomeImage.png'
                 alt='Welcome background'
                 className='z-0'
-            />
+                fill
+                sizes="100vw"
+                style={{
+                    objectFit: "cover"
+                }} />
             <div className='absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center z-10'>
                 <h1 className='font-sans text-center text-3xl md:text-5xl lg:text-6xl font-bold tracking-[.15em] text-white'>WELCOME!</h1>
                 <h2 className='pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white'>FIRST TIME AT THE MARKET? </h2>
@@ -49,6 +52,5 @@ export default async function WelcomePage() {
             <Footer/>
         </div>
     </div>
-    
     );
 }
