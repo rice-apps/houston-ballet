@@ -4,6 +4,7 @@ import "../globals.css";
 import { Footer } from "../Components/Footer";
 import Image from "next/image";
 import { Suspense } from "react";
+import VendorBackground from "../../public/vendorBackground.png";
 export const metadata = {
     title: "Merchants",
     description: "Scroll through the merchants at the Nutcracker Market.",
@@ -18,7 +19,7 @@ export default async function VendorPage() {
 <div className="relative h-screen w-full overflow-hidden">
     <Image
         // Adjust the path to your image
-        src="/vendorBackground.png"
+        src={VendorBackground}
         priority
         alt="Vendor background"
         className="z-0"

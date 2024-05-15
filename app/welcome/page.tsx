@@ -4,7 +4,7 @@ import { getCategories } from "@/lib/utils/utils";
 import Link from "next/link";
 import { Footer } from "../Components/Footer";
 import Image from "next/image"
-
+import WelcomeBackground from "../../public/welcomeImage.png"
 export const metadata = {
     title: "Nutcracker Market",
     description: "Welcome to the Nutcracker Market!",
@@ -20,7 +20,7 @@ export default async function WelcomePage() {
             <Image
                 priority
                 // Adjust the path to your image
-                src='/welcomeImage.png'
+                src={WelcomeBackground}
                 alt='Welcome background'
                 className='z-0'
                 fill

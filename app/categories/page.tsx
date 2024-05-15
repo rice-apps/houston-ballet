@@ -2,6 +2,7 @@ import { getCategories } from "@/lib/utils/utils";
 import CategoryCard, { CategoryCardProps } from "../Components/CategoryCard";
 import { Footer } from "../Components/Footer";
 import Image from "next/image";
+import CategoryBackground from "../../public/categoryBackground.png";
 
 export const metadata = {
     title: "Merchant Categories",
@@ -26,7 +27,7 @@ export default async function CategoryPage() {
 <header className="relative flex h-screen flex-col content-center justify-center p-5 overflow-hidden">
     <Image
         // Change this path to your actual image location
-        src='/categoryBackground.png'
+        src={CategoryBackground}
         priority
         alt='Category background'
         className='z-0'

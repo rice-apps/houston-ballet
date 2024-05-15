@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from "next/image";
-
+import MapCover from '../../public/assets/MapCover.png';
 export default function MapTitle({subtitle}: {subtitle: string}){
 
     return (
@@ -8,7 +8,7 @@ export default function MapTitle({subtitle}: {subtitle: string}){
     <Image
         priority
         // Update this path to where your image is stored
-        src='/assets/MapCover.png'
+        src={MapCover}
         alt='Map background'
         className='z-0'
         fill

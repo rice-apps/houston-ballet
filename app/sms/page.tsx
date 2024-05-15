@@ -1,7 +1,7 @@
 import { getCategories } from "@/lib/utils/utils";
 import InfoForm from "../Components/InfoForm";
 import Image from "next/image";
-
+import SmsBackground from "../../public/background.png";
 export const metadata = {
     title: "Notifications",
     description: "Sign up for notifications from the Nutcracker Market.",
@@ -13,7 +13,7 @@ export default async function Page() {
 <div className="relative h-screen w-full overflow-hidden">
     <Image
         // Change this path to your actual image location
-        src='/background.png'
+        src={SmsBackground}
         priority
         alt='Nutcracker background'
         className='z-0'
