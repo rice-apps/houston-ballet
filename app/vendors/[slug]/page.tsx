@@ -15,7 +15,7 @@ export async function generateMetadata({ params } : Params) {
 
     return {
         title: vendor?.name ?? "",
-        description: vendor?.shortDesc ?? "",
+        description: vendor?.shortDesc ?? "Nutcracket Market Merchant",
     };
 }
 
