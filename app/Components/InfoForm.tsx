@@ -8,7 +8,6 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from "react-toastify";
-import { MuiTelInput, matchIsValidTel } from 'mui-tel-input'
 import "react-toastify/dist/ReactToastify.css";
 
 export default function InfoForm() {
@@ -46,11 +45,7 @@ export default function InfoForm() {
     // Store phone number from input textbox.
     const handleSubmit = async () => {
         // If inputs are non-empty
-        if (email != "" && phoneNumber != "" && matchIsValidTel(phoneNumber, {
-            onlyCountryies: ["US"], // optional,
-            excludedCountryies: [], // optional
-            continents: [] // optional
-          }) && email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")) {
+        if (email != "" && phoneNumber != "" && email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}") && phoneNumber.length == 14) {
             const recaptchaToken = await recaptchaRef?.current?.executeAsync();
             const userInput: UserData = {
                 emailString: email,
@@ -104,11 +99,7 @@ export default function InfoForm() {
                     progress: undefined,
                     theme: "light",
                 });
-            } else if (!matchIsValidTel(phoneNumber, {
-                onlyCountryies: ["US"], // optional,
-                excludedCountryies: [], // optional
-                continents: [] // optional
-              })) {
+            } else if (phoneNumber.length != 14) {
                 toast.error("Please enter a valid US phone number.", {
                     position: "top-right",
                     autoClose: 3000,
@@ -133,6 +124,22 @@ export default function InfoForm() {
             
             }
         }
+    };
+
+    const handlePhoneChange = (event) => {
+        const { value } = event.target;
+        const onlyNums = value.replace(/[^\d]/g, '');
+        let number = '';
+
+        if (onlyNums.length < 4) {
+            number = onlyNums;
+        } else if (onlyNums.length < 7) {
+            number = `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3)}`;
+        } else {
+            number = `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3, 6)} ${onlyNums.slice(6, 10)}`;
+        }
+
+        setPhoneNumber(number);
     };
 
     return (
@@ -178,38 +185,32 @@ export default function InfoForm() {
                         </h1>
                         </>}
 
-                        {!submitted ? (<MuiTelInput
-                            required
-                            type="tel"
-                            label="Phone Number"
-                            placeholder="123 456 7890"
-                            id="phone_number"
-                            className="focus:outline-none"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e)}
-                            inputProps={{
-                                style: {
-                                    padding: '16.5px 14px 16.5px 0px',
-                                    // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
-                                    "--tw-ring-offset-width": '0'
-                                }
-                            }}
-                            InputProps={{
-                                "aria-label": 'Vendors search bar', // aria for search bar
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <PhoneIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                            aria-label="Phone Number"
-                            forceCallingCode defaultCountry="US"
-                            error={phoneNumber.trim() != "" && !matchIsValidTel(phoneNumber, {
-                                onlyCountryies: ["US"], // optional,
-                                excludedCountryies: [], // optional
-                                continents: [] // optional
-                              })}
-                        />) : <></>}
+                        {!submitted ? (<TextField
+            required
+            type="tel"
+            label="Phone Number"
+            placeholder="(123) 456 7890"
+            id="phone_number"
+            className="focus:outline-none"
+            value={phoneNumber}
+            onChange={handlePhoneChange}
+            InputProps={{
+                startAdornment: (
+                    <InputAdornment position="start">
+                        <PhoneIcon />
+                    </InputAdornment>
+                ),
+            }}
+            inputProps={{
+                style: {
+                    padding: '16.5px 14px 16.5px 0px',
+                    "--tw-ring-offset-width": '0'
+                },
+                'aria-label': 'Phone Number'
+            }}
+            aria-label="Phone Number"
+            error={phoneNumber.length > 0 && phoneNumber.length < 14}
+        />) : <></>}
                     </span>
                 </form>
 
