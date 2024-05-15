@@ -40,7 +40,10 @@ export async function getCategories(): VendorsRepo {
       let categories = vendor.categories;
       categories.forEach(category => {
         let vendor_desc = {};
-        vendor_desc["name"] = vendor.name;
+        vendor_desc["name"] = (vendor.the ? "The " : "") + vendor.name;
+        vendor_desc["originalName"] = vendor.name;
+        vendor_desc["the"] = vendor.the ?? false;
+        vendor_desc["mapId"] = vendor.mapId;
         vendor_desc["image"] = vendor.primaryImage?.url ?? "";
         vendor_desc["id"] = vendor.id;
         vendor_desc["description"] = vendor.description ?? "";

@@ -5,6 +5,7 @@ function VendorHeader(props: {
     vendorName: string;
     vendorImage: string;
     tags: string[];
+    mapId: number | undefined;
 }) {
     return (
         <div className="flex flex-col" role="banner">
@@ -29,7 +30,7 @@ function VendorHeader(props: {
                         <span>Back</span>
                     </button>
                 </Link>
-                <Link href={`/map?location=${props.vendorName}`}>
+                <Link href={`/map?location=${props?.mapId} - ${props.vendorName}`}>
                     <div className="pl-5">
                         <button className="focus:shadow-outline mt-7 inline-flex h-10 items-center rounded-lg bg-slate-700 px-5 text-white transition-colors duration-150 hover:bg-slate-800">
                             <span>Show On Map</span>

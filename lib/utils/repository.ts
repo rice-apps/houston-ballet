@@ -9,6 +9,9 @@ export interface Vendor {
     shortDesc: string;
     description: string;
     name: string;
+    originalName: string;
+    the: boolean;
+    mapId: number | undefined;
     image: string;
     additionalImages: string[];
     categories: string[] | undefined;
@@ -44,6 +47,9 @@ export class VendorsRepo {
                 } else {
                     vendor_map[vendor.name] = {
                         name: vendor.name,
+                        originalName: vendor.originalName,
+                        mapId: vendor.mapId,
+                        the: vendor.the,
                         image: vendor.image,
                         categories: [category.name],
                         id: vendor.id,
@@ -62,7 +68,7 @@ export class VendorsRepo {
     }
 
     getVendors(): Vendor[] {
-        return this.vendors.sort((a, b) => a.name.localeCompare(b.name));
+        return this.vendors.sort((a, b) => a.originalName.localeCompare(b.originalName));
     }
 
     getCategories(): Category[] {
