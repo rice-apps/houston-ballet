@@ -130,7 +130,7 @@ export default function VendorImages(props: { images: string[] }) {
                                 <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
                                 {/* Overlay with semi-transparent black */}
                                 <img
-                                    className="h-72 w-72 object-fill"
+                                    className="h-72 w-72 object-cover"
                                     src={image}
                                     alt={`Gallery image ${index + 1}`}
                                     key={index}
@@ -148,17 +148,19 @@ export default function VendorImages(props: { images: string[] }) {
                     <Modal.Header></Modal.Header>
                     <Modal.Body>
                         <Carousel
-                            className="h-64 w-64 md:h-[540px] md:w-[640px]"
+                            className="h-72 w-72 md:h-[540px] md:w-[640px]"
                             theme={visibleTheme}
                             slideInterval={1000000}
                         >
                             {props.images.map((image, index) => (
-                                <img
-                                    className="h-64 w-64 object-contain md:h-[540px] md:w-[640px] bg-ballet"
-                                    src={image}
-                                    alt={`Item ${index + 1}`}
-                                    key={index}
-                                />
+                              <div key={index}>
+                              <img className="absolute top-1/2 -translate-y-1/2 left-0 w-full opacity-30 object-cover scale-[1.2] blur-xl" src={image}/>
+                              <img
+                                  className="h-72 w-72 object-contain md:h-[540px] md:w-[640px] z-10"
+                                  src={image}
+                                  alt={`Item ${index + 1}`}
+                              />
+                            </div>
                             ))}
                         </Carousel>
                         {/* <>
