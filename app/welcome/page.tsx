@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Footer } from "../Components/Footer";
 import Image from "next/image"
 import WelcomeBackground from "../../public/welcomeImage.png"
+
 export const metadata = {
     title: "Nutcracker Market",
     description: "Welcome to the Nutcracker Market!",

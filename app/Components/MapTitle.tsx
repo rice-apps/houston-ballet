@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import MapCover from '../../public/assets/MapCover.png';
+
 export default function MapTitle({subtitle}: {subtitle: string}){
 
     return (

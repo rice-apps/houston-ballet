@@ -2,6 +2,7 @@ import { getCategories } from "@/lib/utils/utils";
 import InfoForm from "../Components/InfoForm";
 import Image from "next/image";
 import SmsBackground from "../../public/background.png";
+
 export const metadata = {
     title: "Notifications",
     description: "Sign up for notifications from the Nutcracker Market.",

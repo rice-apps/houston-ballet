@@ -5,6 +5,7 @@ import { Footer } from "../Components/Footer";
 import Image from "next/image";
 import { Suspense } from "react";
 import VendorBackground from "../../public/vendorBackground.png";
+
 export const metadata = {
     title: "Merchants",
     description: "Scroll through the merchants at the Nutcracker Market.",
