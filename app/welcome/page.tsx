@@ -3,7 +3,7 @@ import InterestsButton from "../Components/InterestsButton"
 import { getCategories } from "@/lib/utils/utils";
 import Link from "next/link";
 import { Footer } from "../Components/Footer";
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 export const metadata = {
     title: "Nutcracker Market",

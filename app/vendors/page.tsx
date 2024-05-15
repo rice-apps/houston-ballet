@@ -2,7 +2,7 @@ import { getCategories } from "@/lib/utils/utils";
 import VendorsSearch from "../Components/VendorsSearch";
 import "../globals.css";
 import { Footer } from "../Components/Footer";
-import Image from "next/image";
+import Image from "next/legacy/image";
 export const metadata = {
     title: "Merchants",
     description: "Scroll through the merchants at the Nutcracker Market.",

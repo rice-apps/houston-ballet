@@ -1,6 +1,6 @@
 import Link from "next/link";
 import FavoriteStar from "./FavoriteStar";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 function VendorHeader(props: {
     vendorName: string;
