@@ -173,8 +173,8 @@ export default function InfoForm() {
                             aria-label="Email Address"
                             error={email != "" && !email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")}
                         />) : <>
-                        <h1>
-                            You are now subscribed to our notifications at the email address: {email} and phone number: {phoneNumber}!
+                        <h1 className="font-normal">
+                            You are now subscribed to our notifications at the email address <span className="text-indigo-500 text-medium">{email}</span> and phone number <span className="text-indigo-500 text-medium">{phoneNumber}</span>!
                         </h1>
                         </>}
 
