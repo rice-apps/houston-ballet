@@ -16,6 +16,18 @@ export async function generateMetadata({ params } : Params) {
     return {
         title: vendor?.name ?? "",
         description: vendor?.shortDesc ?? "Nutcracket Market Merchant",
+        openGraph: {
+            title: vendor?.name ?? "",
+            description: vendor?.shortDesc ?? "Nutcracket Market Merchant",
+            images: [
+                {
+                    url: vendor?.image ?? "",
+                    alt: vendor?.name ?? "",
+                },
+            ],
+            locale: 'en_US',
+            type: 'website',
+        },
     };
 }
 
