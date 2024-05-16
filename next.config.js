@@ -30,9 +30,6 @@ const nextConfig = {
         optimizeCss: true,
         optimizePackageImports: ['flowbite-react']
     },
-    images: {
-        formats: ['image/avif', 'image/webp'],
-    }
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
