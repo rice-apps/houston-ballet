@@ -1,6 +1,6 @@
-"use client";
 import Link from "next/link";
 import FavoriteStar from "./FavoriteStar";
+import Image from "next/image";
 
 type Props = {
     vendorPhoto: string;
@@ -22,10 +22,10 @@ export default function VendorCard(props: Props) {
                 aria-describedby={`vendorDesc-${props.id}`}
             >
                 <div className="relative m-0 h-[28vh] rounded-b-none rounded-t-none border-b border-gray-400">
-                    <img
+                    <Image
                         src={props.vendorPhoto}
                         alt={`Photo of ${props.vendorName}`}
-                        className="h-full w-full object-cover"
+                        fill
                     />
                 </div>
 
