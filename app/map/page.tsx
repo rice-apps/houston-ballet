@@ -8,6 +8,19 @@ import { Suspense } from 'react'
 export const metadata = {
   title: "Nutcracker Market Map",
   description: "Find your way around the Nutcracker Market.",
+  metadataBase: new URL('https://houston-ballet-official.vercel.app'),
+  openGraph: {
+      title: "Nutcracker Market Map",
+      description: "Find your way around the Nutcracker Market.",
+      images: [
+          {
+              url: "/assets/MapCover.png",
+              alt: "Map Cover Image",
+          },
+      ],
+      locale: 'en_US',
+      type: 'website',
+  },
 }
 
 export default async function Home() {

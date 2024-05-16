@@ -9,6 +9,19 @@ import WelcomeBackground from "../../public/welcomeImage.png"
 export const metadata = {
     title: "Nutcracker Market",
     description: "Welcome to the Nutcracker Market!",
+    metadataBase: new URL('https://houston-ballet-official.vercel.app'),
+    openGraph: {
+        title: "Nutcracker Market",
+        description: "Welcome to the Nutcracker Market!",
+        images: [
+            {
+                url: "/welcomeImage.png",
+                alt: "Welcome Cover Image",
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
 }
 
 export default async function WelcomePage() {

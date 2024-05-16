@@ -9,6 +9,19 @@ import VendorBackground from "../../public/vendorBackground.png";
 export const metadata = {
     title: "Merchants",
     description: "Scroll through the merchants at the Nutcracker Market.",
+    metadataBase: new URL('https://houston-ballet-official.vercel.app'),
+    openGraph: {
+        title: "Merchants",
+        description: "Scroll through the merchants at the Nutcracker Market.",
+        images: [
+            {
+                url: "/vendorBackground.png",
+                alt: "Merchants Cover Image",
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
 }
 
 export default async function VendorPage() {

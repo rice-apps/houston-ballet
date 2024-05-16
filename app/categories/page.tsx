@@ -7,6 +7,19 @@ import CategoryBackground from "../../public/categoryBackground.png";
 export const metadata = {
     title: "Merchant Categories",
     description: "Scroll through the categories of merchants at the Nutcracker Market.",
+    metadataBase: new URL('https://houston-ballet-official.vercel.app'),
+    openGraph: {
+        title: "Merchant Categories",
+        description: "Scroll through the categories of merchants at the Nutcracker Market.",
+        images: [
+            {
+                url: "/categoryBackground.png",
+                alt: "Merchant Categories Cover Image",
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
 }
 
 export default async function CategoryPage() {

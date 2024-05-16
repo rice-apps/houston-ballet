@@ -6,6 +6,19 @@ import SmsBackground from "../../public/background.png";
 export const metadata = {
     title: "Notifications",
     description: "Sign up for notifications from the Nutcracker Market.",
+    metadataBase: new URL('https://houston-ballet-official.vercel.app'),
+    openGraph: {
+        title: "Notifications",
+        description: "Sign up for notifications from the Nutcracker Market.",
+        images: [
+            {
+                url: "/background.png",
+                alt: "Notifications Cover Image",
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
 }
 
 export default async function Page() {
