@@ -29,7 +29,6 @@ const nextConfig = {
         styledComponents: true,
     },
     experimental: {
-        optimizeCss: true,
         optimizePackageImports: ['flowbite-react']
     },
 };
