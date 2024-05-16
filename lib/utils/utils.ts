@@ -35,10 +35,10 @@ export async function getCategories(): VendorsRepo {
     categoriesResp.data.forEach(category => {
       if (process.env.S3_URL && process.env.CFRONT_URL) {
         if (category?.primaryImage?.url) {
-          category?.primaryImage?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
+          category.primaryImage.url = category?.primaryImage?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
         }
         if (category?.smallIcon?.url) {
-          category?.smallIcon?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
+          category.smallIcon.url = category?.smallIcon?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
         }
       }
       ret[category.name] = {vendors: [], image: category?.primaryImage?.url ?? "", id: category.id, smallIcon: category?.smallIcon?.url ?? ""}
@@ -51,11 +51,11 @@ export async function getCategories(): VendorsRepo {
 
         if (process.env.S3_URL && process.env.CFRONT_URL) {
           if (vendor?.primaryImage?.url) {
-            vendor?.primaryImage?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
+            vendor.primaryImage.url = vendor?.primaryImage?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
           }
           if (vendor?.additionalImages) {
             vendor.additionalImages.forEach(image => {
-              image.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
+              image.url = image.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
             });
           }
         }
