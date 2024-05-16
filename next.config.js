@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true',
 })
-const withPurgeCSSModules = require('next-purge-css-modules');
 
 const nextConfig = {
     // output: "export",
@@ -33,10 +31,4 @@ const nextConfig = {
     },
 };
 
-const purgeConfig = {
-    content: path.join(__dirname, 'app/**/*.{js,jsx,ts,tsx}'),
-    enableDevPurge: true,
-    safelist: ['body', 'html'],
-};
-
-module.exports = withBundleAnalyzer(withPurgeCSSModules(purgeConfig, nextConfig));
+module.exports = withBundleAnalyzer(nextConfig);
