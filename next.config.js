@@ -21,6 +21,10 @@ const nextConfig = {
         // Enables the styled-components SWC transform
         styledComponents: true,
     },
+    experimental: {
+        optimizeCss: true,
+        optimizePackageImports: ['flowbite-react']
+    },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
