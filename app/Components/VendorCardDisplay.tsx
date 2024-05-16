@@ -37,7 +37,7 @@ export function VendorCardDisplay({ vendors, showInterests, showFavorites }: { v
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
-            <section className="h-full w-full cursor-pointer" key={vendor.name} aria-label={`Vendor: ${vendor.name}`} tabIndex={0}>
+            <section className="h-full w-full cursor-pointer" key={vendor.name} aria-label={`Vendor: ${vendor.name}`} tabIndex={0} role="listitem">
                 <VendorCardWrapper
                     photo_path={vendor.image}
                     name={vendor.name}

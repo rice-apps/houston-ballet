@@ -50,12 +50,12 @@ export default async function CategoryPage() {
             objectFit: "cover"
         }} />
     <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-col content-center justify-center z-10">
-        <h1 className="font-sans text-center text-4xl md:text-7xl font-bold tracking-[.15em] text-white">
+        <h1 className="font-sans text-center text-4xl md:text-7xl font-bold tracking-[.15em] text-white" role="heading">
             CATEGORIES
         </h1>
-        <h3 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
+        <h2 className="pt-3 text-center text-lg md:text-xl font-medium tracking-[.15em] text-white">
             {subtitle ?? ""}
-        </h3>
+        </h2>
     </div>
 </header>
 <div className="py-6 px-5 sm:px-5 md:px-10 lg:px-20">

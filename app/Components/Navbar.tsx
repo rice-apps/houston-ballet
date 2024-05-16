@@ -73,6 +73,7 @@ export default function NavBar() {
                 <IconButton
                     onClick={toggleDrawer(anchor, true)}
                     className="my-2 ml-auto mr-2"
+                    aria-label="Close Tab Drawer"
                 >
                     <CloseIcon className="text-white" />
                 </IconButton>
@@ -124,7 +125,7 @@ export default function NavBar() {
             </div>
             <div className="ml-auto md:invisible s:visible">
                 <React.Fragment key={anchor}>
-                    <IconButton onClick={toggleDrawer(anchor, true)}>
+                    <IconButton onClick={toggleDrawer(anchor, true)} aria-label="Open Tab Drawer">
                         <MenuIcon className="text-white" />
                     </IconButton>
                     <Drawer

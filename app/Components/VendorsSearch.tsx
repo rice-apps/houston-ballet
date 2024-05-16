@@ -178,6 +178,7 @@ function VendorsSearch({
                     }}
                     InputProps={{
                         "aria-label": 'Vendors search bar', // aria for search bar
+                        role: "searchbox",
                         startAdornment: (
                             <InputAdornment position="start">
                                 <svg
@@ -209,8 +210,9 @@ function VendorsSearch({
                         value={selectedCategory}
                         label="Category"
                         onChange={handleChange}
+                        aria-labelledby="demo-simple-select-label"
                     >
-                        <MenuItem value="">Unselect</MenuItem>
+                        <MenuItem value="" role="option">Unselect</MenuItem>
                         {categories.map((category) => (
                             <MenuItem
                                 value={category.name}
@@ -261,6 +263,7 @@ function VendorsSearch({
                     }}
                     className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
+                    aria-label={showInterests ? "Hide Interests" : "Show Interests"}
                 >
                     Interests
                 </Button>

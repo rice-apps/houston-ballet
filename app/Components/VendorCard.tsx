@@ -32,12 +32,12 @@ export default function VendorCard(props: Props) {
 
                 <div className="flex-grow rounded-b-sm border-b border-gray-400 pb-0 pl-4 pr-4 pt-4 transition-colors group-hover:bg-ballet">
                     <div className="bg-red flex flex-row justify-between group-hover:text-white">
-                        <h4
+                        <h3
                             className="text-xl font-semibold group-hover:text-white"
                             id={`vendorName-${props.id}`}
                         >
                             {props.vendorName}
-                        </h4>
+                        </h3>
                         <div className="">
                             <FavoriteStar id={props.vendorName} />
                         </div>
