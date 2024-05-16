@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { Category } from "@/lib/utils/repository";
+import Image from 'next/image';
 
 export default function InterestsButton({
     allCategories,
@@ -51,7 +52,7 @@ export default function InterestsButton({
                         toggleInterest(category);
                     }}
                 >
-                    <img src={category.icon} alt={category.name} className="w-4 h-4 inline-block mr-0.5 mb-1" />
+                    <Image src={category.icon} alt={category.name} className="inline-block mr-0.5 mb-1" width={16} height={16}/>
                     {category.name}
                 </button>
             ))}
