@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { StyledEngineProvider } from '@mui/material/styles';
 import localFont from "next/font/local";
 import GoogleAnalytics from "./Components/GoogleAnalytics";
 import NavBar from "./Components/Navbar";
 import "./globals.css";
-import { Footer } from "./Components/Footer";
 
 // metric font (houston ballet's)
 const metric = localFont({
     src: [
         {
-            path: "../public/fonts/Metric-Regular.ttf",
+            path: "../public/fonts/Metric-Regular.woff2",
             weight: "400",
         },
         {
-            path: "../public/fonts/Metric-Bold.ttf",
+            path: "../public/fonts/Metric-Bold.woff2",
             weight: "700",
         },
     ],

@@ -1,5 +1,3 @@
-"use client";
-
 import VendorCard from "./VendorCard";
 import { Vendor } from "@/lib/utils/repository";
 

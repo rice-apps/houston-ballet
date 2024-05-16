@@ -3,11 +3,11 @@ import localFont from "next/font/local";
 const figtree = localFont({
     src: [
         {
-            path: "../../public/fonts/Figtree-Italic-VariableFont_wght.ttf",
+            path: "../../public/fonts/Figtree-Italic-VariableFont_wght.woff2",
             weight: "400",
         },
         {
-            path: "../../public/fonts/Figtree-VariableFont_wght.ttf",
+            path: "../../public/fonts/Figtree-VariableFont_wght.woff2",
             weight: "400",
         },
     ],
