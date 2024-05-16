@@ -7,17 +7,6 @@ const purgecss = [
       './components/**/*.{js,jsx,ts,tsx}',
     ],
     defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-    safelist: {
-      standard: ["html", "body"],
-      deep: [
-        // whitelist all CSS classes that start
-        // with "mt-" and "mb-"
-        /^mt-/,
-        /^mb-/,
-        // whitelist the "highlighted" class
-        "highlighted",
-      ],
-    }
   },
 ];
 
