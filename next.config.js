@@ -12,6 +12,11 @@ const nextConfig = {
               hostname: 'hb-bucket-2023.s3.us-east-1.amazonaws.com',
               pathname: '**',
             },
+            {
+                protocol: 'https',
+                hostname: 'd13lc4w4003kwe.cloudfront.net',
+                pathname: '**',
+            },
         ],
     },
     typescript: {
