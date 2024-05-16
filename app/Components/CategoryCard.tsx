@@ -15,6 +15,7 @@ export default function CategoryCard(props: CategoryCardProps) {
                         src={props.image}
                         alt={props.vendorName}
                         aspect-ratio={1 / 1}
+                        style={{ objectFit: "cover" }}
                         fill
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-35 font-Figtree transition duration-150 group-hover:bg-opacity-60">
