@@ -1,6 +1,5 @@
 import { getCategories } from "@/lib/utils/utils";
 import VendorsSearch from "../Components/VendorsSearch";
-import "../globals.css";
 import { Footer } from "../Components/Footer";
 import Image from "next/image";
 import { Suspense } from "react";
