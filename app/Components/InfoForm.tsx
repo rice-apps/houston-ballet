@@ -170,7 +170,6 @@ export default function InfoForm() {
                                 pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}",
                             }}
                             InputProps={{
-                                "aria-label": 'Vendors search bar', // aria for search bar
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <EmailIcon />
@@ -178,6 +177,7 @@ export default function InfoForm() {
                                 ),
                             }}
                             aria-label="Email Address"
+                            role="textbox"
                             error={email != "" && !email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")}
                         />) : <>
                         <h1 className="font-normal">
@@ -209,6 +209,7 @@ export default function InfoForm() {
                 'aria-label': 'Phone Number'
             }}
             aria-label="Phone Number"
+            role="textbox"
             error={phoneNumber.length > 0 && phoneNumber.length < 14}
         />) : <></>}
                     </span>

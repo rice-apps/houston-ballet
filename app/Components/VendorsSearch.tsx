@@ -211,6 +211,7 @@ function VendorsSearch({
                         label="Category"
                         onChange={handleChange}
                         aria-labelledby="demo-simple-select-label"
+                        role="listbox"
                     >
                         <MenuItem value="" role="option">Unselect</MenuItem>
                         {categories.map((category) => (

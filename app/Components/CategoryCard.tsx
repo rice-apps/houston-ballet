@@ -13,7 +13,7 @@ export default function CategoryCard(props: CategoryCardProps) {
                 <div className="relative m-0 h-[25vh] rounded-sm">
                     <Image
                         src={props.image}
-                        alt={props.vendorName}
+                        alt=""
                         aspect-ratio={1 / 1}
                         style={{ objectFit: "cover" }}
                         fill

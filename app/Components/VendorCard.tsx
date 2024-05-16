@@ -43,20 +43,11 @@ export default function VendorCard(props: Props) {
                         </div>
                     </div>
                     <p
-                        className="text-md overflow-hidden overflow-ellipsis font-normal text-gray-600 group-hover:text-white"
+                        className="text-md overflow-hidden overflow-ellipsis font-normal text-gray-600 group-hover:text-white mb-3"
                         id={`vendorDesc-${props.id}`}
                     >
                         {props.vendorDescription}
                     </p>
-                    <a
-                        href={props.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 block hover:underline group-hover:text-white"
-                        aria-label={`Visit ${props.vendorName}'s website`} // for clarity
-                    >
-                        {props.website}
-                    </a>
                     {props.categories.map((category, index) => (
                         <span
                             key={index}

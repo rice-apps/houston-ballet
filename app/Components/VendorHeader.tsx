@@ -58,6 +58,8 @@ function VendorHeader(props: {
     <div
         className="flex flex-row mx-10 gap-x-5"
         aria-label={`Vendor: ${props.vendorName}`}
+        role="heading"
+        aria-level="1"
     >
         <h1 className="text-4xl font-extrabold tracking-wider text-gray-900">
             {props.vendorName}

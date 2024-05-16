@@ -37,7 +37,7 @@ export function VendorCardDisplay({ vendors, showInterests, showFavorites }: { v
     const elements = [];
     for (const vendor of vendors) {
         elements.push(
-            <section className="h-full w-full cursor-pointer" key={vendor.name} aria-label={`Vendor: ${vendor.name}`} tabIndex={0} role="listitem">
+            <li className="h-full w-full cursor-pointer" key={vendor.name} aria-label={`Vendor: ${vendor.name}`} tabIndex={0}>
                 <VendorCardWrapper
                     photo_path={vendor.image}
                     name={vendor.name}
@@ -46,7 +46,7 @@ export function VendorCardDisplay({ vendors, showInterests, showFavorites }: { v
                     categories={vendor.categories ?? []}
                     id={vendor.id}
                 />
-            </section>,
+            </li>,
         );
     }
 
@@ -63,8 +63,8 @@ export function VendorCardDisplay({ vendors, showInterests, showFavorites }: { v
 
     return (
         // flex wrap instead of grid
-        <div className="grid grid-cols-1 flex-col gap-16 justify-between md:grid-cols-2 lg:grid-cols-3" role="list">
+        <ul className="grid grid-cols-1 flex-col gap-16 justify-between md:grid-cols-2 lg:grid-cols-3" role="list">
             {elements}
-        </div>
+        </ul>
     );
 }
