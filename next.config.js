@@ -4,12 +4,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 const nextConfig = {
-    output: "export",
+    //output: "export",
     images: {
-        domains: ['riceapps-403829875.imgix.net'], // Replace with your imgix domain
-        loader: 'custom',
-        loaderFile: './loader.js',
-        path: 'https://riceapps-403829875.imgix.net/', 
         remotePatterns: [
             {
               protocol: 'https',
