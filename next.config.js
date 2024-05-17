@@ -7,8 +7,9 @@ const nextConfig = {
     output: "export",
     images: {
         domains: ['riceapps-403829875.imgix.net'], // Replace with your imgix domain
-        loader: 'imgix',
-        path: 'https://riceapps-403829875.imgix.net /', 
+        loader: 'custom',
+        loaderFile: './loader.js',
+        path: 'https://riceapps-403829875.imgix.net/', 
         remotePatterns: [
             {
               protocol: 'https',
