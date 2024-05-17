@@ -6,6 +6,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
     output: "export",
     images: {
+        domains: ['riceapps-403829875.imgix.net'], // Replace with your imgix domain
+        loader: 'imgix',
+        path: 'https://riceapps-403829875.imgix.net /', 
         remotePatterns: [
             {
               protocol: 'https',
@@ -15,6 +18,11 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'd13lc4w4003kwe.cloudfront.net',
+                pathname: '**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'riceapps-403829875.imgix.net',
                 pathname: '**',
             },
         ],
