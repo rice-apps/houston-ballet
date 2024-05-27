@@ -27,6 +27,7 @@ export default function VendorCard(props: Props) {
                         alt={`Photo of ${props.vendorName}`}
                         style={{ objectFit: "cover" }}
                         fill
+                        sizes="28vh"
                     />
                 </div>
 

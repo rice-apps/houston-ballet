@@ -38,7 +38,7 @@ export default async function WelcomePage() {
                 alt='Welcome background'
                 className='z-0'
                 fill
-                sizes="100vw"
+                sizes="(max-width: 640px) 100vw, 50vw"
                 style={{
                     objectFit: "cover"
                 }} />

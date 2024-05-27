@@ -32,7 +32,7 @@ export default async function Page() {
         alt='Nutcracker background'
         className='z-0'
         fill
-        sizes="100vw"
+        sizes="100vh"
         style={{
             objectFit: "cover"
         }} />

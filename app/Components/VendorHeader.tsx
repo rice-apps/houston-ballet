@@ -19,7 +19,7 @@ function VendorHeader(props: {
         alt="Vendor background"
         className="z-0"
         fill
-        sizes="100vw"
+        sizes="276px"
         style={{
             objectFit: "cover",
             objectPosition: "center"

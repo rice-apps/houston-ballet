@@ -13,7 +13,7 @@ export default function MapTitle({subtitle}: {subtitle: string}){
         alt='Map background'
         className='z-0'
         fill
-        sizes="100vw"
+        sizes="100vh"
         style={{
             objectFit: "cover"
         }} />

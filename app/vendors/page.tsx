@@ -38,7 +38,7 @@ export default async function VendorPage() {
         alt="Vendor background"
         className="z-0"
         fill
-        sizes="100vw"
+        sizes="100vh"
         style={{
             objectFit: "cover"
         }} />

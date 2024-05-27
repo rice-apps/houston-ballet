@@ -136,6 +136,7 @@ export default function VendorImages(props: { images: string[] }) {
                                     fill
                                     alt={`Gallery image ${index + 1}`}
                                     key={index}
+                                    sizes={"288px"}
                                 />
                             </div>
                         ))}
@@ -162,6 +163,7 @@ export default function VendorImages(props: { images: string[] }) {
                     style={{objectFit: "cover"}}
                     className="opacity-30 scale-[1.2] blur-xl"
                     alt={`Background of item ${index + 1}`}
+                    sizes={"(max-width: 768px) 288px, 640px"}
                 />
             <Image
                 src={image}
@@ -169,6 +171,7 @@ export default function VendorImages(props: { images: string[] }) {
                 height={540} // Adjust the height as per your responsive design
                 style={{objectFit: "contain"}}
                 className="z-10 h-72 w-72 md:h-[540px] md:w-[640px]"
+                sizes={"(max-width: 768px) 288px, 640px"}
                 alt={`Item ${index + 1}`}
             />
         </div>
