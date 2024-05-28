@@ -16,7 +16,7 @@ function VendorHeader(props: {
         priority
         // Ensure this is the correct path
         src={props.vendorImage}
-        alt="Vendor background"
+        alt="Merchant background"
         className="z-0"
         fill
         sizes="276px"
@@ -25,7 +25,7 @@ function VendorHeader(props: {
             objectPosition: "center"
         }} />
     <div className="absolute bottom-0 left-0 right-0 flex gap-x-5 items-center pt-10 px-10 py-5 z-10">
-        <Link href="/vendors" aria-label="Go back to vendor list">
+        <Link href="/vendors" aria-label="Go back to merchant list">
             <button className="focus:shadow-outline inline-flex h-10 items-center rounded-lg bg-slate-700 px-5 text-white transition-colors duration-150 hover:bg-slate-800">
                 <svg
                     className="mr-3 h-4 w-4 fill-current"
@@ -57,7 +57,7 @@ function VendorHeader(props: {
     {/* Vendor Name */}
     <div
         className="flex flex-row mx-10 gap-x-5"
-        aria-label={`Vendor: ${props.vendorName}`}
+        aria-label={`Merchant: ${props.vendorName}`}
         role="heading"
         aria-level="1"
     >

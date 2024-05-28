@@ -177,7 +177,7 @@ function VendorsSearch({
                         }
                     }}
                     InputProps={{
-                        "aria-label": 'Vendors search bar', // aria for search bar
+                        "aria-label": 'Merchants search bar', // aria for search bar
                         role: "searchbox",
                         startAdornment: (
                             <InputAdornment position="start">

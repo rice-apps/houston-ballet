@@ -43,7 +43,7 @@ export default function NavBar() {
 
     const navigationLinks: Array<Link> = [
         {
-            displayText: "Vendors",
+            displayText: "Merchants",
             path: "/vendors",
         },
         {
