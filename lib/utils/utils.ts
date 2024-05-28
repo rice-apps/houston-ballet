@@ -3,7 +3,16 @@
 import { VendorsRepo } from "./repository";
 
 export async function getCategories(): VendorsRepo {
-    let resp = await fetch('https://hb-strapi-production.up.railway.app/api/subtitle', 
+    let resp = await fetch('https://hb-strapi-production.up.railway.app/api/url', 
+    {
+      method: "GET",
+			headers: {
+				'Authorization': 'bearer ' + process.env.STRAPI_API_KEY,
+			}
+		});
+
+    let mapUrl = await resp.json();
+    resp = await fetch('https://hb-strapi-production.up.railway.app/api/subtitle', 
     {
       method: "GET",
 			headers: {
@@ -78,7 +87,7 @@ export async function getCategories(): VendorsRepo {
       categories: subtitle.data.categories,
       map: subtitle.data.map,
       notifications: subtitle.data.notifications,
-    });
+    }, mapUrl.data.url);
 }
 /*
 {

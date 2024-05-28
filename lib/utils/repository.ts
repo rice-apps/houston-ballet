@@ -26,9 +26,11 @@ export class VendorsRepo {
     categories: Category[] = [];
     vendors: Vendor[] = [];
     subtitle: Subtitles;
-    constructor(categoriesJson: any, subtitle: any) {
+    url: string;
+    constructor(categoriesJson: any, subtitle: any, url: string) {
         this.categories = [];
         this.subtitle = subtitle;
+        this.url = url;
         for (let category in categoriesJson) {
             this.categories.push({
                 name: category,
@@ -90,5 +92,8 @@ export class VendorsRepo {
     getVendor(name: string): Vendor | undefined {
         return this.vendors.find((category) => category.name == name);
     }
-
+    
+    getMapUrl() {
+        return this.url;
+    }
 }

@@ -24,7 +24,9 @@ export const metadata = {
 }
 
 export default async function Home() {
-  const subtitle = (await getCategories()).getSubtitle("map");
+  const repo = (await getCategories())
+  const subtitle = repo.getSubtitle("map");
+  const mapUrl = repo.getMapUrl();
   return (
     <div>
       {/* exporting components of the Vendor Info Page in sequential order */}
@@ -35,7 +37,7 @@ export default async function Home() {
       {/* exporting components of the Map Page in sequential order */}
       <MapTitle subtitle={subtitle}/>
       <Suspense>
-        <Map />
+        <Map url={mapUrl}/>
       </Suspense>
       <Footer/>
     </div>
