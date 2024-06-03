@@ -8,7 +8,7 @@ import { Suspense } from "react";
 export const metadata = {
     title: "Nutcracker Market Map",
     description: "Find your way around the Nutcracker Market.",
-    metadataBase: new URL("https://houston-ballet-official.vercel.app"),
+    metadataBase: new URL("https://nutcracker-market.riceapps.org"),
     openGraph: {
         title: "Nutcracker Market Map",
         description: "Find your way around the Nutcracker Market.",

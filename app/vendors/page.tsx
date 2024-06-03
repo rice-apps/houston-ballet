@@ -9,7 +9,7 @@ import VendorBackground from "../../public/vendorBackground.png";
 export const metadata = {
     title: "Merchants",
     description: "Scroll through the merchants at the Nutcracker Market.",
-    metadataBase: new URL("https://houston-ballet-official.vercel.app"),
+    metadataBase: new URL("https://nutcracker-market.riceapps.org"),
     openGraph: {
         title: "Merchants",
         description: "Scroll through the merchants at the Nutcracker Market.",

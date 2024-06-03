@@ -9,7 +9,7 @@ import WelcomeBackground from "../../public/welcomeImage.png";
 export const metadata = {
     title: "Nutcracker Market",
     description: "Welcome to the Nutcracker Market!",
-    metadataBase: new URL("https://houston-ballet-official.vercel.app"),
+    metadataBase: new URL("https://nutcracker-market.riceapps.org"),
     openGraph: {
         title: "Nutcracker Market",
         description: "Welcome to the Nutcracker Market!",
