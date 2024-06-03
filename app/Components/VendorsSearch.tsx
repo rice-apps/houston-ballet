@@ -17,7 +17,7 @@ import { useEffect, useMemo, useState } from "react";
 import { withCookies } from "react-cookie";
 import { Cookie } from "universal-cookie";
 import { VendorCardDisplay } from "./VendorCardDisplay";
-import {redirect} from "next/navigation";
+import { redirect } from "next/navigation";
 
 function useScrollPosition() {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -72,20 +72,24 @@ function VendorsSearch({
 
     const [interests, setInterests] = useState([]);
     useEffect(() => {
-        const interestsVal = localStorage.getItem('interests');
+        const interestsVal = localStorage.getItem("interests");
         if (interestsVal === null || interestsVal == "") {
-            redirect('/welcome');
+            redirect("/welcome");
         }
-        const interestsTemp = JSON.parse(localStorage.getItem('interests') ?? "");
-        setInterests(interestsTemp.map((interest: { name: string; }) => (interest.name)));
+        const interestsTemp = JSON.parse(
+            localStorage.getItem("interests") ?? "",
+        );
+        setInterests(
+            interestsTemp.map((interest: { name: string }) => interest.name),
+        );
         console.log(interestsTemp);
-    }, [])
+    }, []);
 
     useEffect(() => {
-        let tempArr: Vendor[] = []
+        let tempArr: Vendor[] = [];
         for (let i = 0; i < numToLoad; i++) {
             // setVendorsList([...vendorsList, vendors[i]])
-            tempArr.push(vendors[i])
+            tempArr.push(vendors[i]);
         }
         setVendorsList(tempArr);
         setLoadedIdx(numToLoad);
@@ -98,18 +102,17 @@ function VendorsSearch({
         }
     }, [scrollPosition]);
 
-
     const addVendors = () => {
-        let tempArr: Vendor[] = []
+        let tempArr: Vendor[] = [];
         for (let i = loadedIdx; i < numToLoad + loadedIdx; i++) {
             if (loadedIdx < vendors.length) {
-                tempArr.push(vendors[i])
+                tempArr.push(vendors[i]);
                 // setVendorsList([...vendorsList, vendors[loadedIdx]]);
             }
         }
         setLoadedIdx(loadedIdx + numToLoad);
         setVendorsList([...vendorsList, ...tempArr]);
-    }
+    };
 
     // Get all the vendor cards that are favorited
     const [favorited, setFavorited] = useState([]);
@@ -167,17 +170,17 @@ function VendorsSearch({
                 <TextField
                     type="text"
                     placeholder="Search by..."
-                    className="focus:outline-none w-full md:w-1/3"
+                    className="w-full focus:outline-none md:w-1/3"
                     onChange={(e) => setSearch(e.target.value)}
                     inputProps={{
                         style: {
-                            padding: '16.5px 14px 16.5px 0px',
+                            padding: "16.5px 14px 16.5px 0px",
                             // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
-                            "--tw-ring-offset-width": '0'
-                        }
+                            "--tw-ring-offset-width": "0",
+                        },
                     }}
                     InputProps={{
-                        "aria-label": 'Merchants search bar', // aria for search bar
+                        "aria-label": "Merchants search bar", // aria for search bar
                         role: "searchbox",
                         startAdornment: (
                             <InputAdornment position="start">
@@ -201,7 +204,10 @@ function VendorsSearch({
                     }}
                 />
                 <FormControl className="w-2/5 md:w-1/5">
-                    <InputLabel id="demo-simple-select-label" aria-label="Category drop-down menu">
+                    <InputLabel
+                        id="demo-simple-select-label"
+                        aria-label="Category drop-down menu"
+                    >
                         Category
                     </InputLabel>
                     <Select
@@ -213,7 +219,9 @@ function VendorsSearch({
                         aria-labelledby="demo-simple-select-label"
                         role="listbox"
                     >
-                        <MenuItem value="" role="option">Unselect</MenuItem>
+                        <MenuItem value="" role="option">
+                            Unselect
+                        </MenuItem>
                         {categories.map((category) => (
                             <MenuItem
                                 value={category.name}
@@ -239,11 +247,12 @@ function VendorsSearch({
                             setShowInterests(false);
                         }
                         setShowFavorites(!showFavorites);
-                        
                     }}
-                    className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
+                    className="transform border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600 md:ml-auto"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
-                    aria-label={showFavorites ? "Hide Favorites" : "Show Favorites"} // added aria-label here!
+                    aria-label={
+                        showFavorites ? "Hide Favorites" : "Show Favorites"
+                    } // added aria-label here!
                 >
                     Favorites
                 </Button>
@@ -260,11 +269,13 @@ function VendorsSearch({
                         if (!showInterests) {
                             setShowFavorites(false);
                         }
-                        setShowInterests(!showInterests)
+                        setShowInterests(!showInterests);
                     }}
-                    className="transform md:ml-auto border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600"
+                    className="transform border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600 md:ml-auto"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
-                    aria-label={showInterests ? "Hide Interests" : "Show Interests"}
+                    aria-label={
+                        showInterests ? "Hide Interests" : "Show Interests"
+                    }
                 >
                     Interests
                 </Button>
@@ -272,15 +283,18 @@ function VendorsSearch({
             <div className="mx-9 my-2 transform transition duration-300 ease-in-out ">
                 <VendorCardDisplay
                     vendors={vendors.filter((vendor) =>
-                        showFavorites ? favorited.includes(vendor?.name) :
-                        (showInterests ? vendor?.categories?.some((category) => (interests.includes(category))) : true)
-                    
+                        showFavorites
+                            ? favorited.includes(vendor?.name)
+                            : showInterests
+                              ? vendor?.categories?.some((category) =>
+                                    interests.includes(category),
+                                )
+                              : true,
                     )}
                     showInterests={showInterests}
                     showFavorites={showFavorites}
                 />
             </div>
-
         </>
     );
 }

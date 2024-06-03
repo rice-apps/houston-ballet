@@ -44,7 +44,7 @@ export default function VendorCard(props: Props) {
                         </div>
                     </div>
                     <p
-                        className="text-md overflow-hidden overflow-ellipsis font-normal text-gray-600 group-hover:text-white mb-3"
+                        className="text-md mb-3 overflow-hidden overflow-ellipsis font-normal text-gray-600 group-hover:text-white"
                         id={`vendorDesc-${props.id}`}
                     >
                         {props.vendorDescription}

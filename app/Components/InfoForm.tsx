@@ -45,7 +45,12 @@ export default function InfoForm() {
     // Store phone number from input textbox.
     const handleSubmit = async () => {
         // If inputs are non-empty
-        if (email != "" && phoneNumber != "" && email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}") && phoneNumber.length == 14) {
+        if (
+            email != "" &&
+            phoneNumber != "" &&
+            email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}") &&
+            phoneNumber.length == 14
+        ) {
             const recaptchaToken = await recaptchaRef?.current?.executeAsync();
             const userInput: UserData = {
                 emailString: email,
@@ -110,7 +115,9 @@ export default function InfoForm() {
                     progress: undefined,
                     theme: "light",
                 });
-            } else if (email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")) {
+            } else if (
+                email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")
+            ) {
                 toast.error("Please enter a valid email.", {
                     position: "top-right",
                     autoClose: 3000,
@@ -121,15 +128,14 @@ export default function InfoForm() {
                     progress: undefined,
                     theme: "light",
                 });
-            
             }
         }
     };
 
     const handlePhoneChange = (event) => {
         const { value } = event.target;
-        const onlyNums = value.replace(/[^\d]/g, '');
-        let number = '';
+        const onlyNums = value.replace(/[^\d]/g, "");
+        let number = "";
 
         if (onlyNums.length < 4) {
             number = onlyNums;
@@ -145,87 +151,119 @@ export default function InfoForm() {
     return (
         <>
             <div className="relative flex flex-col items-center justify-center text-center">
-                <form className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-6  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8" aria-label="Notification Sign Up">
+                <form
+                    className=" dark:text-black-400 z-10 mt-20 flex w-full max-w-72 flex-col rounded-3xl border border-black bg-white p-6  text-left font-bold tracking-wide outline-4 dark:border-gray-600 md:max-w-md md:p-8"
+                    aria-label="Notification Sign Up"
+                >
                     <ReCAPTCHA
-                            ref={recaptchaRef}
-                            size="invisible"
-                            sitekey="6LdjedspAAAAAOSI0BupgJbODmdYfzG4eV4uwdIL"
-                        />
+                        ref={recaptchaRef}
+                        size="invisible"
+                        sitekey="6LdjedspAAAAAOSI0BupgJbODmdYfzG4eV4uwdIL"
+                    />
                     <span className="flex flex-col gap-y-10">
                         {!submitted ? (
-                        <TextField
-                            required
-                            type="email"
-                            label="Email"
-                            placeholder="example@gmail.com"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            inputProps={{
-                                style: {
-                                    padding: '16.5px 14px 16.5px 0px',
-                                    // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
-                                    "--tw-ring-offset-width": '0'
-                                },
-                                pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}",
-                            }}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <EmailIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                            aria-label="Email Address"
-                            role="textbox"
-                            error={email != "" && !email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}")}
-                        />) : <>
-                        <h1 className="font-normal">
-                            You are now subscribed to our notifications at the email address <span className="text-indigo-500 text-medium">{email}</span> and phone number <span className="text-indigo-500 text-medium">{phoneNumber}</span>!
-                        </h1>
-                        </>}
+                            <TextField
+                                required
+                                type="email"
+                                label="Email"
+                                placeholder="example@gmail.com"
+                                id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                        padding: "16.5px 14px 16.5px 0px",
+                                        // HACK: remove double focus bars by setting tailwind's ring-offset-width to 0 explicitly
+                                        "--tw-ring-offset-width": "0",
+                                    },
+                                    pattern:
+                                        "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}",
+                                }}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <EmailIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                aria-label="Email Address"
+                                role="textbox"
+                                error={
+                                    email != "" &&
+                                    !email.match(
+                                        "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,20}",
+                                    )
+                                }
+                            />
+                        ) : (
+                            <>
+                                <h1 className="font-normal">
+                                    You are now subscribed to our notifications
+                                    at the email address{" "}
+                                    <span className="text-medium text-indigo-500">
+                                        {email}
+                                    </span>{" "}
+                                    and phone number{" "}
+                                    <span className="text-medium text-indigo-500">
+                                        {phoneNumber}
+                                    </span>
+                                    !
+                                </h1>
+                            </>
+                        )}
 
-                        {!submitted ? (<TextField
-            required
-            type="tel"
-            label="Phone Number"
-            placeholder="(123) 456 7890"
-            id="phone_number"
-            className="focus:outline-none"
-            value={phoneNumber}
-            onChange={handlePhoneChange}
-            InputProps={{
-                startAdornment: (
-                    <InputAdornment position="start">
-                        <PhoneIcon />
-                    </InputAdornment>
-                ),
-            }}
-            inputProps={{
-                style: {
-                    padding: '16.5px 14px 16.5px 0px',
-                    "--tw-ring-offset-width": '0'
-                },
-                'aria-label': 'Phone Number'
-            }}
-            aria-label="Phone Number"
-            role="textbox"
-            error={phoneNumber.length > 0 && phoneNumber.length < 14}
-        />) : <></>}
+                        {!submitted ? (
+                            <TextField
+                                required
+                                type="tel"
+                                label="Phone Number"
+                                placeholder="(123) 456 7890"
+                                id="phone_number"
+                                className="focus:outline-none"
+                                value={phoneNumber}
+                                onChange={handlePhoneChange}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <PhoneIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                inputProps={{
+                                    style: {
+                                        padding: "16.5px 14px 16.5px 0px",
+                                        "--tw-ring-offset-width": "0",
+                                    },
+                                    "aria-label": "Phone Number",
+                                }}
+                                aria-label="Phone Number"
+                                role="textbox"
+                                error={
+                                    phoneNumber.length > 0 &&
+                                    phoneNumber.length < 14
+                                }
+                            />
+                        ) : (
+                            <></>
+                        )}
                     </span>
                 </form>
 
-                {!submitted ? (<Button
-                    onClick={handleSubmit}
-                    variant="contained"
-                    className="top -top-3 z-10 flex w-1/4 md:w-1/6 rounded-lg bg-ballet dark:hover:bg-gray-800 dark:focus:ring-gray-900 md:-top-5  bg-no-repeat bg-cover"
-                    style={{
-                        textTransform: "none",
-                    }}
-                    aria-label="Submit Form"
-                >
-                    Submit
-                </Button>) : <></>}
+                {!submitted ? (
+                    <Button
+                        onClick={handleSubmit}
+                        variant="contained"
+                        className="top -top-3 z-10 flex w-1/4 rounded-lg bg-ballet bg-cover bg-no-repeat dark:hover:bg-gray-800 dark:focus:ring-gray-900  md:-top-5 md:w-1/6"
+                        style={{
+                            textTransform: "none",
+                        }}
+                        aria-label="Submit Form"
+                    >
+                        Submit
+                    </Button>
+                ) : (
+                    <></>
+                )}
             </div>
             <ToastContainer
                 position="top-right"

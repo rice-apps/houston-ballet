@@ -128,10 +128,10 @@ export default function VendorImages(props: { images: string[] }) {
                                 key={index}
                                 className="relative h-72 overflow-hidden rounded-xl"
                             >
-                                <div className="absolute inset-0 bg-black opacity-50 z-10"></div>{" "}
+                                <div className="absolute inset-0 z-10 bg-black opacity-50"></div>{" "}
                                 {/* Overlay with semi-transparent black */}
                                 <Image
-                                    className="h-72 w-72 object-cover z-0"
+                                    className="z-0 h-72 w-72 object-cover"
                                     src={image}
                                     fill
                                     alt={`Gallery image ${index + 1}`}
@@ -150,33 +150,37 @@ export default function VendorImages(props: { images: string[] }) {
                 >
                     <Modal.Header></Modal.Header>
                     <Modal.Body>
-                    <Carousel
-    className="h-72 w-72 md:h-[540px] md:w-[640px]"
-    theme={visibleTheme}
-    slideInterval={1000000}
->
-    {props.images.map((image, index) => (
-        <div key={index}>
-            <Image
-                    src={image}
-                    fill
-                    style={{objectFit: "cover"}}
-                    className="opacity-30 scale-[1.2] blur-xl"
-                    alt={`Background of item ${index + 1}`}
-                    sizes={"(max-width: 768px) 288px, 640px"}
-                />
-            <Image
-                src={image}
-                width={640} // Adjust the width as per your responsive design
-                height={540} // Adjust the height as per your responsive design
-                style={{objectFit: "contain"}}
-                className="z-10 h-72 w-72 md:h-[540px] md:w-[640px]"
-                sizes={"(max-width: 768px) 288px, 640px"}
-                alt={`Item ${index + 1}`}
-            />
-        </div>
-    ))}
-</Carousel>
+                        <Carousel
+                            className="h-72 w-72 md:h-[540px] md:w-[640px]"
+                            theme={visibleTheme}
+                            slideInterval={1000000}
+                        >
+                            {props.images.map((image, index) => (
+                                <div key={index}>
+                                    <Image
+                                        src={image}
+                                        fill
+                                        style={{ objectFit: "cover" }}
+                                        className="scale-[1.2] opacity-30 blur-xl"
+                                        alt={`Background of item ${index + 1}`}
+                                        sizes={
+                                            "(max-width: 768px) 288px, 640px"
+                                        }
+                                    />
+                                    <Image
+                                        src={image}
+                                        width={640} // Adjust the width as per your responsive design
+                                        height={540} // Adjust the height as per your responsive design
+                                        style={{ objectFit: "contain" }}
+                                        className="z-10 h-72 w-72 md:h-[540px] md:w-[640px]"
+                                        sizes={
+                                            "(max-width: 768px) 288px, 640px"
+                                        }
+                                        alt={`Item ${index + 1}`}
+                                    />
+                                </div>
+                            ))}
+                        </Carousel>
                         {/* <>
                           <h1 className="text-wider text-4xl font-semibold text-white m-3">
                               ITEM NAME

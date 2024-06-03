@@ -106,7 +106,7 @@ export default function NavBar() {
             </Link>
 
             <div className="flex-grow s:invisible md:visible">
-                <div className="items-left justify-left hidden md:flex font-Figtree">
+                <div className="items-left justify-left hidden font-Figtree md:flex">
                     <ul className="justify-left items-left mt-4 flex flex-wrap gap-4 md:mt-0">
                         {navigationLinks.map((link: Link, idx) => (
                             <li key={idx}>
@@ -114,7 +114,7 @@ export default function NavBar() {
                                     href={link.path}
                                     color="#FFFFFF"
                                     underline="none"
-                                    className="ml-5 block px-4 py-2 transition-colors duration-300 hover:bg-white hover:text-black rounded-lg"
+                                    className="ml-5 block rounded-lg px-4 py-2 transition-colors duration-300 hover:bg-white hover:text-black"
                                 >
                                     {link.displayText}
                                 </Link>
@@ -125,7 +125,10 @@ export default function NavBar() {
             </div>
             <div className="ml-auto md:invisible s:visible">
                 <React.Fragment key={anchor}>
-                    <IconButton onClick={toggleDrawer(anchor, true)} aria-label="Open Tab Drawer">
+                    <IconButton
+                        onClick={toggleDrawer(anchor, true)}
+                        aria-label="Open Tab Drawer"
+                    >
                         <MenuIcon className="text-white" />
                     </IconButton>
                     <Drawer

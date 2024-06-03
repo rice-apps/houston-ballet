@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StyledEngineProvider } from '@mui/material/styles';
+import { StyledEngineProvider } from "@mui/material/styles";
 import localFont from "next/font/local";
 import GoogleAnalytics from "./Components/GoogleAnalytics";
 import NavBar from "./Components/Navbar";

@@ -6,8 +6,7 @@ import VendorImages from "../../Components/VendorImages";
 import { Footer } from "@/app/Components/Footer";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-
-export async function generateMetadata({ params } : Params) {
+export async function generateMetadata({ params }: Params) {
     const repo = await getCategories();
     const vendor = repo
         .getVendors()
@@ -25,8 +24,8 @@ export async function generateMetadata({ params } : Params) {
                     alt: vendor?.name ?? "",
                 },
             ],
-            locale: 'en_US',
-            type: 'website',
+            locale: "en_US",
+            type: "website",
         },
     };
 }
@@ -62,14 +61,14 @@ export default async function VendorInfoPage({
                     tags={vendor?.categories ?? []}
                     mapId={vendor?.mapId}
                 />
-                <div className="items-center md:items-stretch mt-10 flex h-full w-full flex-col justify-around gap-x-16 gap-y-16 px-10 md:flex-row">
+                <div className="mt-10 flex h-full w-full flex-col items-center justify-around gap-x-16 gap-y-16 px-10 md:flex-row md:items-stretch">
                     <VendorDescription
                         description={vendor?.description ?? ""}
                     />
                     <VendorImages images={vendor?.additionalImages ?? []} />
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </Transition>
     );
 }
