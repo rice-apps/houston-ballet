@@ -237,7 +237,7 @@ function VendorsSearch({
                     variant="outlined"
                     startIcon={
                         showFavorites ? (
-                            <StarOutlinedIcon className="animate-pulse" />
+                            <StarOutlinedIcon className="text-yellow-400" />
                         ) : (
                             <StarBorderOutlinedIcon />
                         )
@@ -248,7 +248,7 @@ function VendorsSearch({
                         }
                         setShowFavorites(!showFavorites);
                     }}
-                    className="transform border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600 md:ml-auto"
+                    className="transform border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:border-yellow-400 active:bg-yellow-600 md:ml-auto"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
                     aria-label={
                         showFavorites ? "Hide Favorites" : "Show Favorites"
@@ -260,7 +260,7 @@ function VendorsSearch({
                     variant="outlined"
                     startIcon={
                         showInterests ? (
-                            <InterestsIcon className="animate-pulse" />
+                            <InterestsIcon className="text-yellow-400" />
                         ) : (
                             <InterestsOutlinedIcon />
                         )
@@ -271,7 +271,7 @@ function VendorsSearch({
                         }
                         setShowInterests(!showInterests);
                     }}
-                    className="transform border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-600 md:ml-auto"
+                    className="transform border-gray-700 text-gray-700 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:border-transparent hover:bg-yellow-500 hover:text-white focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 active:border-yellow-400 active:bg-yellow-600 md:ml-auto"
                     style={{ padding: "8px 16px", borderWidth: "2px" }}
                     aria-label={
                         showInterests ? "Hide Interests" : "Show Interests"

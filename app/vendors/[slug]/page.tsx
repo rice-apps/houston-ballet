@@ -14,10 +14,10 @@ export async function generateMetadata({ params }: Params) {
 
     return {
         title: vendor?.name ?? "",
-        description: vendor?.shortDesc ?? "Nutcracket Market Merchant",
+        description: vendor?.shortDesc ?? "Nutcracker Market Merchant",
         openGraph: {
             title: vendor?.name ?? "",
-            description: vendor?.shortDesc ?? "Nutcracket Market Merchant",
+            description: vendor?.shortDesc ?? "Nutcracker Market Merchant",
             images: [
                 {
                     url: vendor?.image ?? "",
