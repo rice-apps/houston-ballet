@@ -3,91 +3,133 @@
 import { VendorsRepo } from "./repository";
 
 export async function getCategories(): VendorsRepo {
-    let resp = await fetch('https://hb-strapi-production.up.railway.app/api/url', 
-    {
-      method: "GET",
-			headers: {
-				'Authorization': 'bearer ' + process.env.STRAPI_API_KEY,
-			}
-		});
+    let resp = await fetch(
+        "https://hb-strapi-production.up.railway.app/api/url",
+        {
+            method: "GET",
+            headers: {
+                Authorization: "bearer " + process.env.STRAPI_API_KEY,
+            },
+        },
+    );
 
     let mapUrl = await resp.json();
-    resp = await fetch('https://hb-strapi-production.up.railway.app/api/subtitle', 
-    {
-      method: "GET",
-			headers: {
-				'Authorization': 'bearer ' + process.env.STRAPI_API_KEY,
-			}
-		});
+    resp = await fetch(
+        "https://hb-strapi-production.up.railway.app/api/subtitle",
+        {
+            method: "GET",
+            headers: {
+                Authorization: "bearer " + process.env.STRAPI_API_KEY,
+            },
+        },
+    );
 
     let subtitle = await resp.json();
-    resp = await fetch('https://hb-strapi-production.up.railway.app/api/vendors?populate=*', 
-    {
-      method: "GET",
-			headers: {
-				'Authorization': 'bearer ' + process.env.STRAPI_API_KEY,
-			}
-		});
 
-    let ret = {}
-    let vendorsResp = await resp.json()
-    resp = await fetch('https://hb-strapi-production.up.railway.app/api/categories?populate[0]=primaryImage&populate[1]=smallIcon', 
-    {
-      method: "GET",
-			headers: {
-				'Authorization': 'bearer ' + process.env.STRAPI_API_KEY,
-			}
-		});
+    resp = await fetch(
+        "https://hb-strapi-production.up.railway.app/api/default-image?populate=*",
+        {
+            method: "GET",
+            headers: {
+                Authorization: "bearer " + process.env.STRAPI_API_KEY,
+            },
+        },
+    );
+    let defaultImageUrlResp = await resp.json();
+    let defaultImageUrl = defaultImageUrlResp?.data?.image?.url ?? "";
+
+    resp = await fetch(
+        "https://hb-strapi-production.up.railway.app/api/vendors?populate=*",
+        {
+            method: "GET",
+            headers: {
+                Authorization: "bearer " + process.env.STRAPI_API_KEY,
+            },
+        },
+    );
+
+    let ret = {};
+    let vendorsResp = await resp.json();
+    resp = await fetch(
+        "https://hb-strapi-production.up.railway.app/api/categories?populate[0]=primaryImage&populate[1]=smallIcon",
+        {
+            method: "GET",
+            headers: {
+                Authorization: "bearer " + process.env.STRAPI_API_KEY,
+            },
+        },
+    );
 
     let categoriesResp = await resp.json();
 
-    categoriesResp.data.forEach(category => {
-      if (process.env.S3_URL && process.env.CFRONT_URL) {
-        if (category?.primaryImage?.url) {
-          category.primaryImage.url = category?.primaryImage?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
+    categoriesResp.data.forEach((category) => {
+        if (process.env.S3_URL && process.env.CFRONT_URL) {
+            if (category?.primaryImage?.url) {
+                category.primaryImage.url = category?.primaryImage?.url.replace(
+                    process.env.S3_URL,
+                    process.env.CFRONT_URL,
+                );
+            }
+            if (category?.smallIcon?.url) {
+                category.smallIcon.url = category?.smallIcon?.url.replace(
+                    process.env.S3_URL,
+                    process.env.CFRONT_URL,
+                );
+            }
         }
-        if (category?.smallIcon?.url) {
-          category.smallIcon.url = category?.smallIcon?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
-        }
-      }
-      ret[category.name] = {vendors: [], image: category?.primaryImage?.url ?? "", id: category.id, smallIcon: category?.smallIcon?.url ?? ""}
+        ret[category.name] = {
+            vendors: [],
+            image: category?.primaryImage?.url ?? defaultImageUrl,
+            id: category.id,
+            smallIcon: category?.smallIcon?.url ?? defaultImageUrl,
+        };
+    });
+    vendorsResp.data.forEach((vendor) => {
+        let categories = vendor.categories;
+        categories.forEach((category) => {
+            let vendor_desc = {};
+
+            if (process.env.S3_URL && process.env.CFRONT_URL) {
+                if (vendor?.primaryImage?.url) {
+                    vendor.primaryImage.url = vendor?.primaryImage?.url.replace(
+                        process.env.S3_URL,
+                        process.env.CFRONT_URL,
+                    );
+                }
+                if (vendor?.additionalImages) {
+                    vendor.additionalImages.forEach((image) => {
+                        image.url = image.url.replace(
+                            process.env.S3_URL,
+                            process.env.CFRONT_URL,
+                        );
+                    });
+                }
+            }
+
+            vendor_desc["name"] = (vendor.the ? "The " : "") + vendor.name;
+            vendor_desc["originalName"] = vendor.name;
+            vendor_desc["the"] = vendor.the ?? false;
+            vendor_desc["mapId"] = vendor.mapId;
+            vendor_desc["image"] = vendor.primaryImage?.url ?? defaultImageUrl;
+            vendor_desc["id"] = vendor.id;
+            vendor_desc["description"] = vendor.description ?? "";
+            vendor_desc["shortDesc"] = vendor.shortDesc ?? "";
+            vendor_desc["additionalImages"] =
+                vendor.additionalImages?.map((rawImage) => rawImage.url) ?? [];
+            ret[category.name].vendors.push(vendor_desc);
+        });
     });
 
-    vendorsResp.data.forEach(vendor => {
-      let categories = vendor.categories;
-      categories.forEach(category => {
-        let vendor_desc = {};
-
-        if (process.env.S3_URL && process.env.CFRONT_URL) {
-          if (vendor?.primaryImage?.url) {
-            vendor.primaryImage.url = vendor?.primaryImage?.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
-          }
-          if (vendor?.additionalImages) {
-            vendor.additionalImages.forEach(image => {
-              image.url = image.url.replace(process.env.S3_URL, process.env.CFRONT_URL)
-            });
-          }
-        }
-
-        vendor_desc["name"] = (vendor.the ? "The " : "") + vendor.name;
-        vendor_desc["originalName"] = vendor.name;
-        vendor_desc["the"] = vendor.the ?? false;
-        vendor_desc["mapId"] = vendor.mapId;
-        vendor_desc["image"] = vendor.primaryImage?.url ?? "";
-        vendor_desc["id"] = vendor.id;
-        vendor_desc["description"] = vendor.description ?? "";
-        vendor_desc["shortDesc"] = vendor.shortDesc ?? "";
-        vendor_desc["additionalImages"] = vendor.additionalImages?.map((rawImage)=>rawImage.url) ?? [];
-        ret[category.name].vendors.push(vendor_desc)
-      });
-    })
-    
-    return new VendorsRepo(ret, {
-      vendors: subtitle.data.vendors,
-      categories: subtitle.data.categories,
-      map: subtitle.data.map,
-      notifications: subtitle.data.notifications,
-    }, mapUrl.data.url);
+    return new VendorsRepo(
+        ret,
+        {
+            vendors: subtitle.data.vendors,
+            categories: subtitle.data.categories,
+            map: subtitle.data.map,
+            notifications: subtitle.data.notifications,
+        },
+        mapUrl.data.url,
+    );
 }
 /*
 {
