@@ -62,9 +62,7 @@ export default async function VendorInfoPage({
                     mapId={vendor?.mapId}
                 />
                 <div className="mt-10 flex h-full w-full flex-col items-center justify-around gap-x-16 gap-y-16 px-10 md:flex-row md:items-stretch">
-                    <VendorDescription
-                        description={vendor?.description ?? ""}
-                    />
+                    <VendorDescription description={vendor?.shortDesc ?? ""} />
                     <VendorImages images={vendor?.additionalImages ?? []} />
                 </div>
             </div>
