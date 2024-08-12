@@ -5,12 +5,14 @@ import TextField from "@mui/material/TextField";
 import * as React from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import EmailIcon from "@mui/icons-material/Email";
+import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
 import ReCAPTCHA from "react-google-recaptcha";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function InfoForm() {
+    const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [phoneNumber, setPhoneNumber] = React.useState("");
     const [submitted, setSubmitted] = React.useState(false);
@@ -18,6 +20,7 @@ export default function InfoForm() {
     const recaptchaRef = React.useRef<ReCAPTCHA | null>(null);
 
     type UserData = {
+        name: string;
         emailString: string;
         phoneNumberString: string;
         token: string;
@@ -53,6 +56,7 @@ export default function InfoForm() {
         ) {
             const recaptchaToken = await recaptchaRef?.current?.executeAsync();
             const userInput: UserData = {
+                name: name,
                 emailString: email,
                 phoneNumberString: phoneNumber,
                 token: recaptchaToken,
@@ -161,6 +165,36 @@ export default function InfoForm() {
                         sitekey="6LdjedspAAAAAOSI0BupgJbODmdYfzG4eV4uwdIL"
                     />
                     <span className="flex flex-col gap-y-10">
+                        {!submitted ? (
+                            <TextField
+                                required
+                                label="Full Name"
+                                placeholder="John Doe"
+                                id="full_name"
+                                className="focus:outline-none"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <PersonIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                                inputProps={{
+                                    style: {
+                                        padding: "16.5px 14px 16.5px 0px",
+                                        "--tw-ring-offset-width": "0",
+                                    },
+                                    "aria-label": "Full Name",
+                                }}
+                                aria-label="Full Name"
+                                role="textbox"
+                            />
+                        ) : (
+                            <></>
+                        )}
+
                         {!submitted ? (
                             <TextField
                                 required
