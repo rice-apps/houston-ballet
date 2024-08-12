@@ -34,6 +34,7 @@ export default function InfoForm() {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
+                Authorization: "bearer b3859e2efb7f55e92007420fa1bedf9e0089420b1888b3d4810c6062d8ad65cbdc2720e51cecc715addb69241d97ea94cc8c7cc31894ef3d253584bc2518e56e514f43c8a00ee5a746a5d421e58a4a92a62cce70ec8f2764e5767c98241ab9beb914d292ea9b4f5accdd7bc5d26e047cfc17989e1bc536878e28df57ed038bef",
             },
             body: JSON.stringify(userInput),
         };
