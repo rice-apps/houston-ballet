@@ -35,7 +35,6 @@ export default async function Home() {
       <VendorPictures height = {96} />
       <Contact /> */}
             {/* exporting components of the Map Page in sequential order */}
-            <MapTitle subtitle={subtitle} />
             <Suspense>
                 <Map url={mapUrl} />
             </Suspense>
