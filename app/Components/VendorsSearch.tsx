@@ -19,31 +19,6 @@ import { Cookie } from "universal-cookie";
 import { VendorCardDisplay } from "./VendorCardDisplay";
 import { redirect } from "next/navigation";
 
-function useScrollPosition() {
-    const [scrollPosition, setScrollPosition] = useState(0);
-
-    function handleScroll() {
-        const height =
-            document.documentElement.scrollHeight -
-            document.documentElement.clientHeight;
-
-        const windowScroll = document.documentElement.scrollTop;
-
-        const scrolled = (windowScroll / height) * 100;
-
-        setScrollPosition(scrolled);
-    }
-
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    });
-
-    return scrollPosition;
-}
-
 function VendorsSearch({
     cookies,
     allCookies,
@@ -62,10 +37,6 @@ function VendorsSearch({
     const [showInterests, setShowInterests] = useState(false);
     const [vendors, setVendors] = useState(originalVendors);
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [vendorsList, setVendorsList] = useState<Vendor[]>([]);
-    const [loadedIdx, setLoadedIdx] = useState(0);
-    const scrollPosition = useScrollPosition();
-    const numToLoad = 3;
     const handleChange = (event: SelectChangeEvent) => {
         setSelectedCategory(event.target.value as string);
     };
@@ -84,35 +55,6 @@ function VendorsSearch({
         );
         console.log(interestsTemp);
     }, []);
-
-    useEffect(() => {
-        let tempArr: Vendor[] = [];
-        for (let i = 0; i < numToLoad; i++) {
-            // setVendorsList([...vendorsList, vendors[i]])
-            tempArr.push(vendors[i]);
-        }
-        setVendorsList(tempArr);
-        setLoadedIdx(numToLoad);
-        console.log(vendorsList);
-    }, []);
-
-    useEffect(() => {
-        if (scrollPosition == 100) {
-            addVendors();
-        }
-    }, [scrollPosition]);
-
-    const addVendors = () => {
-        let tempArr: Vendor[] = [];
-        for (let i = loadedIdx; i < numToLoad + loadedIdx; i++) {
-            if (loadedIdx < vendors.length) {
-                tempArr.push(vendors[i]);
-                // setVendorsList([...vendorsList, vendors[loadedIdx]]);
-            }
-        }
-        setLoadedIdx(loadedIdx + numToLoad);
-        setVendorsList([...vendorsList, ...tempArr]);
-    };
 
     // Get all the vendor cards that are favorited
     const [favorited, setFavorited] = useState([]);

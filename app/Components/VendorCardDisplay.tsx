@@ -1,3 +1,5 @@
+"use client";
+import { useMemo } from "react";
 import VendorCard from "./VendorCard";
 import { Vendor } from "@/lib/utils/repository";
 
@@ -32,25 +34,20 @@ export function VendorCardWrapper({
         </>
     );
 }
-
-export function VendorCardDisplay({
-    vendors,
-    showInterests,
-    showFavorites,
-}: {
+interface VendorCardDisplayProps {
     vendors: Vendor[];
     showInterests: boolean;
     showFavorites: boolean;
-}) {
-    const elements = [];
-    for (const vendor of vendors) {
-        elements.push(
-            <li
-                className="h-full w-full cursor-pointer"
-                key={vendor.name}
-                aria-label={`Merchant: ${vendor.name}`}
-                tabIndex={0}
-            >
+}
+
+const VendorCardDisplay: React.FC<VendorCardDisplayProps> = ({
+    vendors,
+    showInterests,
+    showFavorites,
+}) => {
+    const elements = useMemo(() => {
+        return vendors.map((vendor) => (
+            <li key={vendor.id}>
                 <VendorCardWrapper
                     photo_path={vendor.image}
                     name={vendor.name}
@@ -59,41 +56,30 @@ export function VendorCardDisplay({
                     categories={vendor.categories ?? []}
                     id={vendor.id}
                 />
-            </li>,
-        );
-    }
+            </li>
+        ));
+    }, [vendors]);
 
-    if (elements.length == 0) {
+    if (elements.length === 0) {
         return (
             <div className="flex h-96 items-center justify-center">
                 <div
                     className="Metric text-center text-xl font-medium"
-                    key={"no_res"}
+                    key="no_res"
                 >
                     No{" "}
                     {showInterests
                         ? "interests"
                         : showFavorites
                           ? "favorites"
-                          : "results"}{" "}
-                    found.{" "}
-                    {showInterests
-                        ? "Try pressing on the interests button to clear interest filter."
-                        : showFavorites
-                          ? "Try pressing on the favorites button to clear favorite filter."
-                          : ""}
+                          : "vendors"}{" "}
+                    found.
                 </div>
             </div>
         );
     }
 
-    return (
-        // flex wrap instead of grid
-        <ul
-            className="grid grid-cols-1 flex-col justify-between gap-16 md:grid-cols-2 lg:grid-cols-3"
-            role="list"
-        >
-            {elements}
-        </ul>
-    );
-}
+    return <ul>{elements}</ul>;
+};
+
+export default React.memo(VendorCardDisplay);
