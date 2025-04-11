@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { useCookies } from "react-cookie";
+import React, { useState, useEffect } from "react";
 
 interface FavoriteProps {
     id: string;
@@ -27,13 +26,63 @@ const StarSVG = ({ isFilled }: StarSVGProps) => (
 );
 
 export default function FavoriteStar({ id }: FavoriteProps) {
-    const [favorited, setFavorited, removeFavorited] = useCookies([id]);
+    const [isFavorited, setIsFavorited] = useState(false);
+    const [isStorageAvailable, setIsStorageAvailable] = useState(true);
+
+    // Check if localStorage is available
+    const checkStorageAvailability = () => {
+        try {
+            const testKey = '__storage_test__';
+            localStorage.setItem(testKey, testKey);
+            localStorage.removeItem(testKey);
+            return true;
+        } catch (e) {
+            console.error("localStorage not available:", e);
+            return false;
+        }
+    };
+    
+    useEffect(() => {
+        const storageAvailable = checkStorageAvailability();
+        setIsStorageAvailable(storageAvailable);
+        
+        if (!storageAvailable) return;
+        
+        try {
+            if (!localStorage.getItem("favorites")) {
+                localStorage.setItem("favorites", JSON.stringify([]));
+            }
+            
+            const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+            setIsFavorited(favorites.includes(id));
+        } catch (error) {
+            console.error("Error loading favorites:", error);
+        }
+    }, [id]);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        if (favorited[id]) {
-            removeFavorited(id);
-        } else {
-            setFavorited(id, true);
+        if (!isStorageAvailable) {
+            console.warn("Cannot save favorites - localStorage unavailable");
+            return;
+        }
+        
+        try {
+            const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+            
+            let updatedFavorites;
+            if (isFavorited) {
+                updatedFavorites = favorites.filter((favoriteId: string) => favoriteId !== id);
+            } else {
+                updatedFavorites = [...favorites, id];
+            }
+            
+            localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+            
+            setIsFavorited(!isFavorited);
+
+            window.dispatchEvent(new CustomEvent('favoritesChanged'));
+        } catch (error) {
+            console.error("Error saving favorite:", error);
         }
 
         event.nativeEvent.preventDefault();
@@ -45,11 +94,11 @@ export default function FavoriteStar({ id }: FavoriteProps) {
 
     return (
         <button
-            aria-label={favorited[id] ? "Unfavorite" : "Favorite"}
+            aria-label={isFavorited ? "Unfavorite" : "Favorite"}
             onClick={handleClick}
             className="rounded-full p-0 pt-1 transition duration-300 ease-in-out"
         >
-            <StarSVG isFilled={!!favorited[id]} />
+            <StarSVG isFilled={isFavorited} />
         </button>
     );
 }

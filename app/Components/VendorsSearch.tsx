@@ -45,15 +45,9 @@ function useScrollPosition() {
 }
 
 function VendorsSearch({
-    cookies,
-    allCookies,
     originalVendors,
     categories,
 }: {
-    cookies: Cookie;
-    allCookies: {
-        [name: string]: Cookie;
-    };
     originalVendors: Vendor[];
     categories: Category[];
 }) {
@@ -115,15 +109,44 @@ function VendorsSearch({
     };
 
     // Get all the vendor cards that are favorited
-    const [favorited, setFavorited] = useState([]);
-    useEffect(() => {
-        // include vendors in list if their corresponding value is true in allCookies
-        const favoritedIds = Object.keys(allCookies).filter(
-            (key) => allCookies[key],
-        );
+    const [favorited, setFavorited] = useState<string[]>([]);
 
-        setFavorited(favoritedIds);
-    }, [allCookies]);
+    useEffect(() => {
+        try {
+            if (typeof window !== "undefined") {
+                if (!localStorage.getItem("favorites")) {
+                    localStorage.setItem("favorites", JSON.stringify([]));
+                }
+
+                const favorites = JSON.parse(
+                    localStorage.getItem("favorites") || "[]",
+                );
+                setFavorited(favorites);
+
+                const handleFavoritesChanged = () => {
+                    const updatedFavorites = JSON.parse(
+                        localStorage.getItem("favorites") || "[]",
+                    );
+                    setFavorited(updatedFavorites);
+                };
+
+                window.addEventListener(
+                    "favoritesChanged",
+                    handleFavoritesChanged,
+                );
+
+                return () => {
+                    window.removeEventListener(
+                        "favoritesChanged",
+                        handleFavoritesChanged,
+                    );
+                };
+            }
+        } catch (error) {
+            console.error("Error loading favorites:", error);
+            setFavorited([]);
+        }
+    }, []);
 
     const searchParams = useSearchParams();
 
@@ -299,4 +322,4 @@ function VendorsSearch({
     );
 }
 
-export default withCookies(VendorsSearch);
+export default VendorsSearch;
