@@ -27,10 +27,14 @@ export class VendorsRepo {
     vendors: Vendor[] = [];
     subtitle: Subtitles;
     url: string;
-    constructor(categoriesJson: any, subtitle: any, url: string) {
+    springUrl: string;
+    isFall: boolean;
+    constructor(categoriesJson: any, subtitle: any, url: string, springUrl: string, isFall: boolean) {
         this.categories = [];
         this.subtitle = subtitle;
         this.url = url;
+        this.springUrl = springUrl;
+        this.isFall = isFall;
         for (let category in categoriesJson) {
             this.categories.push({
                 name: category,
@@ -94,6 +98,6 @@ export class VendorsRepo {
     }
     
     getMapUrl() {
-        return this.url;
+        return this.isFall ? this.url : this.springUrl;
     }
 }

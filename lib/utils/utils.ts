@@ -129,6 +129,8 @@ export async function getCategories(): VendorsRepo {
             notifications: subtitle.data.notifications,
         },
         mapUrl.data.url,
+        mapUrl.data.SpringUrl,
+        mapUrl.data.Fall,
     );
 }
 /*
