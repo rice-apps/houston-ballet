@@ -1,4 +1,16 @@
-const { url } = require("inspector");
+const fs = require('fs');
+const path = require('path');
+
+// Read the season from the build-time generated file
+let season = 'fall'; // default fallback
+try {
+    const seasonConfig = JSON.parse(
+        fs.readFileSync(path.join(__dirname, '.season.json'), 'utf-8')
+    );
+    season = seasonConfig.season;
+} catch (error) {
+    console.warn('Could not read .season.json, using default season: fall');
+}
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -16,11 +28,11 @@ module.exports = {
         },
         extend: {
             backgroundImage: {
-                categoryBackground: "url('../public/categoryBackground.png')",
-                nutcrackerBackground: "url('../public/background.png')",
-                vendorBackground: "url('../public/vendorBackground.png')",
-                mapBackground: "url('/assets/MapCover.png')",
-                welcomeImage: "url('../public/welcomeImage.png')",
+                categoryBackground: `url('../public/${season}/categoryBackground.png')`,
+                nutcrackerBackground: `url('../public/${season}/background.png')`,
+                vendorBackground: `url('../public/${season}/vendorBackground.png')`,
+                mapBackground: `url('../public/${season}/MapCover.png')`,
+                welcomeImage: `url('../public/${season}/welcomeImage.png')`,
             },
             colors: {
                 ballet: "#33323c",
