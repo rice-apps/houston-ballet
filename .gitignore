@@ -42,3 +42,11 @@ app/*.csv
 
 # build artifacts
 .season.json
+
+# season-specific images (copied at build time)
+/public/background.png
+/public/categoryBackground.png
+/public/vendorBackground.png
+/public/welcomeImage.png
+/public/MapCover.png
+/public/assets/MapCover.png
