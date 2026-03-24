@@ -128,8 +128,9 @@ export async function getCategories(): VendorsRepo {
         category.vendors.map((vendor) => vendor.name),
     );
     const hasBizzy = vendorNames.some((name) => name.includes("Bizzy"));
-    console.log("Has 'Bizzy' vendor:", hasBizzy);
-    console.log("Categories and their vendors:", JSON.stringify(vendorNames));
+    for (let name in vendorNames) {
+        console.log(name);
+    }
     return new VendorsRepo(
         ret,
         {
