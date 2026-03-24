@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import { constants } from "buffer";
 import { VendorsRepo } from "./repository";
 
 export async function getCategories(): VendorsRepo {
@@ -128,7 +129,7 @@ export async function getCategories(): VendorsRepo {
         category.vendors.map((vendor) => vendor.name),
     );
     const hasBizzy = vendorNames.some((name) => name.includes("Bizzy"));
-    for (let name in vendorNames) {
+    for (const name of vendorNames) {
         console.log(name);
     }
     return new VendorsRepo(
