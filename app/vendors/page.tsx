@@ -26,6 +26,8 @@ export const metadata = {
 
 export default async function VendorPage() {
     const vendors = (await getCategories()).getVendors();
+    const hasBizzy = vendors.some((vendor) => vendor.name.toLowerCase().includes("bizzy"));
+    console.log("Has Bizzy in Vendors page:", hasBizzy);
     const categories = (await getCategories()).getCategories();
     const subtitle = (await getCategories()).getSubtitle("vendors");
 
