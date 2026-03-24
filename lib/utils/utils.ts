@@ -119,7 +119,7 @@ export async function getCategories(): VendorsRepo {
             ret[category.name].vendors.push(vendor_desc);
         });
     });
-
+    console.log("Vendors:", JSON.stringify(ret));
     return new VendorsRepo(
         ret,
         {
