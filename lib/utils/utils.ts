@@ -10,6 +10,7 @@ export async function getCategories(): VendorsRepo {
             headers: {
                 Authorization: "bearer " + process.env.STRAPI_API_KEY,
             },
+            cache: "no-store",
         },
     );
 
@@ -21,6 +22,7 @@ export async function getCategories(): VendorsRepo {
             headers: {
                 Authorization: "bearer " + process.env.STRAPI_API_KEY,
             },
+            cache: "no-store",
         },
     );
 
@@ -33,6 +35,7 @@ export async function getCategories(): VendorsRepo {
             headers: {
                 Authorization: "bearer " + process.env.STRAPI_API_KEY,
             },
+            cache: "no-store",
         },
     );
     let defaultImageUrlResp = await resp.json();
@@ -45,6 +48,7 @@ export async function getCategories(): VendorsRepo {
             headers: {
                 Authorization: "bearer " + process.env.STRAPI_API_KEY,
             },
+            cache: "no-store",
         },
     );
 
@@ -57,6 +61,7 @@ export async function getCategories(): VendorsRepo {
             headers: {
                 Authorization: "bearer " + process.env.STRAPI_API_KEY,
             },
+            cache: "no-store",
         },
     );
 
