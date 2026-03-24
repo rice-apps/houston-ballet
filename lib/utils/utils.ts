@@ -119,7 +119,12 @@ export async function getCategories(): VendorsRepo {
             ret[category.name].vendors.push(vendor_desc);
         });
     });
-    console.log("Vendors:", JSON.stringify(ret));
+    console.log(
+        "Vendors:",
+        Object.values(ret).flatMap((category) =>
+            category.vendors.map((vendor) => vendor.name),
+        ),
+    );
     return new VendorsRepo(
         ret,
         {
