@@ -4,8 +4,9 @@ import { constants } from "buffer";
 import { VendorsRepo } from "./repository";
 
 export async function getCategories(): VendorsRepo {
+    const cacheBust = `_t=${Date.now()}`;
     let resp = await fetch(
-        "https://hb-strapi-production.up.railway.app/api/url",
+        `https://hb-strapi-production.up.railway.app/api/url?${cacheBust}`,
         {
             method: "GET",
             headers: {
@@ -17,7 +18,7 @@ export async function getCategories(): VendorsRepo {
 
     let mapUrl = await resp.json();
     resp = await fetch(
-        "https://hb-strapi-production.up.railway.app/api/subtitle",
+        `https://hb-strapi-production.up.railway.app/api/subtitle?${cacheBust}`,
         {
             method: "GET",
             headers: {
@@ -30,7 +31,7 @@ export async function getCategories(): VendorsRepo {
     let subtitle = await resp.json();
 
     resp = await fetch(
-        "https://hb-strapi-production.up.railway.app/api/default-image?populate=*",
+        `https://hb-strapi-production.up.railway.app/api/default-image?populate=*&${cacheBust}`,
         {
             method: "GET",
             headers: {
@@ -43,7 +44,7 @@ export async function getCategories(): VendorsRepo {
     let defaultImageUrl = defaultImageUrlResp?.data?.image?.url ?? "";
 
     resp = await fetch(
-        "https://hb-strapi-production.up.railway.app/api/vendors?populate=*",
+        `https://hb-strapi-production.up.railway.app/api/vendors?populate=*&${cacheBust}`,
         {
             method: "GET",
             headers: {
@@ -56,7 +57,7 @@ export async function getCategories(): VendorsRepo {
     let ret = {};
     let vendorsResp = await resp.json();
     resp = await fetch(
-        "https://hb-strapi-production.up.railway.app/api/categories?populate[0]=primaryImage&populate[1]=smallIcon",
+        `https://hb-strapi-production.up.railway.app/api/categories?populate[0]=primaryImage&populate[1]=smallIcon&${cacheBust}`,
         {
             method: "GET",
             headers: {
