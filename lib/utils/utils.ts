@@ -129,6 +129,7 @@ export async function getCategories(): VendorsRepo {
     );
     const hasBizzy = vendorNames.some((name) => name.includes("Bizzy"));
     console.log("Has 'Bizzy' vendor:", hasBizzy);
+    console.log("Categories and their vendors:", JSON.stringify(hasBizzy));
     return new VendorsRepo(
         ret,
         {
